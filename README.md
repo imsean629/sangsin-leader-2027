@@ -10,3 +10,4 @@
 - 2027 다짐 한 줄 월: https://imsean629.github.io/sangsin-leader-2027/wall/ (행사장 화면: #wall, 리허설: #walldemo)
 - 2026 상식 레이스: https://imsean629.github.io/sangsin-leader-2027/quiz/ (순위판: #board)
 - 2027 포춘쿠키: https://imsean629.github.io/sangsin-leader-2027/fortune/
+- 속마음 타이머: https://imsean629.github.io/sangsin-leader-2027/count/ (순위판: #board)
