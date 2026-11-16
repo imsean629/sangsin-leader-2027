@@ -11,3 +11,4 @@
 - 2026 상식 레이스: https://imsean629.github.io/sangsin-leader-2027/quiz/ (순위판: #board)
 - 2027 포춘쿠키: https://imsean629.github.io/sangsin-leader-2027/fortune/
 - 속마음 타이머: https://imsean629.github.io/sangsin-leader-2027/count/ (순위판: #board)
+- AI 운전면허 시험 + 2부 AI 관점 설문: https://imsean629.github.io/sangsin-leader-2027/ai/ (집계: #board, 관점: #view)
