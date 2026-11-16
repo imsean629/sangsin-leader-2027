@@ -78,7 +78,7 @@ textarea.in{min-height:96px;resize:none;line-height:1.5;font-size:18px}
 .w-head h1 em{font-style:normal;color:var(--gold)}
 .w-count{margin-top:1vh;font-size:2vh;color:#DCE3EE}
 .w-count b{font-size:2.6vh;color:#FFFFFF}
-.w-field{position:absolute;left:2.4vw;right:2.4vw;top:22vh;bottom:14vh}
+.w-field{position:absolute;left:2.4vw;right:2.4vw;top:10vh;bottom:14vh}
 .w-field .note{position:absolute;width:max-content;max-width:var(--mw,17vw);padding:2vh 1.6vw 1.4vh;transform-origin:50% 50%;transition:opacity 1.2s ease,filter .8s ease;will-change:transform}
 .w-field .note .t{font-size:var(--fs,3vh)}
 .w-field .note .n{font-size:1.7vh;margin-top:.8vh}
@@ -154,7 +154,7 @@ textarea.in{min-height:96px;resize:none;line-height:1.5;font-size:18px}
 
 <script>
 (function(){
-  var CONFIG = { SHEET_URL: "https://script.google.com/macros/s/AKfycbyKUOWiAiVvusrHAca13lW98N5fdfOaQ7xPv9i8O7rbmpiq3UJLeRtMizwF6-Kfy5tx/exec", POLL_MS: 8000, MAX_ON_WALL: 15 };
+  var CONFIG = { SHEET_URL: "https://script.google.com/macros/s/AKfycbyKUOWiAiVvusrHAca13lW98N5fdfOaQ7xPv9i8O7rbmpiq3UJLeRtMizwF6-Kfy5tx/exec", POLL_MS: 8000, MAX_ON_WALL: 20 };
   var BLOCK = /(시발|씨발|ㅅㅂ|ㅆㅂ|병신|ㅂㅅ|개새|좆|존나|ㅈㄴ|닥쳐|꺼져|미친놈|미친년|fuck|shit)/i;
   var $ = function(id){ return document.getElementById(id); };
   function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
@@ -163,7 +163,7 @@ textarea.in{min-height:96px;resize:none;line-height:1.5;font-size:18px}
   function look(id, len){ // 쪽지 모양: id로 고정된 무작위 → 새로고침해도 같은 모습
     var r = rng(hash(id));
     var c = r() < .12 ? (r() < .5 ? 5 : 6) : 1 + Math.floor(r() * 4);
-    return { c: c, rot: (r() * 2 - 1) * 6, fs: (len < 12 ? 4.8 : len < 24 ? 4.1 : 3.6) * (0.9 + r() * 0.2), mw: 11 + r() * 5, d: 6 + r() * 4, dl: -r() * 6 };
+    return { c: c, rot: (r() * 2 - 1) * 6, fs: (len < 12 ? 3.9 : len < 24 ? 3.4 : 3.1) * (0.9 + r() * 0.2), mw: 12.5 + r() * 4, d: 6 + r() * 4, dl: -r() * 6 };
   }
   function noteEl(item, prev){
     var lk = look(item.id, item.text.length);
@@ -215,12 +215,13 @@ textarea.in{min-height:96px;resize:none;line-height:1.5;font-size:18px}
   function place(n){
     var fw = field.clientWidth, fh = field.clientHeight;
     var w = n.offsetWidth, h = n.offsetHeight, used = rects(), best = null, bestScore = -1e9;
-    var fr = field.getBoundingClientRect(), qr = document.querySelector('.w-join').getBoundingClientRect();
+    var fr = field.getBoundingClientRect(), qr = document.querySelector('.w-join').getBoundingClientRect(), hd = document.querySelector('.w-head').getBoundingClientRect(), mn = document.querySelector('.w-moon').getBoundingClientRect();
+    var hbox = { x: hd.left - fr.left - 20, y: hd.top - fr.top - 20, w: hd.width + 40, h: hd.height + 40 }, mbox = { x: mn.left - fr.left - 20, y: mn.top - fr.top - 20, w: mn.width + 40, h: mn.height + 40 };
     var boat = { x: fw / 2 - fh * .2, y: fh - fh * .08, w: fh * .4, h: fh * .2 }, qbox = { x: qr.left - fr.left - 10, y: qr.top - fr.top - 10, w: qr.width + 20, h: qr.height + 20 };
-    for (var i = 0; i < 160; i++) {
+    for (var i = 0; i < 260; i++) {
       var x = Math.random() * Math.max(1, fw - w), y = Math.random() * Math.max(1, fh - h), score = 1e9;
       var cx = x + w / 2, cy = y + h / 2;
-      used.concat([boat, qbox]).forEach(function(b){
+      used.concat([boat, qbox, hbox, mbox]).forEach(function(b){
         var dx = Math.max(b.x - (x + w), x - (b.x + b.w), 0), dy = Math.max(b.y - (y + h), y - (b.y + b.h), 0);
         var gap = Math.sqrt(dx * dx + dy * dy); if (dx === 0 && dy === 0) { var ox = Math.min(x + w, b.x + b.w) - Math.max(x, b.x), oy = Math.min(y + h, b.y + b.h) - Math.max(y, b.y); gap = -Math.sqrt(ox * oy); }
         score = Math.min(score, gap);
@@ -282,7 +283,7 @@ textarea.in{min-height:96px;resize:none;line-height:1.5;font-size:18px}
     if (demo) { var t = el('div', 'w-demo', '리허설 화면 · 예시 다짐'); $('w').appendChild(t); }
     document.fonts && document.fonts.ready.then(function(){ poll(true); }) || poll(true);
     setInterval(function(){ poll(false); }, demo ? 5000 : CONFIG.POLL_MS);
-    setInterval(spotlight, 7000); setInterval(rotateOld, 15000);
+    setInterval(spotlight, 7000); setInterval(rotateOld, 8000);
   }
   function route(){ if (/^#wall/.test(location.hash)) startWall(); }
   window.addEventListener('hashchange', route); route();
