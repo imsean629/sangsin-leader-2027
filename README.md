@@ -9,3 +9,4 @@
 - MZ어 능력시험: https://imsean629.github.io/sangsin-leader-2027/mz/
 - 2027 다짐 한 줄 월: https://imsean629.github.io/sangsin-leader-2027/wall/ (행사장 화면: #wall, 리허설: #walldemo)
 - 2026 상식 레이스: https://imsean629.github.io/sangsin-leader-2027/quiz/ (순위판: #board)
+- 2027 포춘쿠키: https://imsean629.github.io/sangsin-leader-2027/fortune/
