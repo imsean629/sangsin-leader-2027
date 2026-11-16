@@ -4,3 +4,5 @@
 
 - 테스트: https://imsean629.github.io/sangsin-leader-2027/
 - 관리자 화면: 주소 뒤에 #admin (claude.ai 저장소 사용 시)
+
+- 브레이크 반응속도 챌린지: https://imsean629.github.io/sangsin-leader-2027/brake/ (행사장 순위판: 주소 뒤에 #board)
