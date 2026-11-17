@@ -68,6 +68,14 @@ function doPost(e) {
         if (rs.some(r => String(r[cols.indexOf('nickname')]).replace(/^'/, '').trim() === nm && String(r[cols.indexOf('sid')]) !== String(d.sid))) return ContentService.createTextOutput('duplicate');
       }
     }
+    if (kind === 'brake') { // 같은 기기(sid)는 더 빠른 기록일 때만 갱신
+      const cols = t.cols, last0 = sh.getLastRow();
+      if (last0 > 1) {
+        const rs = sh.getRange(2, 1, last0 - 1, cols.length).getValues();
+        const old = rs.find(r => String(r[cols.indexOf('sid')]) === String(d.sid));
+        if (old && Number(old[cols.indexOf('best')]) > 0 && Number(old[cols.indexOf('best')]) <= Number(d.best)) return ContentService.createTextOutput('kept');
+      }
+    }
     const row = t.cols.map(c => clean_(d[c]));
     const sidCol = t.cols.indexOf('sid') + 1, last = sh.getLastRow();
     if (last > 1) {
@@ -83,7 +91,7 @@ function doPost(e) {
 }
 
 // 브레이크 챌린지 순위 조회: ?type=brake
-//  - top: 사람(닉네임+소속)별 최고 기록 상위 20
+//  - top: 기기(sid)별 최고 기록 전체 순위(최대 300)
 //  - teams: 소속별 평균(3명 이상), bests: 사람별 최고 기록 목록(내 순위 계산용)
 function doGet(e) {
   if (e && e.parameter && e.parameter.type === 'wall') return wall_();
@@ -98,7 +106,7 @@ function doGet(e) {
   const people = {};
   rows.forEach(r => {
     const best = Number(r[ix('best')]); if (!(best > 0)) return;
-    const key = String(r[ix('nickname')]) + '|' + String(r[ix('team')]);
+    const key = String(r[ix('sid')]) || (String(r[ix('nickname')]) + '|' + String(r[ix('team')])); // 기기(sid)별 1명
     if (!people[key] || best < people[key].best) people[key] = { nickname: String(r[ix('nickname')]), team: String(r[ix('team')]), best: best, sid: String(r[ix('sid')]) };
   });
   const list = Object.keys(people).map(k => people[k]).sort((a, b) => a.best - b.best);
@@ -107,7 +115,7 @@ function doGet(e) {
   const teamList = Object.keys(teams).filter(t => teams[t].length >= 3)
     .map(t => ({ team: t, n: teams[t].length, avg: Math.round(teams[t].reduce((a, b) => a + b, 0) / teams[t].length) }))
     .sort((a, b) => a.avg - b.avg);
-  return json_({ count: list.length, top: list.slice(0, 20), bests: list.map(p => p.best), teams: teamList });
+  return json_({ count: list.length, top: list.slice(0, 300), bests: list.map(p => p.best), teams: teamList });
 }
 
 // 다짐 월 조회: ?type=wall — 숨김(hide) 표시가 없는 최근 120개

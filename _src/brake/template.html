@@ -127,7 +127,9 @@ h1.title em{font-style:normal;color:#FF4D57}
 .lap{display:grid;grid-template-columns:54px 1fr 70px;gap:8px;align-items:center;font-size:13px}
 .lap .lb{height:10px;border-radius:5px;background:rgba(255,255,255,.12);overflow:hidden}.lap .lb i{display:block;height:10px;border-radius:5px;background:var(--amber)}
 .lap span:last-child{text-align:right;font-weight:700}
-.rank-list{margin-top:10px;display:grid;gap:6px}
+.rank-list{margin-top:10px;display:grid;gap:6px;max-height:46vh;overflow-y:auto;overscroll-behavior:contain;padding-right:2px}
+.rank-hint{margin-top:6px;font-size:12px;opacity:.7;text-align:center}
+.keep{margin-top:8px;font-size:13px;line-height:1.5;padding:8px 10px;border-radius:10px;background:rgba(255,194,75,.12);border:1px dashed var(--amber)}
 .rank-list div{display:grid;grid-template-columns:28px 1fr 72px;gap:8px;align-items:center;font-size:14px;padding:7px 10px;border-radius:10px;background:rgba(0,0,0,.2)}
 .rank-list div.me{background:rgba(255,194,75,.18);border:1px solid var(--amber)}
 .rank-list b{color:var(--amber)}
@@ -165,7 +167,8 @@ h1.title em{font-style:normal;color:#FF4D57}
 .pd.p3{background:#0B1B36}
 .pd.empty{background:#E9EDF3;color:#9AA3B1}
 .pd svg{position:absolute;right:-2.6vh;bottom:-2.6vh;width:10vh;height:10vh;opacity:.18}
-.rows{flex:1;display:grid;grid-auto-rows:minmax(0,1fr);gap:.6vh;min-height:0}
+.rows{flex:1 1 0;display:flex;flex-direction:column;gap:.6vh;min-height:0;overflow-y:auto;scrollbar-width:thin}
+.rows .brow{flex:0 0 5vh}
 .brow{display:grid;grid-template-columns:5vh 1fr auto;gap:1vw;align-items:center;padding:0 1vw;border-radius:.8vh;font-size:2.4vh;font-weight:700;background:#F4F6F9;min-height:4.4vh}
 .brow b{font-size:2.4vh;font-weight:900;color:#004098}
 .brow span:last-child{font-family:'JetBrains Mono',monospace;font-weight:700;color:#0B1B36}
@@ -234,7 +237,7 @@ h1.title em{font-style:normal;color:#FF4D57}
     </div>
     <div class="toast" id="r-toast"></div>
     <div class="panel"><h4>라운드 기록</h4><div class="laps" id="r-laps"></div><p id="r-tip"></p></div>
-    <div class="panel" id="r-rank-panel" hidden><h4>실시간 순위 <small id="r-rank-me"></small></h4><div class="rank-list" id="r-rank"></div></div>
+    <div class="panel" id="r-rank-panel" hidden><h4>실시간 순위 <small id="r-rank-me"></small></h4><div id="r-keep" class="keep" hidden></div><div class="rank-list" id="r-rank"></div><div class="rank-hint" id="r-hint" hidden>위아래로 스크롤해 전체 순위를 볼 수 있어요</div></div>
     <div class="panel"><h4>경영 브레이크 노트</h4><p id="r-note"></p></div>
     <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGOW__" alt="SANGSIN BRAKE"></div>
   </section>
@@ -246,10 +249,10 @@ h1.title em{font-style:normal;color:#FF4D57}
       <div class="bd-stripe" aria-hidden="true"><i></i><i></i></div>
       <div class="bd-title"><div><small>BRAKE CHALLENGE</small><h1>브레이크 반응속도 <em>순위판</em></h1></div><div class="live"><i></i><span id="b-time">실시간</span></div></div>
       <div class="bd-main">
-        <div class="bd-card"><h3>개인 TOP 10 · 최고 기록</h3><div class="podium" id="b-pod"></div><div class="rows" id="b-top"></div></div>
+        <div class="bd-card"><h3>전체 순위 · 최고 기록</h3><div class="podium" id="b-pod"></div><div class="rows" id="b-top"></div></div>
         <div class="side">
           <div class="bd-card"><h3>참여 현황</h3><div class="stats" id="b-team"></div></div>
-          <div class="join"><img src="__QR__" alt="참여 QR"><div><b>지금 QR로 도전!</b><span>신호가 바뀌면 브레이크를 밟으세요.<br>3번 중 최고 기록으로 순위에 오릅니다.</span></div></div>
+          <div class="join"><img src="__QR__" alt="참여 QR"><div><b>지금 QR로 도전!</b><span>신호가 바뀌면 브레이크를 밟으세요.<br>3번 중 최고 기록으로 순위에 오르고,<br>다시 도전하면 더 빠를 때만 갱신돼요.</span></div></div>
         </div>
       </div>
       <div class="bd-foot"><span id="b-msg">10초마다 자동 갱신</span><span>26/27년 경영검토회 · SANGSIN BRAKE</span></div>
@@ -277,6 +280,10 @@ h1.title em{font-style:normal;color:#FF4D57}
   var nickname = '', team = '', sid = '', laps = [], fouls = 0, round = 0, state = 'idle', t0 = 0, timer = null, lastPng = null, capGen = 0;
   function show(id){ ['s-start','s-game','s-result','s-board'].forEach(function(s){ $(s).classList.toggle('on', s === id); }); window.scrollTo(0, 0); }
   function newId(){ return 'b' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  // 같은 휴대폰·브라우저 = 같은 참가자. 다시 도전해도 더 빠른 기록일 때만 갱신
+  var DEV_KEY = 'sangsin_brake_dev', BEST_KEY = 'sangsin_brake_best', prevBest = 0, improved = true;
+  function ls(k, v){ try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function deviceId(){ var d = ls(DEV_KEY); if (!d) { d = newId(); ls(DEV_KEY, d); } return d; }
   function clean(v, n){ return v.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, n); }
   function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function sec(ms){ return (ms / 1000).toFixed(3); }
@@ -286,7 +293,7 @@ h1.title em{font-style:normal;color:#FF4D57}
   $('nick').addEventListener('input', function(){ $('btn-start').disabled = !clean(this.value, 10); });
   $('btn-start').addEventListener('click', function(){
     nickname = clean($('nick').value, 10); team = ''; if (!nickname) return;
-    sid = newId(); laps = []; fouls = 0; round = 0; lastPng = null; capGen++;
+    sid = deviceId(); laps = []; fouls = 0; round = 0; lastPng = null; capGen++;
     show('s-game'); setIdle('화면을 눌러 출발', '초록불 동안은 기다리세요');
   });
 
@@ -359,7 +366,13 @@ h1.title em{font-style:normal;color:#FF4D57}
   }
   function finish(){
     var r = result();
-    $('app').setAttribute('data-best', r.best);
+    prevBest = +(ls(BEST_KEY) || 0); improved = !prevBest || r.best < prevBest;
+    if (improved) ls(BEST_KEY, String(r.best));
+    $('app').setAttribute('data-best', r.best); $('app').setAttribute('data-rank-best', improved ? r.best : prevBest);
+    var kp = $('r-keep');
+    if (improved && prevBest) { kp.hidden = false; kp.textContent = '🎉 최고 기록 경신! ' + sec(prevBest) + '초 → ' + sec(r.best) + '초로 순위가 갱신됐어요.'; }
+    else if (!improved) { kp.hidden = false; kp.textContent = '이번 기록 ' + sec(r.best) + '초는 내 최고 기록 ' + sec(prevBest) + '초보다 느려서, 순위에는 최고 기록이 유지돼요.'; }
+    else kp.hidden = true;
     $('r-head').innerHTML = ''; $('r-head').appendChild(document.createTextNode(nickname + ' 님은 ')); $('r-head').appendChild(el('b', null, r.grade.name));
     buildCard(r);
     var lp = $('r-laps'); lp.innerHTML = ''; var mx = Math.max.apply(null, laps);
@@ -371,7 +384,7 @@ h1.title em{font-style:normal;color:#FF4D57}
     lastPng = null; capGen++;
     show('s-result');
     setTimeout(function(){ capture().catch(function(){}); }, 700);
-    save(r).then(loadRank);
+    (improved ? save(r) : Promise.resolve(true)).then(loadRank);
   }
 
   // ===== 저장 / 순위 ====================================================
@@ -385,8 +398,10 @@ h1.title em{font-style:normal;color:#FF4D57}
   function loadRank(){
     if (!CONFIG.SHEET_URL) return;
     fetchBoard().then(function(d){
-      var list = $('r-rank'); list.innerHTML = ''; var best = +$('app').getAttribute('data-best');
-      (d.top || []).slice(0, 5).forEach(function(x, i){ var row = el('div', x.sid === sid ? 'me' : null); row.appendChild(el('b', null, String(i + 1))); row.appendChild(el('span', null, x.nickname)); row.appendChild(el('span', 'mono', sec(x.best))); list.appendChild(row); });
+      var list = $('r-rank'); list.innerHTML = ''; var best = +$('app').getAttribute('data-rank-best'), meRow = null;
+      (d.top || []).forEach(function(x, i){ var row = el('div', x.sid === sid ? 'me' : null); if (x.sid === sid) meRow = row; row.appendChild(el('b', null, String(i + 1))); row.appendChild(el('span', null, x.nickname)); row.appendChild(el('span', 'mono', sec(x.best))); list.appendChild(row); });
+      $('r-hint').hidden = (d.top || []).length <= 8;
+      if (meRow) setTimeout(function(){ list.scrollTop = Math.max(0, meRow.offsetTop - list.offsetTop - list.clientHeight / 2 + meRow.offsetHeight / 2); }, 50);
       if (d.count) { var faster = (d.bests || []).filter(function(v){ return v < best; }).length; $('r-rank-me').textContent = '내 순위 ' + (faster + 1) + ' / ' + d.count + '명'; }
       $('r-rank-panel').hidden = false;
     }).catch(function(){});
@@ -436,7 +451,7 @@ h1.title em{font-style:normal;color:#FF4D57}
     show('s-board'); $('app').style.maxWidth = 'none'; $('app').classList.add('board-mode');
     if (!CONFIG.SHEET_URL) { $('b-msg').textContent = '순위판은 응답 저장(Google 시트) 연결 후 표시됩니다.'; return; }
     fetchBoard().then(function(d){
-      var list = (d.top || []).slice(0, 10);
+      var list = d.top || [];
       var pod = $('b-pod'); pod.innerHTML = '';
       [1, 0, 2].forEach(function(i){
         var x = list[i], c = el('div', 'pd p' + (i + 1) + (x ? '' : ' empty'));
@@ -444,18 +459,30 @@ h1.title em{font-style:normal;color:#FF4D57}
         c.appendChild(el('div', 'nm', x ? x.nickname : '도전자 대기 중')); c.appendChild(el('div', 'tm', x ? sec(x.best) + '초' : '-'));
         pod.appendChild(c);
       });
-      var top = $('b-top'); top.innerHTML = '';
-      for (var i = 3; i < 10; i++) { var x = list[i], r = el('div', 'brow'); r.appendChild(el('b', null, String(i + 1))); r.appendChild(el('span', null, x ? x.nickname : '')); r.appendChild(el('span', null, x ? sec(x.best) + '초' : '')); if (!x) r.style.opacity = '.45'; top.appendChild(r); }
+      var top = $('b-top'), keepY = top.scrollTop; top.innerHTML = '';
+      for (var i = 3; i < Math.max(10, list.length); i++) { var x = list[i], r = el('div', 'brow'); r.appendChild(el('b', null, String(i + 1))); r.appendChild(el('span', null, x ? x.nickname : '')); r.appendChild(el('span', null, x ? sec(x.best) + '초' : '')); if (!x) r.style.opacity = '.45'; top.appendChild(r); }
       var tm = $('b-team'); tm.innerHTML = ''; var bs = d.bests || [];
       var avgAll = bs.length ? Math.round(bs.reduce(function(a, b){ return a + b; }, 0) / bs.length) : 0;
       [['도전 인원', String(d.count || 0), '명', ''], ['전체 평균', bs.length ? sec(avgAll) : '-', bs.length ? '초' : '', ''], ['최고 기록', bs.length ? sec(bs[0]) : '-', bs.length ? '초' : '', 'hi']].forEach(function(x){
         var r = el('div', 'stat ' + x[3]); r.appendChild(el('span', null, x[0])); var b = el('b', null, x[1]); if (x[2]) b.appendChild(el('small', null, x[2])); r.appendChild(b); tm.appendChild(r);
       });
-      $('b-msg').textContent = '총 ' + (d.count || 0) + '명 도전 · 10초마다 자동 갱신';
+      top.scrollTop = keepY;
+      $('b-msg').textContent = '총 ' + (d.count || 0) + '명 도전 · 10초마다 자동 갱신' + (list.length > 10 ? ' · 순위 목록은 자동으로 스크롤됩니다(마우스 휠로 직접 이동 가능)' : '');
       $('b-time').textContent = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) + ' 기준 실시간';
     }).catch(function(){ $('b-msg').textContent = '순위를 불러오지 못했습니다. 잠시 후 다시 시도합니다.'; });
     clearTimeout(boardTimer); boardTimer = setTimeout(renderBoard, 10000);
   }
+  // 순위 목록 자동 스크롤: 넘칠 때만, 사용자가 휠·터치하면 8초 멈춤
+  var autoPause = 0, autoWait = 0;
+  function autoScroll(){
+    var box = $('b-top'); if (!$('s-board').classList.contains('on') || !box) return;
+    if (Date.now() < autoPause || box.scrollHeight <= box.clientHeight + 2) return;
+    if (autoWait > 0) { autoWait--; return; }
+    if (box.scrollTop + box.clientHeight >= box.scrollHeight - 1) { autoWait = 60; setTimeout(function(){ box.scrollTop = 0; autoWait = 60; }, 2500); return; }
+    box.scrollTop += 1;
+  }
+  ['wheel', 'touchstart', 'mousedown', 'keydown'].forEach(function(ev){ window.addEventListener(ev, function(){ autoPause = Date.now() + 8000; }, { passive: true }); });
+  setInterval(autoScroll, 40);
   function route(){ if (location.hash === '#board') renderBoard(); }
   window.addEventListener('hashchange', route); route();
 
