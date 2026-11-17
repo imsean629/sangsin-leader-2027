@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2027 다짐 한 줄 — 26/27년 경영검토회</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="2027, 나의 다짐 한 줄">
+<meta property="og:description" content="26/27년 경영검토회 · 같은 배를 탄 우리, 2027년 다짐을 한 줄로 띄워 주세요.">
+<meta property="og:url" content="https://imsean629.github.io/sangsin-leader-2027/wall/">
+<meta property="og:image" content="https://imsean629.github.io/sangsin-leader-2027/wall/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gaegu:wght@400;700&family=Nanum+Pen+Script&family=Gowun+Batang:wght@700&display=swap">
+<style>
+:root{--red:#E60013;--blue:#004098;--navy:#0B1B36;--ink:#16191E;--gold:#E8C35A;--paper:#FFF8EC}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all;color:var(--ink);background:#EEF1F6}
+button,input,textarea{font-family:inherit;color:inherit}
+[hidden]{display:none!important}
+
+/* ===== 모바일 작성 ===== */
+.m{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;background:linear-gradient(180deg,#0B1B36 0,#0B1B36 300px,#F4F6F9 300px);display:flex;flex-direction:column}
+.m-top{position:relative;color:#FFFFFF;padding:22px 22px 70px;overflow:hidden}
+.m-top .stripe{position:absolute;left:0;right:0;top:0;height:5px;display:flex}.m-top .stripe i{display:block}.m-top .stripe i:first-child{flex:7;background:var(--red)}.m-top .stripe i:last-child{flex:3;background:var(--blue)}
+.m-top small{font-size:12.5px;font-weight:700;color:#C9D2E0}
+.m-top h1{margin:10px 0 0;font-family:'Gowun Batang',serif;font-size:34px;line-height:1.25;font-weight:700}
+.m-top h1 em{font-style:normal;color:var(--gold)}
+.m-top p{margin:10px 0 0;font-size:15px;line-height:1.6;color:#DCE3EE}
+.m-top .hanja{position:absolute;right:-6px;bottom:-14px;font-family:'Gowun Batang',serif;font-size:92px;color:rgba(232,195,90,.12);letter-spacing:-4px;pointer-events:none}
+.m-body{margin:-48px 16px 0;background:#FFFFFF;border-radius:20px;box-shadow:0 10px 30px rgba(11,27,54,.12);padding:20px 18px}
+.lab{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;font-weight:900;margin-bottom:8px}
+.lab span{font-weight:700;color:#6B7280;font-size:12.5px}
+.in{width:100%;border:2px solid #D5DAE2;border-radius:14px;padding:12px 14px;font-size:17px;background:#FAFBFC}
+.in:focus{outline:none;border-color:var(--blue);background:#FFFFFF}
+textarea.in{min-height:96px;resize:none;line-height:1.5;font-size:18px}
+.gap{height:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chips button{border:1.5px solid #D5DAE2;background:#FFFFFF;border-radius:999px;padding:7px 12px;font-size:13.5px;font-weight:700;cursor:pointer}
+.chips button:active{background:#EEF1F6}
+.prev-lab{margin-top:20px;font-size:12.5px;font-weight:900;color:#6B7280;text-align:center}
+.prev{margin:10px auto 0;display:flex;justify-content:center;min-height:120px;align-items:center}
+.send{margin-top:18px;width:100%;min-height:56px;border:0;border-radius:14px;background:var(--red);color:#FFFFFF;font-size:18px;font-weight:900;cursor:pointer}
+.send[disabled]{background:#C3C8D0;cursor:default}
+.msg{margin-top:10px;text-align:center;font-size:13px;color:var(--red);min-height:18px;font-weight:700}
+.note-s{margin-top:4px;font-size:12px;color:#6B7280;line-height:1.55;text-align:center}
+.done{text-align:center;padding:6px 0 4px}
+.done h2{margin:0;font-size:22px;font-weight:900}
+.done p{margin:8px 0 0;font-size:15px;line-height:1.6;color:#4A515C}
+.again{margin-top:16px;width:100%;min-height:52px;border:2px solid var(--navy);border-radius:14px;background:#FFFFFF;font-size:16px;font-weight:700;cursor:pointer}
+.m-foot{margin-top:auto;padding:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#6B7280}
+.m-foot img{height:14px}
+
+/* ===== 다짐 쪽지 (공용) ===== */
+.note{position:relative;display:inline-block;max-width:340px;padding:18px 20px 14px;border-radius:4px 14px 6px 12px;background:var(--paper);color:#1F2430;box-shadow:0 10px 24px rgba(0,0,0,.28),0 2px 0 rgba(0,0,0,.06);font-family:'Gaegu',cursive;font-weight:700;line-height:1.3;text-align:left}
+.note::before{content:"";position:absolute;left:50%;top:-9px;width:62px;height:18px;margin-left:-31px;background:rgba(232,195,90,.75);transform:rotate(-3deg);border-radius:2px}
+.note .t{font-family:'Nanum Pen Script',cursive;font-weight:400;font-size:32px;line-height:1.12}
+.note .n{margin-top:6px;font-family:'Noto Sans KR',sans-serif;font-weight:500;font-size:13px;color:#6B7280;text-align:right;white-space:nowrap}
+.note.c1{background:#FFF8EC}
+.note.c2{background:#E8F0FF}.note.c2::before{background:rgba(0,64,152,.35)}
+.note.c3{background:#FFE9EA}.note.c3::before{background:rgba(230,0,19,.35)}
+.note.c4{background:#FFF3C9}
+.note.c5{background:#E60013;color:#FFFFFF}.note.c5 .n{color:#FFD9DC}.note.c5::before{background:rgba(255,255,255,.55)}
+.note.c6{background:#004098;color:#FFFFFF}.note.c6 .n{color:#C9D9F2}.note.c6::before{background:rgba(232,195,90,.8)}
+
+/* ===== 행사장 월 (#wall) ===== */
+.w{position:fixed;inset:0;overflow:hidden;color:#FFFFFF;background:radial-gradient(120% 90% at 50% 0%,#14315E 0%,#0B1B36 45%,#050E20 100%)}
+.w-stars{position:absolute;inset:0;background-image:radial-gradient(1.2px 1.2px at 12% 18%,rgba(255,255,255,.55),transparent 60%),radial-gradient(1px 1px at 33% 9%,rgba(255,255,255,.4),transparent 60%),radial-gradient(1.4px 1.4px at 58% 22%,rgba(255,255,255,.5),transparent 60%),radial-gradient(1px 1px at 77% 12%,rgba(255,255,255,.4),transparent 60%),radial-gradient(1.2px 1.2px at 91% 30%,rgba(255,255,255,.45),transparent 60%),radial-gradient(1px 1px at 22% 38%,rgba(255,255,255,.3),transparent 60%),radial-gradient(1px 1px at 68% 41%,rgba(255,255,255,.3),transparent 60%),radial-gradient(1.2px 1.2px at 46% 33%,rgba(255,255,255,.35),transparent 60%);pointer-events:none}
+.w-moon{position:absolute;right:7vw;top:6vh;width:9vh;height:9vh;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFF6D8,#E8C35A 70%);box-shadow:0 0 6vh rgba(232,195,90,.45);opacity:.9}
+.w-sea{position:absolute;left:0;right:0;bottom:0;height:22vh;pointer-events:none}
+.w-sea svg{position:absolute;left:0;width:200%;height:100%;animation:wv 26s linear infinite}
+.w-sea svg:nth-child(2){animation-duration:38s;animation-direction:reverse;opacity:.6}
+@keyframes wv{to{transform:translateX(-50%)}}
+.w-head{position:absolute;left:3.4vw;top:4vh;z-index:5}
+.w-head small{display:flex;align-items:center;gap:.8vw;font-size:1.8vh;font-weight:700;color:#C9D2E0;letter-spacing:.08em}
+.w-head small b{font-family:'Gowun Batang',serif;color:var(--gold);font-size:2.2vh;letter-spacing:.2em}
+.w-head h1{margin:.8vh 0 0;font-family:'Gowun Batang',serif;font-size:5.4vh;font-weight:700;line-height:1.15;letter-spacing:-.02em}
+.w-head h1 em{font-style:normal;color:var(--gold)}
+.w-count{margin-top:1vh;font-size:2vh;color:#DCE3EE}
+.w-count b{font-size:2.6vh;color:#FFFFFF}
+.w-field{position:absolute;left:2.4vw;right:2.4vw;top:10vh;bottom:14vh}
+.w-field .note{position:absolute;width:max-content;max-width:var(--mw,17vw);padding:2vh 1.6vw 1.4vh;transform-origin:50% 50%;transition:opacity 1.2s ease,filter .8s ease;will-change:transform}
+.w-field .note .t{font-size:var(--fs,3vh)}
+.w-field .note .n{font-size:1.7vh;margin-top:.8vh}
+.w-field .note::before{top:-1vh;width:6vh;height:1.8vh;margin-left:-3vh}
+.w-field .bob{animation:bob var(--d,7s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -1.1vh}}
+.w-field .note.enter{animation:drop 1.4s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes drop{0%{opacity:0;scale:.3;translate:0 6vh}60%{opacity:1}100%{opacity:1;scale:1;translate:0 0}}
+.w-field .note.out{opacity:0}
+.w-field.spot .note{filter:brightness(.72)}
+.w-field.spot .note.lit{filter:none;z-index:50;box-shadow:0 0 0 .4vh rgba(232,195,90,.9),0 2vh 5vh rgba(0,0,0,.5)}
+.w-field .note.lit{scale:1.22;transition:scale .8s cubic-bezier(.2,1.2,.4,1),filter .8s}
+.w-field .note.fresh::after{content:"NEW";position:absolute;right:-1vh;top:-1.4vh;background:var(--red);color:#FFFFFF;font-family:'Noto Sans KR',sans-serif;font-size:1.4vh;font-weight:900;padding:.3vh .7vh;border-radius:.6vh;transform:rotate(8deg)}
+.w-boat{position:absolute;left:50%;bottom:7.5vh;width:22vh;margin-left:-11vh;opacity:.95;animation:boat 6s ease-in-out infinite;z-index:3}
+@keyframes boat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-.8vh) rotate(1.5deg)}}
+.w-join{position:absolute;right:2.6vw;bottom:3vh;z-index:6;display:flex;align-items:center;gap:1.2vw;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:1.6vh;padding:1.4vh 1.4vw;backdrop-filter:blur(6px)}
+.w-join img{width:12vh;height:12vh;background:#FFFFFF;border-radius:1vh;padding:.6vh}
+.w-join b{display:block;font-size:2.4vh;font-weight:900}
+.w-join span{display:block;margin-top:.4vh;font-size:1.6vh;color:#C9D2E0;line-height:1.5}
+.w-logo{position:absolute;left:3.4vw;bottom:3.6vh;z-index:6;height:2.6vh}
+.w-empty{position:absolute;left:0;right:0;top:42vh;text-align:center;font-family:'Gaegu',cursive;font-size:4vh;color:rgba(255,255,255,.75)}
+.w-demo{position:absolute;left:50%;top:2vh;transform:translateX(-50%);z-index:9;background:var(--gold);color:var(--navy);font-weight:900;font-size:1.6vh;padding:.5vh 1.2vh;border-radius:.6vh}
+</style>
+</head>
+<body>
+
+<!-- 모바일 작성 화면 -->
+<main class="m" id="m">
+  <div class="m-top">
+    <div class="stripe" aria-hidden="true"><i></i><i></i></div>
+    <small>26/27년 경영검토회 · 쉬어가는 코너</small>
+    <h1>2027, 나의 <em>다짐</em><br>한 줄</h1>
+    <p>같은 배를 탄 우리. 내년에 꼭 지키고 싶은 다짐이나 동료에게 건네는 한마디를 적어 주세요. 행사장 화면에 쪽지로 떠오릅니다.</p>
+    <div class="hanja" aria-hidden="true">同舟共濟</div>
+  </div>
+  <div class="m-body">
+    <div id="form">
+      <div class="lab"><label for="nm">이름 또는 닉네임</label><span>비워 두면 ‘익명’</span></div>
+      <input class="in" id="nm" type="text" maxlength="10" autocomplete="off" placeholder="예: 김상신">
+      <div class="gap"></div>
+      <div class="lab"><label for="tx">다짐 한 줄</label><span id="cnt">0 / 40</span></div>
+      <textarea class="in" id="tx" maxlength="40" placeholder="예: 2027년엔 먼저 묻고, 함께 노 젓겠습니다"></textarea>
+      <div class="chips" id="chips"><button type="button">2027년엔 꼭 </button><button type="button">우리 팀에게: </button><button type="button">나 자신에게: </button><button type="button">올해 고마웠던 동료에게: </button></div>
+      <div class="prev-lab">미리보기</div>
+      <div class="prev" id="prev"></div>
+      <button class="send" id="send" type="button" disabled>화면에 띄우기</button>
+      <div class="msg" id="msg"></div>
+      <div class="note-s">이름과 다짐은 행사장 화면 표시와 행사 기록을 위해 저장됩니다. 부적절한 표현은 화면에서 빠질 수 있습니다.</div>
+    </div>
+    <div id="done" hidden>
+      <div class="done"><h2>행사장 화면을 봐 주세요!</h2><p>내 다짐이 곧 쪽지로 떠오릅니다.<br>10초 안팎이면 나타나요.</p></div>
+      <div class="prev" id="done-note"></div>
+      <button class="again" id="again" type="button">한 줄 더 쓰기</button>
+    </div>
+  </div>
+  <div class="m-foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+</main>
+
+<!-- 행사장 월 -->
+<section class="w" id="w" hidden>
+  <div class="w-stars"></div><div class="w-moon"></div>
+  <div class="w-head"><small><b>同舟共濟</b>26/27년 경영검토회</small><h1>같은 배를 탄 우리의 <em>2027</em> 다짐</h1><div class="w-count" id="w-count"></div></div>
+  <div class="w-field" id="field"></div>
+  <div class="w-empty" id="w-empty" hidden>첫 번째 다짐을 기다리고 있어요 ✎</div>
+  <svg class="w-boat" viewBox="0 0 220 120" aria-hidden="true"><path d="M110 8 L110 78" stroke="#E8C35A" stroke-width="3"/><path d="M112 14 L168 70 L112 70 Z" fill="#FFF8EC"/><path d="M108 22 L64 70 L108 70 Z" fill="#E60013"/><path d="M20 80 L200 80 L178 108 L44 108 Z" fill="#004098"/><path d="M20 80 L200 80" stroke="#FFFFFF" stroke-width="3"/></svg>
+  <div class="w-sea" aria-hidden="true">
+    <svg viewBox="0 0 2400 200" preserveAspectRatio="none" style="bottom:0"><path d="M0 70 Q150 30 300 70 T600 70 T900 70 T1200 70 T1500 70 T1800 70 T2100 70 T2400 70 V200 H0 Z" fill="rgba(0,64,152,.55)"/></svg>
+    <svg viewBox="0 0 2400 200" preserveAspectRatio="none" style="bottom:0"><path d="M0 110 Q200 70 400 110 T800 110 T1200 110 T1600 110 T2000 110 T2400 110 V200 H0 Z" fill="rgba(5,14,32,.9)"/></svg>
+  </div>
+  <img class="w-logo" src="__LOGOW__" alt="SANGSIN BRAKE">
+  <div class="w-join"><img src="__QR__" alt="참여 QR"><div><b>QR로 다짐 띄우기</b><span>한 줄이면 충분해요<br>바로 이 화면에 떠오릅니다</span></div></div>
+</section>
+
+<script>
+(function(){
+  var CONFIG = { SHEET_URL: "", POLL_MS: 8000, MAX_ON_WALL: 20 };
+  var BLOCK = /(시발|씨발|ㅅㅂ|ㅆㅂ|병신|ㅂㅅ|개새|좆|존나|ㅈㄴ|닥쳐|꺼져|미친놈|미친년|fuck|shit)/i;
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  function hash(s){ var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(seed){ return function(){ seed = (seed + 0x6D2B79F5) | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t ^= t + Math.imul(t ^ t >>> 7, 61 | t); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function look(id, len){ // 쪽지 모양: id로 고정된 무작위 → 새로고침해도 같은 모습
+    var r = rng(hash(id));
+    var c = r() < .12 ? (r() < .5 ? 5 : 6) : 1 + Math.floor(r() * 4);
+    return { c: c, rot: (r() * 2 - 1) * 6, fs: (len < 12 ? 3.9 : len < 24 ? 3.4 : 3.1) * (0.9 + r() * 0.2), mw: 12.5 + r() * 4, d: 6 + r() * 4, dl: -r() * 6 };
+  }
+  function noteEl(item, prev){
+    var lk = look(item.id, item.text.length);
+    var n = el('div', 'note c' + lk.c);
+    n.appendChild(el('div', 't', item.text)); n.appendChild(el('div', 'n', '— ' + (item.name || '익명')));
+    if (!prev) { n.style.setProperty('--fs', lk.fs.toFixed(2) + 'vh'); n.style.setProperty('--mw', lk.mw.toFixed(1) + 'vw'); }
+    n.style.rotate = lk.rot.toFixed(1) + 'deg';
+    n.style.setProperty('--d', lk.d.toFixed(1) + 's'); n.style.setProperty('--dl', lk.dl.toFixed(1) + 's');
+    return n;
+  }
+
+  // ===== 모바일 작성 =====
+  var sid = '', sentN = 0;
+  try { sentN = +localStorage.getItem('wall_sent') || 0; } catch (e) {}
+  function cleanTx(v){ return v.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim(); }
+  function preview(){
+    var t = cleanTx($('tx').value), nm = cleanTx($('nm').value).slice(0, 10);
+    $('cnt').textContent = $('tx').value.length + ' / 40';
+    var p = $('prev'); p.innerHTML = '';
+    p.appendChild(noteEl({ id: 'preview' + nm, text: t || '여기에 다짐이 쪽지로 보여요', name: nm || '익명' }, true));
+    $('send').disabled = !t;
+    $('msg').textContent = '';
+  }
+  $('tx').addEventListener('input', preview); $('nm').addEventListener('input', preview);
+  Array.prototype.forEach.call($('chips').children, function(b){ b.addEventListener('click', function(){ var tx = $('tx'); tx.value = b.textContent; tx.focus(); tx.setSelectionRange(tx.value.length, tx.value.length); preview(); }); });
+  $('send').addEventListener('click', function(){
+    var t = cleanTx($('tx').value).slice(0, 40), nm = cleanTx($('nm').value).slice(0, 10) || '익명';
+    if (!t) return;
+    if (BLOCK.test(t + nm)) { $('msg').textContent = '조금 다른 표현으로 적어 주세요 🙂'; return; }
+    if (sentN >= 5) { $('msg').textContent = '한 사람당 다섯 줄까지 띄울 수 있어요.'; return; }
+    sid = 'w' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    var b = this; b.disabled = true; b.textContent = '띄우는 중…';
+    var row = { kind: 'wall', sid: sid, nickname: nm, text: t, ts: new Date().toISOString() };
+    var go = CONFIG.SHEET_URL ? fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(row) }) : Promise.resolve();
+    go.then(function(){
+      sentN++; try { localStorage.setItem('wall_sent', sentN); } catch (e) {}
+      $('form').hidden = true; $('done').hidden = false;
+      var dn = $('done-note'); dn.innerHTML = ''; dn.appendChild(noteEl({ id: sid, text: t, name: nm }, true));
+    }, function(){ $('msg').textContent = '전송하지 못했어요. 네트워크(모바일 데이터)를 확인해 주세요.'; })
+      .then(function(){ b.disabled = false; b.textContent = '화면에 띄우기'; });
+  });
+  $('again').addEventListener('click', function(){ $('tx').value = ''; $('form').hidden = false; $('done').hidden = true; preview(); window.scrollTo(0, 0); });
+  preview();
+
+  // ===== 행사장 월 =====
+  var DEMO = ['2027년엔 먼저 묻고, 함께 노 젓겠습니다', '야근보다 칼퇴! 대신 낮에 몰입', '우리 팀에게: 올해 진짜 고마웠어요', '안전은 타협하지 않기', '한 달에 한 번 동료에게 커피 사기', '나 자신에게: 조급해하지 말자', '불량 제로, 이번엔 진짜로', '회의는 짧게, 실행은 빠르게', '모르면 모른다고 말하기', '2027년엔 꼭 영어 공부', '건강검진 미루지 않기', '같은 배, 같은 방향으로'];
+  var shown = {}, seen = {}, field, live = false, demo = false, pool = [], spotIx = 0;
+  function rects(){ var o = []; for (var k in shown) { var s = shown[k]; if (!s.leaving) o.push(s.box); } return o; }
+  function place(n){
+    var fw = field.clientWidth, fh = field.clientHeight;
+    var w = n.offsetWidth, h = n.offsetHeight, used = rects(), best = null, bestScore = -1e9;
+    var fr = field.getBoundingClientRect(), qr = document.querySelector('.w-join').getBoundingClientRect(), hd = document.querySelector('.w-head').getBoundingClientRect(), mn = document.querySelector('.w-moon').getBoundingClientRect();
+    var hbox = { x: hd.left - fr.left - 20, y: hd.top - fr.top - 20, w: hd.width + 40, h: hd.height + 40 }, mbox = { x: mn.left - fr.left - 20, y: mn.top - fr.top - 20, w: mn.width + 40, h: mn.height + 40 };
+    var boat = { x: fw / 2 - fh * .2, y: fh - fh * .08, w: fh * .4, h: fh * .2 }, qbox = { x: qr.left - fr.left - 10, y: qr.top - fr.top - 10, w: qr.width + 20, h: qr.height + 20 };
+    for (var i = 0; i < 260; i++) {
+      var x = Math.random() * Math.max(1, fw - w), y = Math.random() * Math.max(1, fh - h), score = 1e9;
+      var cx = x + w / 2, cy = y + h / 2;
+      used.concat([boat, qbox, hbox, mbox]).forEach(function(b){
+        var dx = Math.max(b.x - (x + w), x - (b.x + b.w), 0), dy = Math.max(b.y - (y + h), y - (b.y + b.h), 0);
+        var gap = Math.sqrt(dx * dx + dy * dy); if (dx === 0 && dy === 0) { var ox = Math.min(x + w, b.x + b.w) - Math.max(x, b.x), oy = Math.min(y + h, b.y + b.h) - Math.max(y, b.y); gap = -Math.sqrt(ox * oy); }
+        score = Math.min(score, gap);
+      });
+      score -= Math.abs(cx - fw / 2) / fw * 6; // 살짝 가운데로 모이게
+      if (score > bestScore) { bestScore = score; best = { x: x, y: y, w: w, h: h }; }
+    }
+    return best;
+  }
+  function add(item, fresh){
+    var n = noteEl(item); n.style.visibility = 'hidden'; field.appendChild(n);
+    var b = place(n); n.style.left = b.x + 'px'; n.style.top = b.y + 'px'; n.style.visibility = '';
+    var bob = el('div'); // bob용 래퍼 없이 note 자체에 translate 애니메이션
+    n.classList.add('bob');
+    if (fresh) { n.classList.add('enter', 'fresh'); setTimeout(function(){ n.classList.remove('enter'); }, 1500); setTimeout(function(){ n.classList.remove('fresh'); }, 30000); }
+    shown[item.id] = { el: n, box: b, item: item, at: Date.now() };
+  }
+  function remove(id){ var s = shown[id]; if (!s) return; s.leaving = true; s.el.classList.add('out'); setTimeout(function(){ s.el.remove(); delete shown[id]; }, 1300); }
+  function sync(items, initial){
+    pool = items;
+    $('w-count').innerHTML = ''; $('w-count').appendChild(el('b', null, String(items.length))); $('w-count').appendChild(document.createTextNode('개의 다짐이 함께 떠 있어요'));
+    $('w-empty').hidden = items.length > 0;
+    var have = {}; items.forEach(function(it){ have[it.id] = 1; });
+    Object.keys(shown).forEach(function(id){ if (!have[id]) remove(id); }); // 시트에서 숨김 처리된 쪽지는 바로 빠짐
+    var news = initial ? items.slice(-CONFIG.MAX_ON_WALL) : items.filter(function(it){ return !seen[it.id]; }).slice(-8);
+    items.forEach(function(it){ seen[it.id] = 1; });
+    news.forEach(function(it, i){
+      setTimeout(function(){
+        var live = Object.keys(shown).filter(function(k){ return !shown[k].leaving; });
+        if (live.length >= CONFIG.MAX_ON_WALL) { live.sort(function(a, b){ return shown[a].at - shown[b].at; }); remove(live[0]); }
+        add(it, !initial);
+      }, initial ? i * 90 : i * 1600);
+    });
+  }
+  function rotateOld(){ // 화면에 다 못 올린 예전 다짐도 돌아가며 보여 주기
+    var hidden = pool.filter(function(it){ return !shown[it.id]; });
+    if (!hidden.length) return;
+    var live = Object.keys(shown).filter(function(k){ return !shown[k].leaving && !shown[k].el.classList.contains('fresh'); });
+    if (!live.length) return;
+    live.sort(function(a, b){ return shown[a].at - shown[b].at; });
+    remove(live[0]); var it = hidden[Math.floor(Math.random() * hidden.length)]; setTimeout(function(){ add(it, false); shown[it.id].el.classList.add('enter'); }, 1400);
+  }
+  function spotlight(){
+    var ids = Object.keys(shown).filter(function(k){ return !shown[k].leaving; }); if (!ids.length) return;
+    Object.keys(shown).forEach(function(k){ shown[k].el.classList.remove('lit'); });
+    var fresh = ids.filter(function(k){ return shown[k].el.classList.contains('fresh'); });
+    var id = fresh.length ? fresh[spotIx++ % fresh.length] : ids[Math.floor(Math.random() * ids.length)];
+    field.classList.add('spot'); shown[id].el.classList.add('lit');
+    setTimeout(function(){ shown[id] && shown[id].el.classList.remove('lit'); field.classList.remove('spot'); }, 4200);
+  }
+  function poll(first){
+    if (demo) { var k = Math.min(DEMO.length, (poll.n = (poll.n || 4) + 1)); sync(DEMO.slice(0, k).map(function(t, i){ return { id: 'demo' + i, text: t, name: ['김상신', '익명', '박안전', '이브레이크', '최디스크', '정패드'][i % 6] }; }), first); return; }
+    if (!CONFIG.SHEET_URL) { $('w-count').textContent = '응답 저장(Google 시트) 연결 후 다짐이 표시됩니다.'; return; }
+    fetch(CONFIG.SHEET_URL + '?type=wall&t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){ sync(d.items || [], first); }).catch(function(){});
+  }
+  function startWall(){
+    if (live) return; live = true; demo = /demo/.test(location.hash);
+    $('m').hidden = true; $('w').hidden = false; document.body.style.background = '#050E20'; field = $('field');
+    if (demo) { var t = el('div', 'w-demo', '리허설 화면 · 예시 다짐'); $('w').appendChild(t); }
+    document.fonts && document.fonts.ready.then(function(){ poll(true); }) || poll(true);
+    setInterval(function(){ poll(false); }, demo ? 5000 : CONFIG.POLL_MS);
+    setInterval(spotlight, 7000); setInterval(rotateOld, 8000);
+  }
+  function route(){ if (/^#wall/.test(location.hash)) startWall(); }
+  window.addEventListener('hashchange', route); route();
+  window.__WALL = { shown: function(){ return shown; }, look: look };
+})();
+</script>
+</body>
+</html>

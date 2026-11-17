@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>함께 일할 때, 나는 어떤 리더일까? — 26/27년 경영검토회</title>
+<meta name="description" content="팀이 난관을 만났을 때, 나는 어떤 리더일까? 2분 테스트로 나의 동주공제 리더 카드를 받아 보세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="함께 일할 때, 나는 어떤 리더일까?">
+<meta property="og:description" content="26/27년 경영검토회 · 2분 테스트로 나의 동주공제(同舟共濟) 리더 카드 받기">
+<meta property="og:url" content="https://imsean629.github.io/sangsin-leader-2027/">
+<meta property="og:image" content="https://imsean629.github.io/sangsin-leader-2027/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<style>
+:root{--navy:#0B1B36;--red:#E60013;--blue:#004098;--ink:#16191E;--sub:#4A515C;--line:#E2E5EA;--bg:#0B1B36;--gold:#E8C35A;}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+button,input{font-family:inherit;color:inherit}
+.app{max-width:480px;margin:0 auto;min-height:100vh;background:#FFFFFF;position:relative;display:flex;flex-direction:column}
+.bar{height:6px;display:flex}.bar i{display:block;height:6px}.bar i:first-child{flex:7;background:var(--red)}.bar i:last-child{flex:3;background:var(--blue)}
+.screen{display:none;flex:1;flex-direction:column;padding:22px 22px 28px}
+.screen.on{display:flex}
+.eyebrow{font-size:14px;font-weight:700;color:var(--sub);letter-spacing:.5px}
+.foot{margin-top:auto;padding-top:28px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;color:#5B6370}
+.foot img{height:14px;width:auto}
+.primary{margin-top:24px;width:100%;min-height:58px;border:0;border-radius:14px;background:var(--red);color:#FFFFFF;font-size:19px;font-weight:900;cursor:pointer}
+.primary[disabled]{background:#C9CDD3;cursor:default}
+.ghost{width:100%;min-height:52px;border:2px solid var(--ink);border-radius:14px;background:#FFFFFF;font-size:16px;font-weight:700;cursor:pointer}
+.privacy{margin-top:16px;padding:12px 14px;border-radius:12px;background:#F4F5F7;font-size:13px;line-height:1.55;color:#3A3F47}
+
+/* 시작 */
+.start-title{margin:14px 0 0;font-size:34px;line-height:1.24;font-weight:900;letter-spacing:-1px}
+.start-title em{font-style:normal;color:var(--red)}
+.start-lead{margin:14px 0 0;font-size:17px;line-height:1.6;color:#2E333A}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{font-size:13px;font-weight:700;padding:7px 11px;border-radius:999px;background:#F1F3F6;color:#2E333A}
+.backs{display:flex;gap:8px;margin:26px 0 6px;justify-content:center}
+.back{width:17%;aspect-ratio:63/88;border-radius:8px;background:linear-gradient(135deg,#1B3A6B,#0B1B36 60%,#2A1F5C);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:22px;box-shadow:0 3px 0 rgba(0,0,0,.18);position:relative;overflow:hidden;border:3px solid var(--gold)}
+.back:nth-child(odd){transform:rotate(-4deg)}.back:nth-child(even){transform:rotate(4deg) translateY(6px)}
+.backs-cap{text-align:center;font-size:14px;color:var(--sub);margin-top:8px}
+.how{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;display:grid;gap:10px}
+.how div{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5}
+.how b{flex:0 0 24px;height:24px;border-radius:12px;background:var(--ink);color:#FFFFFF;font-size:13px;display:flex;align-items:center;justify-content:center}
+
+/* 닉네임 */
+.nick-title{margin:18px 0 0;font-size:28px;line-height:1.3;font-weight:900;letter-spacing:-.5px}
+.nick-lead{margin:10px 0 0;font-size:16px;line-height:1.6;color:#2E333A}
+.field{margin-top:22px}
+.field label{display:block;font-size:14px;font-weight:900;margin-bottom:8px}
+.field input{width:100%;min-height:58px;border:2px solid var(--ink);border-radius:14px;padding:0 16px;font-size:20px;font-weight:700;background:#FFFFFF}
+.field input:focus{outline:3px solid rgba(230,0,19,.25);outline-offset:1px}
+.field .cnt{margin-top:6px;display:flex;justify-content:space-between;font-size:13px;color:#6B7280}
+.preview-name{margin-top:18px;display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#FFF6D8,#FCE7A8);border:2px solid var(--gold)}
+.preview-name .mini{width:44px;aspect-ratio:63/88;border-radius:5px;background:linear-gradient(135deg,#1B3A6B,#0B1B36);border:2px solid var(--gold);flex:0 0 auto}
+.preview-name span{font-size:15px;line-height:1.4}
+.preview-name b{font-size:18px}
+
+/* 문항 */
+.qtop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.prev{border:0;background:none;font-size:15px;font-weight:700;color:var(--sub);padding:10px 8px 10px 0;min-height:44px;cursor:pointer}
+.count{font-size:15px;font-weight:900}
+.count span{color:#8A919C;font-weight:500}
+.track{margin-top:6px;height:8px;border-radius:4px;background:#ECEEF2;overflow:hidden}
+.track i{display:block;height:8px;background:var(--red);border-radius:4px;transition:width .25s}
+.qlabel{margin-top:26px;font-size:14px;font-weight:900;color:var(--red);letter-spacing:.5px}
+.qtext{margin:10px 0 0;font-size:24px;line-height:1.42;font-weight:900;letter-spacing:-.5px}
+.qask{margin-top:14px;font-size:15px;font-weight:700;color:var(--sub)}
+.opts{margin-top:18px;display:grid;gap:12px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:64px;padding:16px;border:2px solid var(--line);border-radius:14px;background:#FFFFFF;font-size:17px;line-height:1.5;font-weight:500;cursor:pointer;transition:border-color .15s,background .15s}
+.opt b{flex:0 0 28px;height:28px;border-radius:14px;background:#F1F3F6;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:-1px}
+.opt.sel{border-color:var(--ink);background:#F7F7F4}
+.opt.sel b{background:var(--ink);color:#FFFFFF}
+.hint{margin-top:16px;font-size:13px;color:#6B7280;text-align:center}
+
+/* ===== 결과 (게임 화면) ===== */
+#s-result{background:radial-gradient(120% 60% at 50% 0%, #22407A 0%, #0B1B36 55%, #070F20 100%);color:#FFFFFF;padding-top:18px}
+.rhead{text-align:center}
+.rhead .eyebrow{color:var(--gold);letter-spacing:2px;font-size:12px}
+.rhead h2{margin:6px 0 0;font-size:22px;font-weight:900;line-height:1.35}
+.rhead h2 b{color:var(--gold)}
+.reveal{animation:pop .7s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{0%{transform:scale(.6) rotateY(90deg);opacity:0}100%{transform:none;opacity:1}}
+
+/* --- 포켓몬풍 카드 --- */
+.pk-wrap{margin:16px auto 0;width:100%;max-width:360px;perspective:900px}
+.pk{position:relative;width:100%;border-radius:18px;padding:10px;background:linear-gradient(135deg,#FCE79A 0%,#E8C35A 22%,#FFF3C4 40%,#C99A2E 62%,#FBE08A 80%,#B8862A 100%);box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 0 0 2px rgba(255,255,255,.5)}
+.pk-in{position:relative;width:100%;border-radius:10px;overflow:hidden;background:linear-gradient(170deg,var(--soft) 0%,#FFFFFF 38%,var(--soft) 100%);display:flex;flex-direction:column;color:var(--ink)}
+.pk-in::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,0) 0 14px,rgba(255,255,255,.35) 14px 15px);pointer-events:none}
+.holo{position:absolute;inset:0;border-radius:18px;pointer-events:none;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.55) 32%,rgba(255,120,200,.25) 38%,rgba(120,220,255,.25) 44%,transparent 56%);background-size:250% 250%;mix-blend-mode:soft-light;animation:holo 4.5s ease-in-out infinite}
+@keyframes holo{0%{background-position:120% 0}50%{background-position:-20% 100%}100%{background-position:120% 0}}
+.capturing .holo{display:none}
+.pk-top{position:relative;display:flex;align-items:flex-end;gap:6px;padding:7px 9px 5px}
+.stage{flex:0 0 auto;font-size:9.5px;font-weight:900;letter-spacing:.5px;color:#FFFFFF;background:linear-gradient(180deg,#8C96A6,#5B6574);border-radius:4px;padding:3px 6px;align-self:flex-start;margin-top:2px}
+.pk-name{flex:1;min-width:0;line-height:1.05}
+.pk-name small{display:block;font-size:11px;font-weight:700;color:var(--c2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk-name b{display:block;font-size:24px;font-weight:900;letter-spacing:-.5px;white-space:nowrap}
+.hp{flex:0 0 auto;display:flex;align-items:center;gap:4px;font-weight:900;color:#C0121F}
+.hp span{font-size:9px;letter-spacing:.5px}
+.hp em{font-style:normal;font-size:22px;letter-spacing:-.5px}
+.ico{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--gem),var(--c) 70%);color:var(--c);box-shadow:inset 0 -2px 0 rgba(0,0,0,.2),0 1px 2px rgba(0,0,0,.3);flex:0 0 auto}
+.ico svg{width:62%;height:62%}
+.ico.lg{width:26px;height:26px}.ico.sm{width:20px;height:20px}.ico.xs{width:16px;height:16px}
+.pk-art{position:relative;margin:0 9px;aspect-ratio:16/11;border:4px solid transparent;border-image:linear-gradient(135deg,#FFF3C4,#B8862A,#FCE79A,#8A6316) 1;box-shadow:0 3px 6px rgba(0,0,0,.35);overflow:hidden;background:var(--soft)}
+.pk-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.pk-strip{margin:5px 9px 0;padding:3px 8px;border-radius:3px;background:linear-gradient(90deg,#E8C35A,#FFF3C4 50%,#E8C35A);font-size:10px;font-weight:700;font-style:italic;color:#4A3A12;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk-body{display:flex;flex-direction:column;padding:6px 11px 0;gap:6px}
+.ability{display:flex;gap:7px;align-items:flex-start}
+.ability .tag{flex:0 0 auto;background:#C0121F;color:#FFFFFF;font-size:10px;font-weight:900;padding:2px 6px;border-radius:3px;margin-top:2px;letter-spacing:.5px}
+.ability p{margin:0;font-size:13px;line-height:1.35;font-weight:700}
+.move{border-top:1.5px solid rgba(0,0,0,.18);padding-top:5px}
+.move-h{display:flex;align-items:center;gap:6px}
+.move-h .cost{display:flex;gap:2px}
+.move-h b{flex:1;font-size:17px;font-weight:900;letter-spacing:-.3px}
+.move-h em{font-style:normal;font-size:20px;font-weight:900}
+.move p{margin:2px 0 0;font-size:12.5px;line-height:1.35;font-weight:500}
+.statrow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;border-top:1.5px solid rgba(0,0,0,.18);padding-top:5px}
+.statrow div{text-align:center;font-size:10px;font-weight:900;color:#3A3F47}
+.statrow .pp{display:flex;gap:1.5px;justify-content:center;margin-top:2px}
+.statrow .pp i{width:6px;height:6px;border-radius:50%;background:#D7DBE1}
+.statrow .pp i.on{background:var(--c)}
+.pk-bottom{margin:5px 9px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:stretch}
+.grow{background:rgba(255,255,255,.75);border:1.5px solid rgba(0,0,0,.15);border-radius:6px;padding:4px 7px}
+.grow h5,.combo h5{margin:0;font-size:9.5px;font-weight:900;color:var(--c2);letter-spacing:.3px}
+.grow p{margin:1px 0 0;font-size:11.5px;line-height:1.3;font-weight:700}
+.combo{background:rgba(255,255,255,.75);border:1.5px solid rgba(0,0,0,.15);border-radius:6px;padding:4px 7px;text-align:center;min-width:64px}
+.combo div{display:flex;align-items:center;justify-content:center;gap:3px;margin-top:2px;font-size:11px;font-weight:900}
+.pk-foot{margin-top:4px;display:flex;justify-content:space-between;align-items:center;padding:4px 10px 6px;font-size:9px;font-weight:700;color:#5B5340}
+.pk-foot .rar{color:#B8862A;letter-spacing:1px}
+.pk-note{font-size:9px;color:#6B7280;text-align:center;margin-top:5px}
+
+/* 결과 아래 */
+.actions{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-kakao{min-height:56px;border:0;border-radius:14px;background:#FEE500;color:#191919;font-size:16px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 0 #C9B400}
+.btn-kakao .kk{display:inline-flex}
+.btn-gold{min-height:56px;border:0;border-radius:14px;background:linear-gradient(180deg,#FCE79A,#E8C35A 60%,#C99A2E);color:#2A1F05;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 4px 0 #8A6316}
+.btn-dark{min-height:56px;border:2px solid rgba(255,255,255,.5);border-radius:14px;background:transparent;color:#FFFFFF;font-size:16px;font-weight:700;cursor:pointer}
+.saved-note{margin-top:10px;text-align:center;font-size:12px;color:#AEBBD0;min-height:16px}
+.panel{margin-top:22px;border-radius:16px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);padding:16px}
+.panel h4{margin:0;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:900}
+.panel h4 small{margin-left:auto;font-size:12px;font-weight:700;color:var(--gold)}
+.panel p{margin:8px 0 0;font-size:14.5px;line-height:1.6;color:#DCE3EE}
+.xp{margin-top:12px;display:grid;gap:9px}
+.xrow{display:grid;grid-template-columns:20px 58px 1fr 44px;gap:8px;align-items:center;font-size:13px;font-weight:700}
+.xbar{height:12px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
+.xbar i{display:block;height:12px;border-radius:6px}
+.xrow span:last-child{text-align:right;color:#AEBBD0;font-weight:500}
+.note-s{margin-top:10px;font-size:11.5px;color:#9FB0C8;line-height:1.5}
+.dex{margin-top:12px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.dex .dex-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;text-align:center;font-size:11.5px;font-weight:700;line-height:1.3;color:#DCE3EE;position:relative}
+.dex .th{aspect-ratio:4/5;border-radius:8px;overflow:hidden;border:2px solid rgba(255,255,255,.2);margin-bottom:4px}
+.dex .th img{width:100%;height:100%;object-fit:cover;display:block}
+.dex .me .th{border-color:var(--gold);box-shadow:0 0 0 2px rgba(232,195,90,.35)}
+.dex .dex-btn:active .th{transform:scale(.96)}
+.dex .me::after{content:"MY";position:absolute;top:-6px;right:-4px;background:var(--gold);color:#2A1F05;font-size:9px;font-weight:900;padding:1px 5px;border-radius:6px}
+.combo-box{margin-top:12px;display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:rgba(0,0,0,.25)}
+.combo-box .plus{font-size:20px;font-weight:900;color:var(--gold)}
+.combo-box .cb{flex:1;font-size:13.5px;line-height:1.45}
+.combo-box .cb b{color:var(--gold)}
+.talk-q{margin-top:12px;font-size:16px;font-weight:900;line-height:1.5;color:#FFFFFF}
+.relink{margin-top:16px;background:none;border:0;color:#AEBBD0;font-size:14px;font-weight:700;text-decoration:underline;cursor:pointer;min-height:44px}
+#s-result .foot{color:#9FB0C8}
+
+/* 저장 미리보기 */
+.modal{position:fixed;inset:0;background:rgba(5,10,20,.88);display:none;align-items:center;justify-content:center;z-index:50;padding:18px}
+.modal.on{display:flex}
+.modal-in{width:100%;max-width:400px;text-align:center;color:#FFFFFF}
+.modal{overflow-y:auto;align-items:flex-start}
+.modal-in{margin:auto}
+.modal-in > img{width:100%;max-width:340px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.modal-in > p{font-size:14px;line-height:1.55;color:#DCE3EE;margin:12px 0 0}
+.modal-in .pk-in{text-align:left}
+.modal-in .row{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* 관리자 */
+#s-admin{background:#F4F5F7}
+.adm h1{margin:6px 0 0;font-size:22px;font-weight:900}
+.adm .card-s{margin-top:14px;background:#FFFFFF;border-radius:12px;padding:14px;border:1px solid var(--line)}
+.adm .stat-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:8px}
+.adm .stat-grid div{text-align:center;font-size:12px;font-weight:700;background:#F4F5F7;border-radius:8px;padding:8px 2px}
+.adm .stat-grid b{display:block;font-size:20px}
+.adm table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.adm th,.adm td{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left}
+.adm .tbl{max-height:360px;overflow:auto}
+.adm .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.adm .msg{margin-top:10px;font-size:13px;line-height:1.55;color:#3A3F47}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="bar" aria-hidden="true"><i></i><i></i></div>
+
+  <!-- 시작 -->
+  <section class="screen on" id="s-start" aria-labelledby="t-start">
+    <div class="eyebrow">26/27년 경영검토회 · 쉬어가는 코너</div>
+    <h1 class="start-title" id="t-start">함께 일할 때,<br>나는 <em>어떤 리더</em>일까?</h1>
+    <p class="start-lead">팀이 난관을 만났을 때, 내가 <b>실제로 가장 먼저 하는 행동</b>을 골라 보세요. 직급과 상관없고, 정답도 없습니다.</p>
+    <div class="chips"><span class="chip">8문항 · 약 2분</span><span class="chip">닉네임으로 참여</span></div>
+    <div class="backs" aria-hidden="true"><div class="back">?</div><div class="back">?</div><div class="back">?</div><div class="back">?</div><div class="back">?</div></div>
+    <div class="backs-cap">마지막에 내 닉네임이 새겨진 리더 카드 5종 중 1장이 공개됩니다</div>
+    <div class="how">
+      <div><b>1</b><span>카드에 새길 닉네임을 정합니다.</span></div>
+      <div><b>2</b><span>상황 8개에서, 내가 먼저 할 행동을 고릅니다.</span></div>
+      <div><b>3</b><span>카드를 저장하고 옆 동료와 비교해 보세요.</span></div>
+    </div>
+    <button class="primary" id="btn-start" type="button">시작하기</button>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 닉네임 -->
+  <section class="screen" id="s-nick">
+    <div class="qtop"><button class="prev" id="btn-nick-back" type="button">← 처음으로</button></div>
+    <h2 class="nick-title">카드에 새길<br>닉네임을 정해 주세요</h2>
+    <p class="nick-lead">실명이 아니어도 괜찮아요. 결과 카드에 이 닉네임이 함께 표시됩니다.</p>
+    <div class="field">
+      <label for="nick">닉네임</label>
+      <input id="nick" type="text" maxlength="10" autocomplete="off" placeholder="예: 대구의 등대" enterkeyhint="go">
+      <div class="cnt"><span>최대 10자</span><span id="nick-cnt">0 / 10</span></div>
+    </div>
+    <div class="preview-name" aria-hidden="true"><div class="mini"></div><span><b id="nick-prev">???</b> 님의<br>리더 카드가 곧 공개됩니다</span></div>
+    <div class="privacy" id="privacy-note">닉네임과 응답(고른 보기, 결과 유형)은 행사 운영 통계를 위해 저장됩니다. 실명·사번 등 개인을 알아볼 수 있는 정보는 적지 마세요.</div>
+    <button class="primary" id="btn-nick-go" type="button" disabled>질문 시작</button>
+  </section>
+
+  <!-- 문항 -->
+  <section class="screen" id="s-q" aria-live="polite">
+    <div class="qtop">
+      <button class="prev" id="btn-prev" type="button">← 이전</button>
+      <div class="count" id="q-count">1 <span>/ 8</span></div>
+    </div>
+    <div class="track" role="progressbar" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1" id="q-track"><i id="q-fill" style="width:12.5%"></i></div>
+    <div class="qlabel" id="q-label">상황 01</div>
+    <h2 class="qtext" id="q-text"></h2>
+    <div class="qask" id="q-ask">내가 실제로 가장 먼저 할 행동은?</div>
+    <div class="opts" id="q-opts"></div>
+    <div class="hint">고르면 다음 문항으로 넘어갑니다</div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="screen" id="s-result">
+    <div class="rhead">
+      <div class="eyebrow">동주공제(同舟共濟) 리더 카드 GET!</div>
+      <h2 id="r-head"></h2>
+    </div>
+    <div class="pk-wrap"><div class="reveal" id="r-card"></div></div>
+
+    <div class="actions">
+      <button class="btn-gold" id="btn-save" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" style="vertical-align:-4px;margin-right:6px"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>이미지 저장</button>
+      <button class="btn-kakao" id="btn-kakao" type="button"><span class="kk" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-.9 3.6c-.1.3.3.6.6.4l4.2-2.8c.4 0 .8.1 1.2.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z" fill="#191919"/></svg></span>카카오톡 공유</button>
+      <button class="btn-dark" id="btn-again" type="button" style="grid-column:1 / -1">다시 하기</button>
+    </div>
+    <div class="saved-note" id="r-saved"></div>
+
+    <div class="panel">
+      <h4>리더 분석 리포트</h4>
+      <p id="r-tend"></p>
+      <div class="xp" id="r-dist"></div>
+      <div class="note-s">고른 횟수 ÷ 그 유형이 선택지로 나온 횟수로 비교했습니다. 행동 경향을 보여줄 뿐 우열을 뜻하지 않으며, 카드의 HP·능력치는 캐릭터 설정입니다.</div>
+    </div>
+
+    <div class="panel">
+      <h4>동주공제 크루 도감 <small>눌러서 카드 보기</small></h4>
+      <p id="r-world"></p>
+      <div class="dex" id="r-dex"></div>
+    </div>
+
+    <div class="panel">
+      <h4>옆 동료와 콤보 스킬 만들기</h4>
+      <div class="combo-box" id="r-combo"></div>
+      <div class="talk-q">같은 어려움이 생기면, 우리 두 사람의 스킬을 어떻게 합칠 수 있을까요?</div>
+      <p>서로의 카드를 보여주고, 동료 카드에서 내 카드에 없는 스킬을 찾아보세요.</p>
+    </div>
+
+    <button class="relink" id="btn-back-result" type="button">← 마지막 문항으로 돌아가 답 바꾸기</button>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGOW__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 관리자 (#admin) -->
+  <section class="screen adm" id="s-admin">
+    <div class="eyebrow">관리자 · 응답 데이터</div>
+    <h1>리더십 테스트 응답 현황</h1>
+    <div class="card-s">
+      <div style="font-size:13px;font-weight:900">유형별 결과</div>
+      <div class="stat-grid" id="a-stats"></div>
+      <div class="msg" id="a-msg">불러오는 중…</div>
+      <div class="btns">
+        <button class="primary" id="a-csv" type="button" style="margin-top:0;min-height:48px;font-size:15px">CSV 내려받기</button>
+        <button class="ghost" id="a-copy" type="button" style="min-height:48px;font-size:15px">CSV 복사</button>
+      </div>
+    </div>
+    <div class="card-s"><div style="font-size:13px;font-weight:900">최근 응답</div><div class="tbl"><table id="a-table"></table></div></div>
+    <button class="relink" id="a-home" type="button" style="color:#4A515C">← 테스트 화면으로</button>
+  </section>
+</main>
+
+<div class="modal" id="m-crew" role="dialog" aria-modal="true" aria-labelledby="m-crew-title">
+  <div class="modal-in">
+    <p id="m-crew-title" style="margin:0 0 10px;font-size:13px;letter-spacing:2px;color:#E8C35A;font-weight:900">동주공제 크루 도감</p>
+    <div class="pk-wrap" style="margin-top:0" id="m-crew-card"></div>
+    <p id="m-crew-note" style="font-size:13.5px"></p>
+    <div class="row" style="grid-template-columns:1fr 1fr 1fr">
+      <button class="btn-dark" id="m-crew-prev" type="button" aria-label="이전 크루">◀</button>
+      <button class="btn-gold" id="m-crew-close" type="button">닫기</button>
+      <button class="btn-dark" id="m-crew-next" type="button" aria-label="다음 크루">▶</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="m-save" role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="modal-in">
+    <img id="m-img" alt="저장할 리더 카드 이미지">
+    <p id="m-title"><b>이미지를 길게 눌러</b> ‘사진에 저장’하거나, 아래 버튼으로 파일을 받으세요.</p>
+    <div class="row">
+      <button class="btn-gold" id="m-dl" type="button">파일로 저장</button>
+      <button class="btn-dark" id="m-close" type="button">닫기</button>
+    </div>
+    <p id="m-status" style="min-height:20px"></p>
+  </div>
+</div>
+
+<script>/*__H2C__*/</script>
+<script>
+(function(){
+  // ===== 운영 설정 =====================================================
+  // 자체 서버에 올려 Google 시트로 응답을 모을 때만 Apps Script 웹앱 주소를 넣으세요.
+  var CONFIG = { SHEET_URL: "https://script.google.com/macros/s/AKfycbyKUOWiAiVvusrHAca13lW98N5fdfOaQ7xPv9i8O7rbmpiq3UJLeRtMizwF6-Kfy5tx/exec", VERSION: "2027-2", KAKAO_JS_KEY: "", SHARE_URL: "https://imsean629.github.io/sangsin-leader-2027/" };
+
+  var D = /*__DATA__*/null;
+  var IMG = /*__IMGS__*/null;
+  var ICO = /*__ICONS__*/null;
+  var N = D.questions.length, BEHAVIOR = 7;
+  var answers = new Array(N).fill(null), choices = new Array(N).fill(null);
+  var cur = 0, nickname = '', sid = newId(), lastPng = null;
+  var LET = ['A','B','C','D','E'];
+
+  function $(id){ return document.getElementById(id); }
+  function newId(){ return 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  function show(id){
+    ['s-start','s-nick','s-q','s-result','s-admin'].forEach(function(s){ $(s).classList.toggle('on', s === id); });
+    window.scrollTo(0, 0);
+  }
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function icon(k, size){ var s = el('span', 'ico ' + (size || 'sm')); s.style.setProperty('--c', D.types[k].color); s.style.setProperty('--gem', D.types[k].gem); s.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICO[k] + '</svg>'; return s; }
+
+  // ===== 채점 ===========================================================
+  function compute(ans){
+    var cnt = {}, ratio = {}, max = -1;
+    D.order.forEach(function(k){ cnt[k] = 0; });
+    for (var i = 0; i < BEHAVIOR; i++) if (ans[i]) cnt[ans[i]]++;
+    D.order.forEach(function(k){ ratio[k] = cnt[k] / D.expo[k]; if (ratio[k] > max) max = ratio[k]; });
+    var ties = D.order.filter(function(k){ return Math.abs(ratio[k] - max) < 1e-9; });
+    var result, rule;
+    if (ties.length === 1) { result = ties[0]; rule = 'single'; }
+    else if (ans[7] && ties.indexOf(ans[7]) >= 0) { result = ans[7]; rule = 'q8'; }
+    else { rule = 'draw'; var h = 0, key = String(sid || ''); for (var j = 0; j < key.length; j++) h = (h * 31 + key.charCodeAt(j)) >>> 0; result = ties[h % ties.length]; } // 공동 1위 중 공평하게 추첨(같은 참여는 항상 같은 결과)
+    return { type: result, rule: rule, ties: ties, count: cnt, ratio: ratio };
+  }
+
+  // ===== 저장소 (claude.ai db / Google 시트) ============================
+  var store = { db: null, user: null, uid: null };
+  function capsReady(){
+    if (!window.claude || typeof window.claude.use !== 'function') return Promise.resolve();
+    return Promise.all([window.claude.use('db'), window.claude.use('user')]).then(function(r){
+      store.db = r[0]; store.user = r[1];
+      if (store.user && store.user.id) return store.user.id().then(function(id){ store.uid = id; });
+    }).catch(function(){});
+  }
+  var capsP = capsReady();
+
+  function record(r){
+    var row = { sid: sid, v: CONFIG.VERSION, nickname: nickname, result: r.type, resultName: D.types[r.type].short, rule: r.rule, ts: new Date().toISOString() };
+    for (var i = 0; i < N; i++) { row['q' + (i + 1)] = choices[i] || ''; row['t' + (i + 1)] = answers[i] || ''; }
+    D.order.forEach(function(k){ row['score_' + k] = Math.round(r.ratio[k] * 1000) / 1000; });
+    return row;
+  }
+  function saveResponse(row){
+    var tasks = [];
+    if (CONFIG.SHEET_URL) {
+      tasks.push(fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(row) })
+        .then(function(){ return 'sheet'; }).catch(function(){ return null; }));
+    }
+    tasks.push(capsP.then(function(){
+      if (!store.db || !store.uid) return null;
+      return store.db.doc('responses/' + store.uid).set(row).then(function(){ return 'db'; }).catch(function(){ return null; });
+    }));
+    return Promise.all(tasks).then(function(res){
+      var ok = res.filter(Boolean);
+      $('r-saved').textContent = ok.length ? '응답이 행사 통계에 기록되었습니다.' : '';
+      return ok;
+    });
+  }
+
+  // ===== 시작 / 닉네임 ===================================================
+  $('btn-start').addEventListener('click', function(){ show('s-nick'); setTimeout(function(){ $('nick').focus(); }, 50); });
+  $('btn-nick-back').addEventListener('click', function(){ show('s-start'); });
+  function cleanNick(v){ return v.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 10); }
+  $('nick').addEventListener('input', function(){
+    var v = cleanNick(this.value);
+    $('nick-cnt').textContent = this.value.length + ' / 10';
+    $('nick-prev').textContent = v || '???';
+    $('btn-nick-go').disabled = !v;
+  });
+  function goNick(){
+    var v = cleanNick($('nick').value); if (!v) return;
+    nickname = v; cur = 0; renderQ(); show('s-q');
+  }
+  $('btn-nick-go').addEventListener('click', goNick);
+  $('nick').addEventListener('keydown', function(e){ if (e.key === 'Enter') goNick(); });
+
+  // ===== 문항 ===========================================================
+  function renderQ(){
+    var q = D.questions[cur];
+    $('q-count').innerHTML = (cur + 1) + ' <span>/ ' + N + '</span>';
+    $('q-fill').style.width = ((cur + 1) / N * 100) + '%';
+    $('q-track').setAttribute('aria-valuenow', cur + 1);
+    $('q-label').textContent = cur === N - 1 ? '마지막 질문' : '상황 0' + (cur + 1);
+    $('q-text').textContent = q.text;
+    $('q-ask').textContent = cur === N - 1 ? '가장 먼저 마련해 두고 싶은 것은?' : '내가 실제로 가장 먼저 할 행동은?';
+    $('btn-prev').textContent = cur === 0 ? '← 닉네임 다시 정하기' : '← 이전';
+    var box = $('q-opts'); box.innerHTML = '';
+    q.options.forEach(function(o, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'opt' + (answers[cur] === o.t ? ' sel' : '');
+      b.setAttribute('data-type', o.t);
+      b.setAttribute('aria-pressed', answers[cur] === o.t ? 'true' : 'false');
+      b.innerHTML = '<b>' + LET[i] + '</b><span></span>';
+      b.querySelector('span').textContent = o.label;
+      b.addEventListener('click', function(){ pick(o.t, LET[i], b); });
+      box.appendChild(b);
+    });
+  }
+  var lock = false;
+  function pick(t, letter, btn){
+    if (lock) return; lock = true;
+    answers[cur] = t; choices[cur] = letter;
+    Array.prototype.forEach.call($('q-opts').children, function(c){ var on = c === btn; c.classList.toggle('sel', on); c.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    setTimeout(function(){ lock = false; if (cur < N - 1) { cur++; renderQ(); window.scrollTo(0, 0); } else renderResult(); }, 220);
+  }
+  $('btn-prev').addEventListener('click', function(){ if (cur === 0) { show('s-nick'); return; } cur--; renderQ(); });
+
+  // ===== 결과 카드 ======================================================
+  function buildCard(k, label){
+    var main = !label;
+    var T = D.types[k], idx = D.order.indexOf(k) + 1;
+    var pk = el('div', 'pk'); if (main) pk.id = 'pk';
+    pk.style.setProperty('--c', T.color); pk.style.setProperty('--c2', T.c2); pk.style.setProperty('--soft', T.soft); pk.style.setProperty('--gem', T.gem);
+    var inn = el('div', 'pk-in');
+
+    var top = el('div', 'pk-top');
+    top.appendChild(el('span', 'stage', '리더'));
+    var nm = el('div', 'pk-name'); if (main) nm.id = 'r-name';
+    var sm = el('small'); if (main) sm.id = 'r-nick'; sm.textContent = main ? nickname + ' 님의' : label; nm.appendChild(sm);
+    nm.appendChild(el('b', null, T.short));
+    top.appendChild(nm);
+    var hp = el('div', 'hp'); hp.appendChild(el('span', null, 'HP')); hp.appendChild(el('em', null, String(T.hp))); hp.appendChild(icon(k, 'lg'));
+    top.appendChild(hp);
+    inn.appendChild(top);
+
+    var art = el('div', 'pk-art'); if (main) art.id = 'r-art';
+    var img = new Image(); img.src = IMG[k]; img.alt = T.name + ' 캐릭터'; art.appendChild(img);
+    inn.appendChild(art);
+    inn.appendChild(el('div', 'pk-strip', 'No.0' + idx + '  ' + T.name + ' · 동주공제 크루 · 2027'));
+
+    var body = el('div', 'pk-body');
+    var ab = el('div', 'ability'); ab.appendChild(el('span', 'tag', '강점')); ab.appendChild(el('p', null, T.strength)); body.appendChild(ab);
+    var mv = el('div', 'move'); var mh = el('div', 'move-h');
+    var cost = el('span', 'cost'); cost.appendChild(icon(k, 'xs')); cost.appendChild(icon(k, 'xs')); mh.appendChild(cost);
+    var mvn = el('b', null, T.skill); if (main) mvn.id = 'r-skill'; mh.appendChild(mvn); mh.appendChild(el('em', null, T.dmg));
+    mv.appendChild(mh); mv.appendChild(el('p', null, T.skill_desc)); body.appendChild(mv);
+    var sr = el('div', 'statrow');
+    D.statLabels.forEach(function(lb, i){
+      var c = el('div', null, lb); var pp = el('div', 'pp');
+      for (var n = 0; n < 5; n++) pp.appendChild(el('i', n < T.stats[i] ? 'on' : null));
+      c.appendChild(pp); sr.appendChild(c);
+    });
+    body.appendChild(sr);
+    inn.appendChild(body);
+
+    var bt = el('div', 'pk-bottom');
+    var gw = el('div', 'grow'); gw.appendChild(el('h5', null, '보완하면 좋을 점')); var gp = el('p', null, T.grow); if (main) gp.id = 'r-grow'; gw.appendChild(gp); bt.appendChild(gw);
+    var cb = el('div', 'combo'); cb.appendChild(el('h5', null, '콤보 파트너')); var cbd = el('div'); cbd.appendChild(icon(T.partner, 'xs')); cbd.appendChild(document.createTextNode(D.types[T.partner].short)); cb.appendChild(cbd); bt.appendChild(cb);
+    inn.appendChild(bt);
+    inn.appendChild(el('div', 'pk-note', '※ HP·능력치는 카드 캐릭터 설정이며, 개인의 역량 평가가 아닙니다.'));
+    var ft = el('div', 'pk-foot'); ft.appendChild(el('span', null, '26/27년 경영검토회')); ft.appendChild(el('span', 'rar', '★ No.0' + idx + '/05')); inn.appendChild(ft);
+
+    pk.appendChild(inn);
+    pk.appendChild(el('div', 'holo'));
+    return pk;
+  }
+
+  function renderResult(){
+    var r = compute(answers), k = r.type, T = D.types[k];
+    var app = $('app');
+    app.setAttribute('data-result', k); app.setAttribute('data-rule', r.rule);
+    $('r-head').innerHTML = ''; $('r-head').appendChild(document.createTextNode(nickname + ' 님은 '));
+    var b = el('b', null, T.name); $('r-head').appendChild(b);
+    var holder = $('r-card'); holder.innerHTML = ''; holder.classList.remove('reveal'); void holder.offsetWidth; holder.classList.add('reveal');
+    holder.appendChild(buildCard(k));
+    lastPng = null; capGen++; $('r-saved').textContent = '';
+
+    $('r-tend').textContent = T.tendency;
+    var dist = $('r-dist'); dist.innerHTML = '';
+    var maxr = Math.max.apply(null, D.order.map(function(x){ return r.ratio[x]; })) || 1;
+    D.order.forEach(function(x){
+      var row = el('div', 'xrow'); row.appendChild(icon(x, 'xs'));
+      var nb = el('span', null, D.types[x].short); if (x === k) nb.style.color = '#E8C35A'; row.appendChild(nb);
+      var bar = el('div', 'xbar'); var f = el('i'); f.style.width = (r.ratio[x] / maxr * 100) + '%'; f.style.background = x === k ? 'linear-gradient(90deg,#FCE79A,#E8C35A)' : D.types[x].color; bar.appendChild(f); row.appendChild(bar);
+      row.appendChild(el('span', null, r.count[x] + ' / ' + D.expo[x]));
+      dist.appendChild(row);
+    });
+
+    $('r-world').textContent = D.world;
+    var dex = $('r-dex'); dex.innerHTML = '';
+    D.order.forEach(function(x){
+      var c = el('button', 'dex-btn' + (x === k ? ' me' : '')); c.type = 'button'; c.setAttribute('data-type', x);
+      c.setAttribute('aria-label', D.types[x].name + ' 카드 보기');
+      var th = el('div', 'th'); var im = new Image(); im.src = IMG[x + '_th']; im.alt = ''; th.appendChild(im);
+      c.appendChild(th); c.appendChild(document.createTextNode(D.types[x].short));
+      c.addEventListener('click', function(){ openCrew(x); });
+      dex.appendChild(c);
+    });
+
+    var P = D.types[T.partner], cbx = $('r-combo'); cbx.innerHTML = '';
+    cbx.appendChild(icon(k, 'lg')); cbx.appendChild(el('span', 'plus', '+')); cbx.appendChild(icon(T.partner, 'lg'));
+    var cbt = el('div', 'cb');
+    cbt.appendChild(el('b', null, T.skill + ' × ' + P.skill)); cbt.appendChild(document.createElement('br'));
+    cbt.appendChild(document.createTextNode(P.short + '의 「' + P.skill + '」는 내 카드의 ‘보완하면 좋을 점’을 채워 주는 스킬이에요.'));
+    cbx.appendChild(cbt);
+
+    show('s-result');
+    precapture();
+    saveResponse(record(r));
+  }
+
+  // ===== 카드 이미지 저장 ===============================================
+  var capGen = 0;
+  function capture(){
+    if (lastPng) return Promise.resolve(lastPng);
+    var g = capGen;
+    var pk = $('pk'); if (!pk || !window.html2canvas) return Promise.reject(new Error('no-capture'));
+    pk.parentNode.classList.add('capturing'); pk.parentNode.classList.remove('reveal');
+    return window.html2canvas(pk, { scale: 3, backgroundColor: null, useCORS: true, logging: false }).then(function(cv){
+      pk.parentNode.classList.remove('capturing');
+      return new Promise(function(res){ cv.toBlob(function(b){ var p = { blob: b, url: URL.createObjectURL(b) }; if (g === capGen) lastPng = p; res(p); }, 'image/png'); });
+    }, function(e){ pk.parentNode.classList.remove('capturing'); throw e; });
+  }
+  function fileName(){ var k = $('app').getAttribute('data-result'); return '동주공제_리더카드_' + D.types[k].short + '_' + nickname.replace(/[\\/:*?"<>|\s]+/g, '_') + '.png'; }
+  var dlCap = null;
+  if (window.claude && typeof window.claude.use === 'function') window.claude.use('downloads').then(function(d){ dlCap = d; }).catch(function(){});
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function toast(t){ $('r-saved').textContent = t; }
+  function showFallback(p){ $('m-img').src = p.url; $('m-status').textContent = ''; $('m-save').classList.add('on'); }
+  function anchorSave(p){ var a = document.createElement('a'); a.href = p.url; a.download = fileName(); document.body.appendChild(a); a.click(); a.remove(); }
+  function saveNow(p){
+    // 1) claude.ai 안: 플랫폼 저장 확인창
+    if (dlCap) return dlCap.save({ filename: fileName(), data: p.blob }).then(function(){ toast('카드 이미지를 저장했어요.'); }, function(e){ if (!(e && e.code === 'declined')) showFallback(p); });
+    // 2) 아이폰: 공유 시트 → '이미지 저장'으로 사진첩에 바로 저장
+    var file = null; try { file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+    if (isIOS && file && navigator.canShare && navigator.canShare({ files: [file] })) {
+      return navigator.share({ files: [file], title: '동주공제 리더 카드' }).then(function(){ toast('카드 이미지를 저장했어요.'); }, function(e){ if (!(e && e.name === 'AbortError')) showFallback(p); });
+    }
+    // 3) 안드로이드·PC: 바로 내려받기
+    try { anchorSave(p); toast('카드 이미지를 저장했어요. 사진첩 또는 다운로드 폴더를 확인하세요.'); }
+    catch (e) { showFallback(p); }
+    return Promise.resolve();
+  }
+  function precapture(){ setTimeout(function(){ capture().catch(function(){}); }, 900); }
+  $('btn-save').addEventListener('click', function(){
+    var btn = this;
+    if (lastPng) { saveNow(lastPng); return; }          // 미리 만들어 둔 이미지 → 누르는 즉시 저장
+    var saveLabel = btn.innerHTML; btn.disabled = true; btn.textContent = '이미지 만드는 중…';
+    capture().then(function(p){ return saveNow(p); })
+      .catch(function(){ toast('이미지를 만들지 못했어요. 화면을 캡처해 주세요.'); })
+      .then(function(){ btn.disabled = false; btn.innerHTML = saveLabel; });
+  });
+  // ===== 카카오톡 공유 ==================================================
+  function shareUrl(){ return CONFIG.SHARE_URL || location.href.split('#')[0]; }
+  function shareText(){
+    var k = $('app').getAttribute('data-result'); var T = D.types[k];
+    return '[26/27년 경영검토회] ' + nickname + ' 님은 「' + T.name + '」! 고유 스킬은 ' + T.skill + '. 나는 어떤 리더일까? 2분 테스트 해 보기 → ' + shareUrl();
+  }
+  var kakaoP = null;
+  function loadKakao(){
+    if (!CONFIG.KAKAO_JS_KEY) return Promise.resolve(null);
+    if (kakaoP) return kakaoP;
+    kakaoP = new Promise(function(res){
+      var sc = document.createElement('script'); sc.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js'; sc.crossOrigin = 'anonymous';
+      sc.onload = function(){ try { if (!window.Kakao.isInitialized()) window.Kakao.init(CONFIG.KAKAO_JS_KEY); res(window.Kakao); } catch (e) { res(null); } };
+      sc.onerror = function(){ res(null); };
+      document.head.appendChild(sc);
+    });
+    return kakaoP;
+  }
+  if (CONFIG.KAKAO_JS_KEY) loadKakao();
+  function kakaoShare(K, p){
+    var k = $('app').getAttribute('data-result'), T = D.types[k];
+    var up = p ? K.Share.uploadImage({ file: [new File([p.blob], 'card.png', { type: 'image/png' })] }).then(function(r){ return r.infos.original.url; }).catch(function(){ return null; }) : Promise.resolve(null);
+    return up.then(function(img){
+      K.Share.sendDefault({ objectType: 'feed', content: { title: nickname + ' 님은 「' + T.name + '」', description: '고유 스킬 「' + T.skill + '」 · 나는 어떤 리더일까? 26/27년 경영검토회 2분 테스트', imageUrl: img || (shareUrl() + 'og.png'), link: { mobileWebUrl: shareUrl(), webUrl: shareUrl() } },
+        buttons: [{ title: '나도 테스트하기', link: { mobileWebUrl: shareUrl(), webUrl: shareUrl() } }] });
+    });
+  }
+  $('btn-kakao').addEventListener('click', function(){
+    var p = lastPng;
+    // 1) 카카오 JavaScript 키가 있으면 카카오톡 공유(정식)
+    if (window.Kakao && window.Kakao.isInitialized && window.Kakao.isInitialized()) { kakaoShare(window.Kakao, p).catch(function(){ toast('카카오톡 공유를 열지 못했어요.'); }); return; }
+    // 2) 휴대폰 공유 창 → 카카오톡 선택 (카드 이미지 + 링크)
+    if (navigator.share) {
+      var data = { title: '동주공제 리더 카드', text: shareText() };
+      var file = null; try { if (p) file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) data.files = [file]; else data.url = shareUrl();
+      navigator.share(data).then(function(){ toast('공유했어요.'); }, function(e){
+        if (e && e.name === 'AbortError') return;
+        if (data.files) { delete data.files; data.url = shareUrl(); navigator.share(data).catch(function(){}); }
+      });
+      return;
+    }
+    // 3) PC: 링크·문구 복사
+    var t = shareText();
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast('공유 문구를 복사했어요. 카카오톡 대화창에 붙여넣어 주세요.'); }, function(){ toast('공유 링크: ' + shareUrl()); });
+  });
+
+  $('m-close').addEventListener('click', function(){ $('m-save').classList.remove('on'); });
+  $('m-dl').addEventListener('click', function(){
+    if (!lastPng) return;
+    if (dlCap) { dlCap.save({ filename: fileName(), data: lastPng.blob }).then(function(){ $('m-status').textContent = '저장했어요.'; }, function(){ $('m-status').textContent = '이미지를 길게 눌러 저장해 주세요.'; }); return; }
+    anchorSave(lastPng); $('m-status').textContent = '받아지지 않으면 이미지를 길게 눌러 저장해 주세요.';
+  });
+
+  var crewAt = null;
+  function openCrew(x){
+    crewAt = x;
+    var mine = $('app').getAttribute('data-result');
+    var box = $('m-crew-card'); box.innerHTML = '';
+    var wrap = el('div', 'reveal'); wrap.appendChild(buildCard(x, x === mine ? nickname + ' 님의' : '동주공제 크루')); box.appendChild(wrap);
+    var T = D.types[x], note = $('m-crew-note');
+    if (x === mine) note.textContent = '내 카드예요. 옆 동료는 어떤 카드가 나왔나요?';
+    else if (D.types[mine].partner === x) note.textContent = '내 카드의 콤보 파트너예요. 「' + T.skill + '」가 나의 보완점을 채워 줍니다.';
+    else note.textContent = T.tendency.replace('선택이 많았어요.', '사람에게 나오는 카드예요.');
+    $('m-crew').classList.add('on'); $('m-crew').scrollTop = 0;
+  }
+  function stepCrew(d){ var i = D.order.indexOf(crewAt); openCrew(D.order[(i + d + D.order.length) % D.order.length]); }
+  $('m-crew-prev').addEventListener('click', function(){ stepCrew(-1); });
+  $('m-crew-next').addEventListener('click', function(){ stepCrew(1); });
+  $('m-crew-close').addEventListener('click', function(){ $('m-crew').classList.remove('on'); });
+  $('m-crew').addEventListener('click', function(e){ if (e.target === this) this.classList.remove('on'); });
+
+  $('btn-back-result').addEventListener('click', function(){ cur = N - 1; renderQ(); show('s-q'); });
+  $('btn-again').addEventListener('click', function(){
+    answers = new Array(N).fill(null); choices = new Array(N).fill(null); cur = 0; sid = newId(); lastPng = null;
+    $('app').removeAttribute('data-result'); $('app').removeAttribute('data-rule');
+    show('s-start');
+  });
+
+  // ===== 관리자 화면 (#admin) ===========================================
+  var COLS = ['ts','nickname','result','resultName','rule','q1','q2','q3','q4','q5','q6','q7','q8','t1','t2','t3','t4','t5','t6','t7','t8','score_N','score_B','score_S','score_R','score_W','sid','v'];
+  var adminRows = [];
+  function csv(rows){
+    var esc = function(v){ v = v == null ? '' : String(v); if (/^[=+\-@]/.test(v)) v = "'" + v; return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+    return '﻿' + [COLS.join(',')].concat(rows.map(function(r){ return COLS.map(function(c){ return esc(r[c]); }).join(','); })).join('\n');
+  }
+  function renderAdmin(){
+    show('s-admin');
+    var msg = $('a-msg');
+    msg.textContent = '불러오는 중…';
+    var timer = setTimeout(function(){ msg.textContent = '응답 저장소에 연결하지 못했습니다. claude.ai에 로그인한 소유자·편집자로 열었는지 확인해 주세요. Google 시트로 모으는 경우에는 시트에서 바로 내보내면 됩니다.'; }, 10000);
+    capsP.then(function(){
+      if (!store.db) { clearTimeout(timer); msg.textContent = '이 화면에서는 응답 저장소를 쓸 수 없습니다. claude.ai에서 이 페이지를 소유자·편집자로 열면 응답이 보입니다. Google 시트로 모으는 경우에는 시트에서 [파일 → 다운로드]로 내보내세요.'; return; }
+      return store.db.collection('responses').orderBy('ts', 'desc').limit(1000).get().then(function(snap){
+        clearTimeout(timer);
+        adminRows = snap.docs.map(function(d){ return d.data(); });
+        var cnt = {}; D.order.forEach(function(k){ cnt[k] = 0; }); adminRows.forEach(function(r){ if (cnt[r.result] != null) cnt[r.result]++; });
+        var sg = $('a-stats'); sg.innerHTML = '';
+        D.order.forEach(function(k){ var c = el('div'); var bb = el('b', null, String(cnt[k])); bb.style.color = D.types[k].color; c.appendChild(bb); c.appendChild(document.createTextNode(D.types[k].short)); sg.appendChild(c); });
+        msg.textContent = '총 ' + adminRows.length + '명 응답 (1인 1행, 다시 한 경우 최신 응답으로 갱신)';
+        var tb = $('a-table'); tb.innerHTML = '';
+        var hr = el('tr'); ['시각','닉네임','결과','1~8번'].forEach(function(h){ hr.appendChild(el('th', null, h)); }); tb.appendChild(hr);
+        adminRows.slice(0, 200).forEach(function(r){
+          var tr = el('tr'); tr.appendChild(el('td', null, (r.ts || '').replace('T', ' ').slice(5, 16))); tr.appendChild(el('td', null, r.nickname)); tr.appendChild(el('td', null, r.resultName));
+          tr.appendChild(el('td', null, [1,2,3,4,5,6,7,8].map(function(i){ return r['q' + i] || '-'; }).join(''))); tb.appendChild(tr);
+        });
+      }, function(){ clearTimeout(timer); msg.textContent = '응답을 읽을 권한이 없습니다. 소유자·편집자 계정으로 열어 주세요.'; });
+    });
+  }
+  $('a-csv').addEventListener('click', function(){
+    var data = csv(adminRows), name = '리더십테스트_응답_' + new Date().toISOString().slice(0, 10) + '.csv';
+    var viaCap = (window.claude && window.claude.use) ? window.claude.use('downloads') : Promise.resolve(null);
+    viaCap.then(function(dl){
+      if (dl) return dl.save({ filename: name, data: data }).catch(function(){});
+      var u = URL.createObjectURL(new Blob([data], { type: 'text/csv' })); var a = document.createElement('a'); a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    });
+  });
+  $('a-copy').addEventListener('click', function(){
+    var t = csv(adminRows).slice(1);
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ $('a-msg').textContent = 'CSV를 복사했습니다. 엑셀에 붙여넣으세요.'; }, function(){ $('a-msg').textContent = '복사가 막혀 있습니다. CSV 내려받기를 이용해 주세요.'; });
+  });
+  $('a-home').addEventListener('click', function(){ location.hash = ''; show('s-start'); });
+  function route(){ if (location.hash === '#admin') renderAdmin(); }
+  window.addEventListener('hashchange', route); route();
+
+  // 검증용
+  window.__LT = { compute: compute, data: D, record: function(){ return record(compute(answers)); }, capture: capture };
+})();
+</script>
+</body>
+</html>

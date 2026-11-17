@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MZ어 능력시험 — 26/27년 경영검토회</title>
+<meta name="description" content="팀장님, 이 말 아세요? 요즘 신조어 15문항으로 보는 나의 MZ어 레벨">
+<meta property="og:type" content="website">
+<meta property="og:title" content="팀장님, 이 말 아세요? MZ어 능력시험">
+<meta property="og:description" content="26/27년 경영검토회 · 신조어 15문항, 나의 MZ어 레벨은?">
+<meta property="og:url" content="https://imsean629.github.io/sangsin-leader-2027/mz/">
+<meta property="og:image" content="https://imsean629.github.io/sangsin-leader-2027/mz/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&family=JetBrains+Mono:wght@700&display=swap">
+<style>
+:root{--red:#E60013;--blue:#004098;--navy:#0B1B36;--ink:#16191E;--sub:#4A515C;--line:#E2E5EA;--lime:#D7FF3A;--violet:#6C3BFF;--bg:#F3F1FA}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:#E9E6F5;color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+button,input{font-family:inherit;color:inherit}
+.app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--bg);display:flex;flex-direction:column}
+.bar{height:6px;display:flex}.bar i{display:block;height:6px}.bar i:first-child{flex:7;background:var(--red)}.bar i:last-child{flex:3;background:var(--blue)}
+.screen{display:none;flex:1;flex-direction:column;padding:20px 22px 26px}
+.screen.on{display:flex}
+.eyebrow{font-size:13px;font-weight:900;color:var(--violet);letter-spacing:.5px}
+.primary{width:100%;min-height:58px;border:0;border-radius:16px;background:var(--navy);color:#FFFFFF;font-size:18px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #000}
+.primary[disabled]{background:#B9BEC8;box-shadow:none;cursor:default}
+.ghost{width:100%;min-height:52px;border:2px solid var(--navy);border-radius:14px;background:#FFFFFF;font-size:16px;font-weight:700;cursor:pointer}
+.foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;color:#5B6370}
+.foot img{height:14px;width:auto}
+.sticker{display:inline-block;background:var(--lime);color:var(--navy);font-weight:900;padding:4px 10px;border-radius:8px;transform:rotate(-3deg);box-shadow:3px 3px 0 var(--navy)}
+
+/* 시작 */
+h1.title{margin:14px 0 0;font-size:36px;line-height:1.2;font-weight:900;letter-spacing:-1px}
+h1.title em{font-style:normal;background:linear-gradient(transparent 55%,var(--lime) 55%)}
+.lead{margin:12px 0 0;font-size:16.5px;line-height:1.6;color:#2E333A}
+.bubbles{margin:22px 0 4px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.bubbles span{background:#FFFFFF;border:2px solid var(--navy);border-radius:18px 18px 18px 4px;padding:7px 12px;font-weight:900;font-size:15px;box-shadow:3px 3px 0 var(--navy)}
+.bubbles span:nth-child(3n){background:var(--lime)}.bubbles span:nth-child(4n){background:#EDE6FF}
+.levels{margin-top:18px;border-radius:14px;background:#FFFFFF;border:2px solid var(--navy);padding:12px 14px}
+.levels h3{margin:0 0 6px;font-size:13px;font-weight:900;color:var(--violet)}
+.levels div{display:flex;justify-content:space-between;font-size:13.5px;padding:3px 0}
+.levels div span:first-child{color:#6B7280;font-weight:700}
+.levels div b{font-weight:900}
+.field{margin-top:18px}
+.field label{display:block;font-size:13px;font-weight:900;margin-bottom:6px}
+.field input{width:100%;min-height:54px;border:2px solid var(--navy);border-radius:14px;padding:0 14px;font-size:18px;font-weight:700;background:#FFFFFF}
+.field input:focus{outline:3px solid var(--lime);outline-offset:1px}
+.privacy{margin-top:10px;font-size:12.5px;line-height:1.55;color:#5B6370}
+
+/* 문제 */
+.qtop{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:900}
+.qtop span:last-child{color:var(--violet)}
+.track{margin-top:8px;height:10px;border-radius:5px;background:#DCD7EE;overflow:hidden}
+.track i{display:block;height:10px;background:var(--violet);border-radius:5px;transition:width .25s}
+.word-card{margin-top:20px;border-radius:22px;background:var(--navy);color:#FFFFFF;padding:22px 20px 20px;position:relative;box-shadow:6px 6px 0 var(--lime)}
+.word-card small{font-size:12px;font-weight:900;color:var(--lime);letter-spacing:1px}
+.word{margin-top:6px;font-size:40px;font-weight:900;letter-spacing:-1px;line-height:1.15}
+.ex{margin-top:14px;background:#FFFFFF;color:var(--ink);border-radius:16px 16px 16px 4px;padding:11px 14px;font-size:15.5px;line-height:1.5;font-weight:500}
+.ex b{background:linear-gradient(transparent 55%,var(--lime) 55%);font-weight:900}
+.ask{margin-top:18px;font-size:15px;font-weight:900;color:#2E333A}
+.opts{margin-top:10px;display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:62px;padding:15px 16px;border:2px solid var(--navy);border-radius:16px;background:#FFFFFF;font-size:16.5px;line-height:1.45;font-weight:700;cursor:pointer;box-shadow:3px 3px 0 var(--navy);transition:transform .08s}
+.opt:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--navy)}
+.opt b{flex:0 0 26px;height:26px;border-radius:13px;background:#EDE6FF;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.opt.right{background:#E3FFB0;border-color:#3A7D00}
+.opt.right b{background:#3A7D00;color:#FFFFFF}
+.opt.wrong{background:#FFE1E3;border-color:var(--red)}
+.opt.wrong b{background:var(--red);color:#FFFFFF}
+.opt[disabled]{cursor:default}
+.fb{margin-top:14px;display:none;align-items:center;gap:10px;font-size:15px;font-weight:900}
+.fb.on{display:flex}
+.fb .mk{flex:0 0 auto;font-size:13px;padding:5px 10px;border-radius:8px;color:#FFFFFF}
+.fb .mk.o{background:#3A7D00}.fb .mk.x{background:var(--red)}
+.next{margin-top:14px;display:none}
+.next.on{display:block}
+
+/* 결과 */
+.rhead{text-align:center}
+.rhead h2{margin:6px 0 0;font-size:22px;font-weight:900;line-height:1.35}
+.rhead h2 b{background:linear-gradient(transparent 55%,var(--lime) 55%)}
+.cert-wrap{margin:16px auto 0;width:100%;max-width:360px}
+.cert{position:relative;border-radius:16px;padding:8px;background:var(--navy);box-shadow:0 14px 30px rgba(11,27,54,.35)}
+.cert-in{position:relative;border-radius:10px;background:#FFFEF8;overflow:hidden;padding:16px 16px 12px;border:2px solid #C9B98A;outline:1px solid #C9B98A;outline-offset:-7px}
+.cert-in::before{content:"MZ";position:absolute;right:-10px;bottom:40px;font-size:150px;font-weight:900;color:rgba(108,59,255,.06);letter-spacing:-8px;pointer-events:none}
+.c-top{text-align:center}
+.c-top small{font-size:10.5px;font-weight:700;color:#6B7280;letter-spacing:2px}
+.c-top h3{margin:4px 0 0;font-family:'Noto Serif KR',serif;font-size:22px;font-weight:900;letter-spacing:1px}
+.c-top p{margin:2px 0 0;font-size:11px;color:#6B7280}
+.c-rows{margin-top:12px;border-top:2px solid var(--navy);border-bottom:2px solid var(--navy)}
+.c-rows div{display:flex;justify-content:space-between;align-items:center;padding:7px 2px;border-bottom:1px dashed #D5D9E0;font-size:13.5px}
+.c-rows div:last-child{border-bottom:0}
+.c-rows span{color:#4A515C;font-weight:700}
+.c-rows b{font-size:16px;font-weight:900}
+.c-score{display:flex;align-items:center;gap:12px;margin-top:12px}
+.c-score .big{font-family:'JetBrains Mono',monospace;font-size:46px;font-weight:700;line-height:1;color:var(--navy)}
+.c-score .big small{font-size:18px;color:#6B7280}
+.stamp{margin-left:auto;width:112px;height:112px;border-radius:50%;border:4px solid var(--red);outline:2px solid var(--red);outline-offset:-10px;color:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-12deg);font-weight:900;line-height:1.15;padding:10px;background:rgba(255,255,255,.6)}
+.stamp small{font-size:9px;letter-spacing:1px}
+.stamp b{font-size:14px;margin-top:3px;word-break:keep-all}
+.grid{margin-top:12px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.grid div{border-radius:6px;padding:5px 2px;text-align:center;font-size:10px;font-weight:700;line-height:1.2;border:1.5px solid}
+.grid div i{display:block;font-style:normal;font-size:13px;font-weight:900}
+.grid .o{background:#EEFFD1;border-color:#3A7D00;color:#2A5A00}
+.grid .x{background:#FFECEE;border-color:#E60013;color:#9A000D}
+.c-msg{margin-top:12px;font-size:13.5px;line-height:1.5;font-weight:700;color:var(--navy)}
+.c-foot{margin-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:#6B7280}
+.c-foot img{height:12px;width:auto}
+.actions{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-save{min-height:56px;border:2px solid var(--navy);border-radius:14px;background:var(--lime);color:var(--navy);font-size:16px;font-weight:900;cursor:pointer;box-shadow:3px 3px 0 var(--navy)}
+.btn-kakao{min-height:56px;border:0;border-radius:14px;background:#FEE500;color:#191919;font-size:16px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 0 #C9B400}
+.toast{margin-top:10px;text-align:center;font-size:12.5px;color:#5B6370;min-height:16px}
+.panel{margin-top:20px;border-radius:16px;background:#FFFFFF;border:2px solid var(--navy);padding:16px}
+.panel h4{margin:0;font-size:16px;font-weight:900;display:flex;gap:8px;align-items:center}
+.panel h4 small{margin-left:auto;font-size:12px;color:var(--violet)}
+.panel p{margin:8px 0 0;font-size:14.5px;line-height:1.6;color:#2E333A}
+.note-list{margin-top:10px;display:grid;gap:8px}
+.note-list div{border-radius:12px;background:#F6F4FC;padding:10px 12px;font-size:14px;line-height:1.5}
+.note-list b{font-size:15.5px;font-weight:900;margin-right:6px}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="bar" aria-hidden="true"><i></i><i></i></div>
+
+  <!-- 시작 -->
+  <section class="screen on" id="s-start">
+    <div class="eyebrow">26/27년 경영검토회 · 쉬어가는 코너 3</div>
+    <h1 class="title">팀장님,<br>이 말 <em>아세요?</em></h1>
+    <p class="lead">요즘 신조어 <b>15개</b>, 뜻을 3개 중에서 골라 보세요. 맞힌 개수로 나의 <b>MZ어 레벨</b>이 정해집니다.</p>
+    <div class="bubbles" aria-hidden="true"><span>야르</span><span>책없쾌</span><span>오살힘</span><span>밤티</span><span>커터칼퇴근</span><span>영크크</span></div>
+    <div class="levels" id="lv-table"><h3>레벨표 (3개 단위)</h3></div>
+    <div class="field"><label for="nick">이름 또는 닉네임</label><input id="nick" type="text" maxlength="10" autocomplete="off" placeholder="예: 김상신"></div>
+    <div class="privacy">이름과 점수는 행사 통계를 위해 저장됩니다.</div>
+    <button class="primary" id="btn-start" type="button" disabled style="margin-top:16px">시험 시작</button>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="screen" id="s-q" aria-live="polite">
+    <div class="qtop"><span id="q-count">1 / 15</span><span id="q-score">맞힘 0</span></div>
+    <div class="track"><i id="q-fill" style="width:6.7%"></i></div>
+    <div class="word-card"><small>이 말의 뜻은?</small><div class="word" id="q-word"></div><div class="ex" id="q-ex"></div></div>
+    <div class="ask">뜻으로 맞는 것을 고르세요</div>
+    <div class="opts" id="q-opts"></div>
+    <div class="fb" id="q-fb"></div>
+    <button class="primary next" id="btn-next" type="button">다음 문제</button>
+  </section>
+
+  <!-- 결과 -->
+  <section class="screen" id="s-result">
+    <div class="rhead"><div class="eyebrow">시험 결과</div><h2 id="r-head"></h2></div>
+    <div class="cert-wrap"><div class="cert" id="cert"></div></div>
+    <div class="actions">
+      <button class="btn-save" id="btn-save" type="button">이미지 저장</button>
+      <button class="btn-kakao" id="btn-kakao" type="button"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-.9 3.6c-.1.3.3.6.6.4l4.2-2.8c.4 0 .8.1 1.2.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z" fill="#191919"/></svg>카카오톡 공유</button>
+      <button class="ghost" id="btn-again" type="button" style="grid-column:1 / -1">다시 도전</button>
+    </div>
+    <div class="toast" id="r-toast"></div>
+    <div class="panel"><h4>오답 노트 <small id="r-wcount"></small></h4><div class="note-list" id="r-notes"></div></div>
+    <div class="panel"><h4>세대 소통 한마디</h4><p>모르는 말이 나오면, 아는 척보다 <b>“그게 무슨 뜻이에요?”</b> 한마디가 소통의 시작입니다. 오늘 배운 말 하나를 팀원에게 써 보세요.</p></div>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+  </section>
+</main>
+
+<script>/*__H2C__*/</script>
+<script>
+(function(){
+  var CONFIG = { SHEET_URL: "https://script.google.com/macros/s/AKfycbyKUOWiAiVvusrHAca13lW98N5fdfOaQ7xPv9i8O7rbmpiq3UJLeRtMizwF6-Kfy5tx/exec", SHARE_URL: "https://imsean629.github.io/sangsin-leader-2027/mz/" };
+  var WORDS = /*__WORDS__*/null, LEVELS = /*__LEVELS__*/null, LET = ['A','B','C'];
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function clean(v){ return v.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 10); }
+  function show(id){ ['s-start','s-q','s-result'].forEach(function(s){ $(s).classList.toggle('on', s === id); }); window.scrollTo(0, 0); }
+  function levelOf(n){ for (var i = 0; i < LEVELS.length; i++) if (n >= LEVELS[i][0] && n <= LEVELS[i][1]) return LEVELS[i]; }
+
+  var name = '', sid = '', order = [], cur = 0, marks = [], lastPng = null, capGen = 0;
+
+  // 레벨표
+  LEVELS.forEach(function(l){ var d = el('div'); d.appendChild(el('span', null, l[0] === l[1] ? l[0] + '개 (만점)' : l[0] + '~' + l[1] + '개')); d.appendChild(el('b', null, l[2])); $('lv-table').appendChild(d); });
+
+  $('nick').addEventListener('input', function(){ $('btn-start').disabled = !clean(this.value); });
+  $('btn-start').addEventListener('click', function(){
+    name = clean($('nick').value); if (!name) return;
+    sid = 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    order = shuffle(WORDS.map(function(_, i){ return i; })); cur = 0; marks = []; lastPng = null; capGen++;
+    renderQ(); show('s-q');
+  });
+
+  function renderQ(){
+    var w = WORDS[order[cur]];
+    $('q-count').textContent = (cur + 1) + ' / ' + WORDS.length;
+    $('q-score').textContent = '맞힘 ' + marks.filter(Boolean).length;
+    $('q-fill').style.width = ((cur + 1) / WORDS.length * 100) + '%';
+    $('q-word').textContent = w[0];
+    var ex = $('q-ex'); ex.innerHTML = ''; var parts = w[1].split(w[0]);
+    parts.forEach(function(p, i){ ex.appendChild(document.createTextNode(p)); if (i < parts.length - 1) ex.appendChild(el('b', null, w[0])); });
+    var opts = shuffle([{ t: w[2], ok: true }, { t: w[3][0], ok: false }, { t: w[3][1], ok: false }]);
+    var box = $('q-opts'); box.innerHTML = '';
+    opts.forEach(function(o, i){
+      var b = el('button', 'opt'); b.type = 'button'; b.setAttribute('data-ok', o.ok ? '1' : '0');
+      b.appendChild(el('b', null, LET[i])); b.appendChild(el('span', null, o.t));
+      b.addEventListener('click', function(){ answer(b, o.ok); });
+      box.appendChild(b);
+    });
+    $('q-fb').className = 'fb'; $('q-fb').innerHTML = ''; $('btn-next').className = 'primary next';
+    $('btn-next').textContent = cur === WORDS.length - 1 ? '결과 보기' : '다음 문제';
+  }
+  function answer(btn, ok){
+    if (marks.length > cur) return;
+    marks.push(ok);
+    Array.prototype.forEach.call($('q-opts').children, function(c){ c.disabled = true; if (c.getAttribute('data-ok') === '1') c.classList.add('right'); });
+    if (!ok) btn.classList.add('wrong');
+    var fb = $('q-fb'); fb.innerHTML = '';
+    fb.appendChild(el('span', 'mk ' + (ok ? 'o' : 'x'), ok ? '정답' : '오답'));
+    fb.appendChild(el('span', null, ok ? '역시! 다음 단어도 가 볼까요?' : '괜찮아요, 오답 노트에 담아 둘게요.'));
+    fb.classList.add('on');
+    $('q-score').textContent = '맞힘 ' + marks.filter(Boolean).length;
+    $('btn-next').classList.add('on');
+  }
+  $('btn-next').addEventListener('click', function(){ if (cur < WORDS.length - 1) { cur++; renderQ(); window.scrollTo(0, 0); } else finish(); });
+
+  function finish(){
+    var score = marks.filter(Boolean).length, lv = levelOf(score);
+    $('app').setAttribute('data-score', score);
+    $('r-head').innerHTML = ''; $('r-head').appendChild(document.createTextNode(name + ' 님은 ')); $('r-head').appendChild(el('b', null, lv[2]));
+    var c = $('cert'); c.innerHTML = '';
+    var inn = el('div', 'cert-in');
+    var top = el('div', 'c-top'); top.appendChild(el('small', null, 'CERTIFICATE OF MZ LANGUAGE')); top.appendChild(el('h3', null, 'MZ어 능력시험 성적 증명서')); top.appendChild(el('p', null, '제2외국어(신조어) 영역 · 15문항')); inn.appendChild(top);
+    var rows = el('div', 'c-rows');
+    [['응시자', name], ['응시일', new Date().toLocaleDateString('ko-KR')], ['등급', lv[2]]].forEach(function(r, i){ var d = el('div'); d.appendChild(el('span', null, r[0])); var b = el('b', null, r[1]); if (i === 0) b.id = 'r-name'; if (i === 2) b.id = 'r-level'; d.appendChild(b); rows.appendChild(d); });
+    inn.appendChild(rows);
+    var sc = el('div', 'c-score'); var big = el('div', 'big'); big.appendChild(document.createTextNode(String(score))); big.appendChild(el('small', null, ' / 15')); sc.appendChild(big);
+    var st = el('div', 'stamp'); st.appendChild(el('small', null, 'MZ어 인증')); st.appendChild(el('b', null, lv[2])); sc.appendChild(st); inn.appendChild(sc);
+    var grid = el('div', 'grid');
+    order.forEach(function(wi, i){ var d = el('div', marks[i] ? 'o' : 'x'); d.appendChild(el('i', null, marks[i] ? 'O' : 'X')); d.appendChild(document.createTextNode(WORDS[wi][0])); grid.appendChild(d); });
+    inn.appendChild(grid);
+    inn.appendChild(el('div', 'c-msg', '“' + lv[3] + '”'));
+    var ft = el('div', 'c-foot'); ft.appendChild(el('span', null, '26/27년 경영검토회')); var lg = new Image(); lg.src = '__LOGO__'; lg.alt = 'SANGSIN BRAKE'; ft.appendChild(lg); inn.appendChild(ft);
+    c.appendChild(inn);
+
+    var notes = $('r-notes'); notes.innerHTML = ''; var wrong = [];
+    order.forEach(function(wi, i){ if (marks[i]) return; var w = WORDS[wi]; wrong.push(w[0]); var d = el('div'); d.appendChild(el('b', null, w[0])); d.appendChild(document.createTextNode(w[2] + '. ' + (w[4] || ''))); notes.appendChild(d); });
+    if (!wrong.length) notes.appendChild(el('div', null, '틀린 문제가 없습니다. 오늘의 영크크!'));
+    $('r-wcount').textContent = wrong.length ? wrong.length + '개' : '';
+    lastPng = null; capGen++;
+    show('s-result');
+    setTimeout(function(){ capture().catch(function(){}); }, 600);
+    if (CONFIG.SHEET_URL) {
+      var row = { kind: 'mz', sid: sid, nickname: name, score: score, level: lv[2], answers: order.map(function(wi, i){ return WORDS[wi][0] + ':' + (marks[i] ? 'O' : 'X'); }).join(' '), wrong: wrong.join(', '), ts: new Date().toISOString() };
+      fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(row) }).catch(function(){});
+    }
+  }
+
+  // 이미지 저장 / 공유 (다른 코너와 동일)
+  function capture(){
+    if (lastPng) return Promise.resolve(lastPng);
+    var g = capGen; if (!window.html2canvas) return Promise.reject(new Error('no-h2c'));
+    return window.html2canvas($('cert'), { scale: 3, backgroundColor: null, logging: false }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(function(b){ var p = { blob: b, url: URL.createObjectURL(b) }; if (g === capGen) lastPng = p; res(p); }, 'image/png'); });
+    });
+  }
+  function fileName(){ return 'MZ어능력시험_' + $('app').getAttribute('data-score') + '점_' + name.replace(/[\\/:*?"<>|\s]+/g, '_') + '.png'; }
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function toast(t){ $('r-toast').textContent = t; }
+  function saveNow(p){
+    var file = null; try { file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+    if (isIOS && file && navigator.canShare && navigator.canShare({ files: [file] })) return navigator.share({ files: [file], title: 'MZ어 능력시험 성적 증명서' }).then(function(){ toast('성적 증명서를 저장했어요.'); }, function(){});
+    var a = document.createElement('a'); a.href = p.url; a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
+    toast('성적 증명서를 저장했어요. 사진첩 또는 다운로드 폴더를 확인하세요.');
+  }
+  $('btn-save').addEventListener('click', function(){
+    if (lastPng) { saveNow(lastPng); return; }
+    var b = this, lbl = b.textContent; b.disabled = true; b.textContent = '이미지 만드는 중…';
+    capture().then(saveNow).catch(function(){ toast('이미지를 만들지 못했어요. 화면을 캡처해 주세요.'); }).then(function(){ b.disabled = false; b.textContent = lbl; });
+  });
+  function shareText(){ var s = +$('app').getAttribute('data-score'); return '[26/27년 경영검토회] ' + name + ' 님의 MZ어 능력시험 결과: ' + s + '/15점 「' + levelOf(s)[2] + '」! 팀장님, 이 말 아세요? → ' + CONFIG.SHARE_URL; }
+  $('btn-kakao').addEventListener('click', function(){
+    var p = lastPng;
+    if (navigator.share) {
+      var data = { title: 'MZ어 능력시험', text: shareText() };
+      var file = null; try { if (p) file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) data.files = [file]; else data.url = CONFIG.SHARE_URL;
+      navigator.share(data).then(function(){ toast('공유했어요.'); }, function(e){ if (e && e.name === 'AbortError') return; if (data.files) { delete data.files; data.url = CONFIG.SHARE_URL; navigator.share(data).catch(function(){}); } });
+      return;
+    }
+    var t = shareText();
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast('공유 문구를 복사했어요. 카카오톡 대화창에 붙여넣어 주세요.'); }, function(){ toast('공유 링크: ' + CONFIG.SHARE_URL); });
+  });
+  $('btn-again').addEventListener('click', function(){ show('s-start'); });
+
+  window.__MZ = { words: WORDS, levels: LEVELS, levelOf: levelOf, marks: function(){ return marks; }, order: function(){ return order; } };
+})();
+</script>
+</body>
+</html>

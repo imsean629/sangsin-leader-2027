@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 상식 레이스 — 26/27년 경영검토회</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="2026 상식 레이스 · 25문항 한판 승부">
+<meta property="og:description" content="26/27년 경영검토회 · 시사와 상식 25문항, 나의 상식 주행 레벨은?">
+<meta property="og:url" content="https://imsean629.github.io/sangsin-leader-2027/quiz/">
+<meta property="og:image" content="https://imsean629.github.io/sangsin-leader-2027/quiz/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@700&display=swap">
+<style>
+:root{--red:#E60013;--blue:#004098;--navy:#0B1B36;--ink:#16191E;--sub:#4A515C;--line:#E2E5EA;--bg:#F4F6F9;--go:#1A9E55;--gold:#E8C35A}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:#E7EBF1;color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+button,input{font-family:inherit;color:inherit}
+[hidden]{display:none!important}
+.app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--bg);display:flex;flex-direction:column}
+.bar{height:6px;display:flex}.bar i{display:block}.bar i:first-child{flex:7;background:var(--red)}.bar i:last-child{flex:3;background:var(--blue)}
+.screen{display:none;flex:1;flex-direction:column;padding:20px 20px 26px}
+.screen.on{display:flex}
+.eyebrow{font-size:13px;font-weight:900;color:var(--red);letter-spacing:.4px}
+.primary{width:100%;min-height:58px;border:0;border-radius:14px;background:var(--red);color:#FFFFFF;font-size:18px;font-weight:900;cursor:pointer}
+.primary[disabled]{background:#C3C8D0;cursor:default}
+.ghost{width:100%;min-height:50px;border:2px solid var(--navy);border-radius:14px;background:#FFFFFF;font-size:16px;font-weight:700;cursor:pointer}
+.foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#6B7280}
+.foot img{height:14px}
+
+/* 시작 */
+.hero{margin:-20px -20px 0;padding:24px 22px 64px;background:var(--navy);color:#FFFFFF;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-90px;top:0;bottom:0;width:170px;background:var(--red);transform:skewX(-20deg);opacity:.9}
+.hero > *{position:relative;z-index:1}
+.hero small{font-size:12.5px;font-weight:700;color:#C9D2E0}
+.hero h1{margin:10px 0 0;font-size:36px;font-weight:900;line-height:1.15;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{margin:10px 0 0;font-size:15px;line-height:1.6;color:#DCE3EE;max-width:235px}
+.card{background:#FFFFFF;border-radius:18px;box-shadow:0 8px 24px rgba(11,27,54,.10);padding:18px}
+.lift{margin-top:-44px;position:relative;z-index:2}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rules div{border-radius:12px;background:var(--bg);padding:10px 6px;text-align:center}
+.rules b{display:block;font-size:12px;color:#6B7280;font-weight:700}
+.rules span{display:block;margin-top:2px;font-size:16px;font-weight:900}
+.rules small{display:block;font-size:11px;color:#6B7280;margin-top:2px}
+.note1{margin-top:12px;border-radius:12px;background:#FFF1F2;color:#9A000D;font-size:13.5px;font-weight:700;padding:10px 12px;line-height:1.5}
+.lv{margin-top:14px}
+.lv h3{margin:0 0 6px;font-size:13px;font-weight:900;color:var(--blue)}
+.lv div{display:flex;justify-content:space-between;font-size:13.5px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.lv div:last-child{border-bottom:0}
+.lv span{color:#6B7280;font-weight:700}
+.field{margin-top:16px}
+.field label{display:block;font-size:13px;font-weight:900;margin-bottom:6px}
+.field input{width:100%;min-height:54px;border:2px solid #D5DAE2;border-radius:14px;padding:0 14px;font-size:18px;font-weight:700;background:#FAFBFC}
+.field input:focus{outline:none;border-color:var(--blue);background:#FFFFFF}
+.privacy{margin-top:8px;font-size:12px;color:#6B7280;line-height:1.55}
+.msg{margin-top:8px;min-height:18px;font-size:13px;font-weight:700;color:var(--red)}
+
+/* 라운드 인트로 */
+#s-round{align-items:center;justify-content:center;text-align:center;background:var(--navy);color:#FFFFFF}
+#s-round small{font-size:14px;font-weight:700;color:var(--gold);letter-spacing:2px}
+#s-round h2{margin:10px 0 0;font-size:40px;font-weight:900}
+#s-round p{margin:10px 0 0;font-size:16px;color:#C9D2E0}
+
+/* 문제 */
+.qtop{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:900}
+.qtop .rd{color:var(--blue)}
+.pts{display:inline-block;background:var(--navy);color:#FFFFFF;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:900}
+.pts.l2{background:var(--blue)}.pts.l3{background:var(--red)}
+.track{margin-top:8px;height:6px;border-radius:3px;background:#DCE1E8;overflow:hidden}
+.track i{display:block;height:6px;background:var(--navy);transition:width .25s}
+.timer{margin-top:14px;display:flex;align-items:center;gap:10px}
+.timer .tb{flex:1;height:12px;border-radius:6px;background:#DCE1E8;overflow:hidden}
+.timer .tb i{display:block;height:12px;background:var(--go);border-radius:6px}
+.timer .tb i.warn{background:var(--red)}
+.timer span{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;min-width:36px;text-align:right}
+.qcard{margin-top:16px;border-radius:18px;background:#FFFFFF;box-shadow:0 6px 18px rgba(11,27,54,.08);padding:20px 18px}
+.qcard small{font-size:12px;font-weight:900;color:#6B7280}
+.qtext{margin-top:6px;font-size:20px;font-weight:900;line-height:1.45}
+.opts{margin-top:14px;display:grid;gap:10px}
+.opts.ox{grid-template-columns:1fr 1fr}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;width:100%;min-height:58px;padding:13px 14px;border:2px solid #D5DAE2;border-radius:14px;background:#FFFFFF;font-size:16.5px;line-height:1.4;font-weight:700;cursor:pointer}
+.opt b{flex:0 0 28px;height:28px;border-radius:14px;background:var(--bg);font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.opts.ox .opt{justify-content:center;min-height:120px;font-size:56px;font-weight:900}
+.opts.ox .opt b{display:none}
+.opt.sel{border-color:var(--navy);background:#EEF2F8}
+.opt.right{border-color:var(--go);background:#E7F7EE}
+.opt.wrong{border-color:var(--red);background:#FFECEE}
+.opt[disabled]{cursor:default}
+.fb{margin-top:12px;min-height:26px;text-align:center;font-size:17px;font-weight:900}
+.fb.o{color:var(--go)}.fb.x{color:var(--red)}
+
+/* 결과 */
+.rhead{text-align:center}
+.rhead h2{margin:6px 0 0;font-size:22px;font-weight:900;line-height:1.35}
+.cert-wrap{margin:14px auto 0;width:100%;max-width:360px}
+.cert{border-radius:18px;overflow:hidden;background:#FFFFFF;box-shadow:0 14px 30px rgba(11,27,54,.25)}
+.c-top{position:relative;background:var(--navy);color:#FFFFFF;padding:14px 16px 12px;overflow:hidden}
+.c-top::after{content:"";position:absolute;right:-30px;top:0;bottom:0;width:110px;background:var(--red);transform:skewX(-20deg)}
+.c-top > *{position:relative;z-index:1}
+.c-top small{font-size:10px;font-weight:700;letter-spacing:2px;color:#C9D2E0}
+.c-top h3{margin:4px 0 0;font-size:19px;font-weight:900}
+.c-top img{position:absolute;right:12px;top:14px;height:12px;z-index:2}
+.c-body{padding:14px 16px 12px}
+.c-name{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--navy);padding-bottom:8px}
+.c-name span{font-size:12px;color:#6B7280;font-weight:700}
+.c-name b{font-size:18px;font-weight:900}
+.c-score{display:flex;align-items:center;gap:10px;margin-top:10px}
+.c-score .big{white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:46px;font-weight:700;line-height:1;color:var(--navy)}
+.c-score .big small{font-size:14px;color:#6B7280;margin-left:2px}
+.c-score .meta{font-size:11.5px;color:#4A515C;line-height:1.55;white-space:nowrap}
+.c-score .meta b{font-size:14px;color:var(--ink)}
+.c-lv{margin-left:auto;flex:0 0 auto;max-width:86px;text-align:center;border:3px solid var(--red);color:var(--red);border-radius:12px;padding:5px 6px;transform:rotate(-6deg);font-weight:900;line-height:1.2;background:rgba(255,255,255,.8)}
+.c-lv small{display:block;font-size:9px;letter-spacing:1px}
+.c-lv b{font-size:13.5px}
+.c-mid{display:flex;gap:8px;align-items:center;margin-top:8px}
+.radar{width:150px;height:150px;flex:0 0 150px}
+.fields{flex:1;display:grid;gap:4px}
+.fields div{display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.fields div:last-child{border-bottom:0}
+.fields span{color:#4A515C;font-weight:700}
+.fields b{font-family:'JetBrains Mono',monospace}
+.grid{margin-top:8px;display:grid;grid-template-columns:repeat(25,1fr);gap:2px}
+.grid i{display:block;height:14px;border-radius:2px;background:#E6E9EE}
+.grid i.o{background:var(--go)}.grid i.x{background:#F3B4BA}
+.grid-lab{display:flex;justify-content:space-between;font-size:10px;color:#6B7280;margin-top:3px}
+.c-msg{margin-top:10px;font-size:13px;font-weight:700;color:var(--navy);line-height:1.5}
+.c-foot{margin-top:8px;display:flex;justify-content:space-between;font-size:10px;color:#6B7280}
+.actions{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-save{min-height:54px;border:0;border-radius:14px;background:var(--navy);color:#FFFFFF;font-size:16px;font-weight:900;cursor:pointer}
+.btn-kakao{min-height:54px;border:0;border-radius:14px;background:#FEE500;color:#191919;font-size:16px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.toast{margin-top:10px;text-align:center;font-size:12.5px;color:#6B7280;min-height:16px}
+.once{margin-top:14px;text-align:center;font-size:12.5px;color:#6B7280}
+.panel{margin-top:18px}
+.panel h4{margin:0 0 10px;font-size:16px;font-weight:900;display:flex;align-items:center;gap:8px}
+.panel h4 small{margin-left:auto;font-size:12px;color:var(--red)}
+.wn{border-radius:12px;background:var(--bg);padding:12px;margin-top:8px;font-size:13.5px;line-height:1.55}
+.wn .q{font-weight:900}
+.wn .a{margin-top:4px;color:var(--go);font-weight:900}
+.wn .e{margin-top:4px;color:#4A515C}
+
+/*__BOARDCSS__*/
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="bar" aria-hidden="true"><i></i><i></i></div>
+
+  <!-- 시작 -->
+  <section class="screen on" id="s-start">
+    <div class="hero">
+      <small>26/27년 경영검토회 · 쉬어가는 코너</small>
+      <h1>2026<br>상식 <em>레이스</em></h1>
+      <p>시사와 상식 25문항, 3라운드 한판 승부. 내 상식 주행 레벨과 순위를 확인하세요.</p>
+    </div>
+    <div class="card lift">
+      <div class="rules">
+        <div><b>1라운드</b><span>7문항</span><small>각 2점 · 20초</small></div>
+        <div><b>2라운드</b><span>11문항</span><small>각 4점 · 20초</small></div>
+        <div><b>3라운드</b><span>7문항</span><small>각 6점 · 25초</small></div>
+      </div>
+      <div class="note1">⚠ 한 사람당 <b>한 번만</b> 참여할 수 있어요. 시작하면 중간에 나가도 그때까지의 기록으로 확정됩니다.</div>
+      <div class="lv" id="lv"><h3>주행 레벨 (100점 만점 · 동점이면 빨리 푼 순)</h3></div>
+      <div class="field"><label for="nick">이름</label><input id="nick" type="text" maxlength="10" autocomplete="off" placeholder="예: 김상신"></div>
+      <div class="privacy">이름과 점수는 행사장 순위판과 행사 통계를 위해 저장됩니다. 동명이인이 있으면 이름 뒤에 부서명을 붙여 주세요.</div>
+      <div class="msg" id="start-msg"></div>
+      <button class="primary" id="btn-start" type="button" disabled style="margin-top:6px">레이스 시작</button>
+    </div>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 라운드 인트로 -->
+  <section class="screen" id="s-round"><small id="r-small"></small><h2 id="r-title"></h2><p id="r-desc"></p></section>
+
+  <!-- 문제 -->
+  <section class="screen" id="s-q">
+    <div class="qtop"><span class="rd" id="q-round"></span><span id="q-count"></span></div>
+    <div class="track"><i id="q-fill"></i></div>
+    <div class="timer"><div class="tb"><i id="t-bar"></i></div><span id="t-num">20</span></div>
+    <div class="qcard"><small id="q-field"></small> <span class="pts" id="q-pts"></span><div class="qtext" id="q-text"></div></div>
+    <div class="opts" id="q-opts"></div>
+    <div class="fb" id="q-fb"></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="screen" id="s-result">
+    <div class="rhead"><div class="eyebrow">레이스 완주</div><h2 id="r-head"></h2></div>
+    <div class="cert-wrap"><div class="cert" id="cert"></div></div>
+    <div class="actions">
+      <button class="btn-save" id="btn-save" type="button">이미지 저장</button>
+      <button class="btn-kakao" id="btn-kakao" type="button"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-.9 3.6c-.1.3.3.6.6.4l4.2-2.8c.4 0 .8.1 1.2.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z" fill="#191919"/></svg>카카오톡 공유</button>
+    </div>
+    <div class="toast" id="r-toast"></div>
+    <div class="once">이 레이스는 한 번만 참여할 수 있어요. 기록이 확정되었습니다.</div>
+    <div class="panel card"><h4>오답 노트 <small id="w-count"></small></h4><div id="w-list"></div></div>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 행사장 순위판 (#board) -->
+  <section class="screen" id="s-board">
+    <div class="bd">
+      <div class="bd-top"><img src="__LOGOW__" alt="SANGSIN BRAKE"><div class="ev"><b>26/27년 경영검토회</b>쉬어가는 코너 · 2026 상식 레이스</div></div>
+      <div class="bd-stripe" aria-hidden="true"><i></i><i></i></div>
+      <div class="bd-title"><div><small>QUIZ RACE 2026</small><h1>2026 상식 레이스 <em>순위판</em></h1></div><div class="live"><i></i><span id="b-time">실시간</span></div></div>
+      <div class="bd-main">
+        <div class="bd-card"><h3>TOP 10 · 점수 (동점이면 빨리 푼 순)</h3><div class="podium" id="b-pod"></div><div class="rows" id="b-top"></div></div>
+        <div class="side">
+          <div class="bd-card"><h3>참여 현황</h3><div class="stats" id="b-stats"></div></div>
+          <div class="join"><img src="__QR__" alt="참여 QR"><div><b>지금 QR로 도전!</b><span>25문항 · 약 6분 · 1인 1회<br>100점 만점, 동점이면 빨리 푼 순</span></div></div>
+        </div>
+      </div>
+      <div class="bd-foot"><span id="b-msg">10초마다 자동 갱신</span><span>26/27년 경영검토회 · SANGSIN BRAKE</span></div>
+    </div>
+  </section>
+</main>
+
+<script>/*__H2C__*/</script>
+<script>
+(function(){
+  var CONFIG = { SHEET_URL: "", SHARE_URL: "https://imsean629.github.io/sangsin-leader-2027/quiz/", KEY: "sangsin_quiz_2026" };
+  var QS = /*__QS__*/null, FIELDS = /*__FIELDS__*/null, LEVEL = /*__LEVEL__*/null, GRADES = /*__GRADES__*/null;
+  var FK = ['econ', 'soc', 'intl', 'work', 'sci'], LET = ['A', 'B', 'C', 'D'];
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function clean(v){ return v.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 10); }
+  function show(id){ ['s-start', 's-round', 's-q', 's-result', 's-board'].forEach(function(s){ $(s).classList.toggle('on', s === id); }); window.scrollTo(0, 0); }
+  function gradeOf(s){ for (var i = 0; i < GRADES.length; i++) if (s >= GRADES[i][0] && s <= GRADES[i][1]) return GRADES[i]; return GRADES[0]; }
+  function mmss(ms){ var s = Math.round(ms / 1000); return Math.floor(s / 60) + '분 ' + (s % 60) + '초'; }
+  function store(o){ try { localStorage.setItem(CONFIG.KEY, JSON.stringify(o)); } catch (e) {} }
+  function load(){ try { return JSON.parse(localStorage.getItem(CONFIG.KEY) || 'null'); } catch (e) { return null; } }
+
+  GRADES.forEach(function(g){ var d = el('div'); d.appendChild(el('span', null, g[0] + '~' + g[1] + '점')); d.appendChild(el('b', null, g[2])); $('lv').appendChild(d); });
+
+  // ===== 상태 =====
+  var S = null, timer = null, qStart = 0, lastPng = null, capGen = 0, locked = false;
+  function newState(name){
+    var order = [];
+    ['하', '중', '상'].forEach(function(l){ order = order.concat(shuffle(QS.filter(function(q){ return q[1] === l; }).map(function(q){ return q[0]; }))); });
+    return { v: 1, sid: 'q' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name: name, order: order, i: 0, ans: {}, times: {}, done: false, started: Date.now() };
+  }
+  function qById(id){ for (var i = 0; i < QS.length; i++) if (QS[i][0] === id) return QS[i]; }
+  function calc(){
+    var score = 0, time = 0, f = {}; FK.forEach(function(k){ f[k] = 0; });
+    S.order.forEach(function(id){ var q = qById(id), a = S.ans[id]; time += S.times[id] || LEVEL[q[1]].sec * 1000; if (a === q[5]) { score += LEVEL[q[1]].pts; f[q[2]]++; } });
+    return { score: score, time: time, f: f };
+  }
+
+  // ===== 시작 =====
+  $('nick').addEventListener('input', function(){ $('btn-start').disabled = !clean(this.value); $('start-msg').textContent = ''; });
+  $('btn-start').addEventListener('click', function(){
+    var name = clean($('nick').value); if (!name || locked) return;
+    var b = this; b.disabled = true; b.textContent = '확인 중…';
+    checkName(name).then(function(exists){
+      if (exists) { $('start-msg').textContent = '이미 같은 이름으로 참여한 기록이 있어요. 동명이인이면 이름 뒤에 부서명을 붙여 주세요.'; b.disabled = false; b.textContent = '레이스 시작'; return; }
+      S = newState(name); store(S); runRound(0);
+    });
+  });
+  function checkName(name){
+    if (!CONFIG.SHEET_URL) return Promise.resolve(false);
+    return Promise.race([
+      fetch(CONFIG.SHEET_URL + '?type=quiz&name=' + encodeURIComponent(name) + '&t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){ return !!d.exists; }),
+      new Promise(function(res){ setTimeout(function(){ res(false); }, 5000); })
+    ]).catch(function(){ return false; });
+  }
+
+  // ===== 라운드 / 문제 =====
+  var ROUNDS = [['하', 0, 7], ['중', 7, 18], ['상', 18, 25]];
+  function roundIdx(i){ return i < 7 ? 0 : i < 18 ? 1 : 2; }
+  function runRound(r){
+    var L = LEVEL[ROUNDS[r][0]];
+    $('r-small').textContent = 'ROUND ' + (r + 1); $('r-title').textContent = L.round.split(' · ')[1];
+    $('r-desc').textContent = (ROUNDS[r][2] - ROUNDS[r][1]) + '문항 · 문항당 ' + L.pts + '점 · 제한시간 ' + L.sec + '초';
+    show('s-round'); setTimeout(renderQ, 1600);
+  }
+  function renderQ(){
+    var id = S.order[S.i], q = qById(id), L = LEVEL[q[1]], ri = roundIdx(S.i);
+    $('q-round').textContent = L.round; $('q-count').textContent = (S.i + 1) + ' / 25';
+    $('q-fill').style.width = ((S.i + 1) / 25 * 100) + '%';
+    $('q-field').textContent = FIELDS[q[2]]; var p = $('q-pts'); p.textContent = '+' + L.pts + '점'; p.className = 'pts l' + (ri + 1);
+    $('q-text').textContent = q[3];
+    var box = $('q-opts'); box.innerHTML = ''; box.className = 'opts' + (q[4].length === 2 ? ' ox' : '');
+    var idx = q[4].length === 2 ? [0, 1] : shuffle([0, 1, 2, 3]);
+    idx.forEach(function(oi, k){
+      var b = el('button', 'opt'); b.type = 'button'; b.setAttribute('data-i', oi);
+      b.appendChild(el('b', null, LET[k])); b.appendChild(el('span', null, q[4][oi]));
+      b.addEventListener('click', function(){ choose(oi, b); });
+      box.appendChild(b);
+    });
+    $('q-fb').textContent = ''; $('q-fb').className = 'fb';
+    show('s-q'); qStart = performance.now(); tick(L.sec * 1000);
+  }
+  function tick(limit){
+    clearInterval(timer);
+    var bar = $('t-bar'), num = $('t-num');
+    function upd(){
+      var left = Math.max(0, limit - (performance.now() - qStart));
+      bar.style.width = (left / limit * 100) + '%'; bar.classList.toggle('warn', left < 5000);
+      num.textContent = Math.ceil(left / 1000);
+      if (left <= 0) { clearInterval(timer); choose(-1, null); }
+    }
+    upd(); timer = setInterval(upd, 100);
+  }
+  function choose(oi, btn){
+    var id = S.order[S.i]; if (S.ans[id] !== undefined) return;
+    clearInterval(timer);
+    var q = qById(id), L = LEVEL[q[1]];
+    S.ans[id] = oi; S.times[id] = oi < 0 ? L.sec * 1000 : Math.min(L.sec * 1000, Math.round(performance.now() - qStart));
+    S.i++; store(S);
+    Array.prototype.forEach.call($('q-opts').children, function(c){ c.disabled = true; });
+    var ok = oi === q[5], fb = $('q-fb');
+    if (btn) btn.classList.add(ok ? 'right' : 'wrong');
+    fb.className = 'fb ' + (ok ? 'o' : 'x'); fb.textContent = oi < 0 ? '시간 초과!' : ok ? '정답! +' + L.pts + '점' : '아쉬워요, 오답';
+    setTimeout(function(){
+      if (S.i >= 25) finish();
+      else if (roundIdx(S.i) !== roundIdx(S.i - 1)) runRound(roundIdx(S.i));
+      else renderQ();
+    }, 900);
+  }
+
+  // ===== 종료 / 기록 =====
+  function finish(aborted){
+    clearInterval(timer);
+    S.order.forEach(function(id){ if (S.ans[id] === undefined) { S.ans[id] = -1; S.times[id] = LEVEL[qById(id)[1]].sec * 1000; } });
+    S.i = 25; S.done = true; S.aborted = !!aborted;
+    var c = calc(); S.score = c.score; S.time = c.time; S.f = c.f; store(S);
+    submit(); renderResult();
+  }
+  function submit(){
+    if (!CONFIG.SHEET_URL || S.sent) return;
+    var g = gradeOf(S.score);
+    var row = { kind: 'quiz', sid: S.sid, nickname: S.name, score: S.score, level: g[2], time_ms: S.time,
+      f_econ: S.f.econ, f_soc: S.f.soc, f_intl: S.f.intl, f_work: S.f.work, f_sci: S.f.sci,
+      answers: S.order.map(function(id){ var q = qById(id); return id + (S.ans[id] === q[5] ? 'O' : 'X'); }).join(' '),
+      note: S.aborted ? '중도 이탈' : '', ts: new Date().toISOString() };
+    fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(row) })
+      .then(function(){ S.sent = true; store(S); setTimeout(loadRank, 2500); }).catch(function(){});
+  }
+  function loadRank(){
+    if (!CONFIG.SHEET_URL) return;
+    fetchBoard().then(function(d){
+      var list = d.list || [], better = 0, n = list.length, me = false;
+      list.forEach(function(x){ if (x[0] > S.score || (x[0] === S.score && x[1] < S.time)) better++; if (x[0] === S.score && x[1] === S.time) me = true; });
+      if (!me) n++;
+      S.rank = [better + 1, n]; store(S);
+      var r = $('c-rank'); if (r) { r.textContent = n + '명 중 ' + (better + 1) + '위'; lastPng = null; capGen++; }
+    }).catch(function(){});
+  }
+  function radarSVG(f){
+    var cx = 75, cy = 78, R = 56, n = 5, pts = [], grid = '', axes = '', labs = '';
+    function pt(i, r){ var a = -Math.PI / 2 + i * 2 * Math.PI / n; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }
+    [0.2, 0.4, 0.6, 0.8, 1].forEach(function(k){ grid += '<polygon points="' + FK.map(function(_, i){ return pt(i, R * k).join(','); }).join(' ') + '" fill="none" stroke="#E2E5EA" stroke-width="1"/>'; });
+    FK.forEach(function(k, i){
+      var e = pt(i, R); axes += '<line x1="' + cx + '" y1="' + cy + '" x2="' + e[0] + '" y2="' + e[1] + '" stroke="#E2E5EA"/>';
+      pts.push(pt(i, R * Math.max(0.04, f[k] / 5)).join(','));
+      var l = pt(i, R + 12); labs += '<text x="' + l[0] + '" y="' + (l[1] + 4) + '" text-anchor="middle" font-size="10" font-weight="700" fill="#4A515C">' + FIELDS[k].split('·')[0] + '</text>';
+    });
+    return '<svg class="radar" viewBox="0 0 150 156" xmlns="http://www.w3.org/2000/svg">' + grid + axes + '<polygon points="' + pts.join(' ') + '" fill="rgba(230,0,19,.25)" stroke="#E60013" stroke-width="2"/>' + labs + '</svg>';
+  }
+  function renderResult(){
+    var g = gradeOf(S.score);
+    $('app').setAttribute('data-score', S.score);
+    $('r-head').innerHTML = ''; $('r-head').appendChild(document.createTextNode(S.name + ' 님은 ')); var hb = el('b', null, g[2]); hb.style.color = 'var(--red)'; $('r-head').appendChild(hb);
+    var c = $('cert'); c.innerHTML = '';
+    var top = el('div', 'c-top'); top.appendChild(el('small', null, 'QUIZ RACE 2026')); top.appendChild(el('h3', null, '2026 상식 레이스 기록증'));
+    var lg = new Image(); lg.src = '__LOGOW__'; lg.alt = 'SANGSIN BRAKE'; top.appendChild(lg); c.appendChild(top);
+    var body = el('div', 'c-body');
+    var nm = el('div', 'c-name'); nm.appendChild(el('span', null, '드라이버')); nm.appendChild(el('b', null, S.name)); body.appendChild(nm);
+    var sc = el('div', 'c-score'); var big = el('div', 'big'); big.appendChild(document.createTextNode(String(S.score))); big.appendChild(el('small', null, '/100')); sc.appendChild(big);
+    var meta = el('div', 'meta'); var rk = el('b', null, S.rank ? S.rank[1] + '명 중 ' + S.rank[0] + '위' : (CONFIG.SHEET_URL ? '순위 집계 중…' : '')); rk.id = 'c-rank'; meta.appendChild(rk); meta.appendChild(el('br'));
+    meta.appendChild(document.createTextNode('맞힌 문항 ' + S.order.filter(function(id){ return S.ans[id] === qById(id)[5]; }).length + '/25')); meta.appendChild(el('br'));
+    meta.appendChild(document.createTextNode('주행 시간 ' + mmss(S.time))); sc.appendChild(meta);
+    var lv = el('div', 'c-lv'); lv.appendChild(el('small', null, 'LEVEL')); lv.appendChild(el('b', null, g[2])); sc.appendChild(lv); body.appendChild(sc);
+    var mid = el('div', 'c-mid'); mid.insertAdjacentHTML('beforeend', radarSVG(S.f));
+    var fl = el('div', 'fields'); FK.forEach(function(k){ var d = el('div'); d.appendChild(el('span', null, FIELDS[k])); d.appendChild(el('b', null, S.f[k] + '/5')); fl.appendChild(d); }); mid.appendChild(fl); body.appendChild(mid);
+    var gr = el('div', 'grid'); S.order.forEach(function(id){ gr.appendChild(el('i', S.ans[id] === qById(id)[5] ? 'o' : 'x')); }); body.appendChild(gr);
+    var gl = el('div', 'grid-lab'); gl.appendChild(el('span', null, '1라운드')); gl.appendChild(el('span', null, '2라운드')); gl.appendChild(el('span', null, '3라운드')); body.appendChild(gl);
+    body.appendChild(el('div', 'c-msg', '“' + g[3] + '”'));
+    var ft = el('div', 'c-foot'); ft.appendChild(el('span', null, '26/27년 경영검토회')); ft.appendChild(el('span', null, new Date(S.started).toLocaleDateString('ko-KR'))); body.appendChild(ft);
+    c.appendChild(body);
+    var wl = $('w-list'); wl.innerHTML = ''; var wrong = S.order.filter(function(id){ return S.ans[id] !== qById(id)[5]; });
+    wrong.forEach(function(id){ var q = qById(id), d = el('div', 'wn'); d.appendChild(el('div', 'q', q[3])); d.appendChild(el('div', 'a', '정답: ' + q[4][q[5]])); d.appendChild(el('div', 'e', q[6])); wl.appendChild(d); });
+    if (!wrong.length) wl.appendChild(el('div', 'wn', '틀린 문제가 없습니다. 완벽한 주행이었어요!'));
+    $('w-count').textContent = wrong.length ? wrong.length + '문항' : '';
+    lastPng = null; capGen++;
+    show('s-result');
+    setTimeout(function(){ capture().catch(function(){}); }, 700);
+    if (!S.rank) setTimeout(loadRank, S.sent ? 300 : 3000);
+  }
+
+  // ===== 이미지 저장 / 공유 =====
+  function capture(){
+    if (lastPng) return Promise.resolve(lastPng);
+    var g = capGen; if (!window.html2canvas) return Promise.reject(new Error('no-h2c'));
+    return window.html2canvas($('cert'), { scale: 3, backgroundColor: '#FFFFFF', logging: false }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(function(b){ var p = { blob: b, url: URL.createObjectURL(b) }; if (g === capGen) lastPng = p; res(p); }, 'image/png'); });
+    });
+  }
+  function fileName(){ return '상식레이스_' + S.score + '점_' + S.name.replace(/[\\/:*?"<>|\s]+/g, '_') + '.png'; }
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function toast(t){ $('r-toast').textContent = t; }
+  function saveNow(p){
+    var file = null; try { file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+    if (isIOS && file && navigator.canShare && navigator.canShare({ files: [file] })) return navigator.share({ files: [file], title: '2026 상식 레이스 기록증' }).then(function(){ toast('기록증을 저장했어요.'); }, function(){});
+    var a = document.createElement('a'); a.href = p.url; a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
+    toast('기록증을 저장했어요. 사진첩 또는 다운로드 폴더를 확인하세요.');
+  }
+  $('btn-save').addEventListener('click', function(){
+    if (lastPng) { saveNow(lastPng); return; }
+    var b = this, lbl = b.textContent; b.disabled = true; b.textContent = '이미지 만드는 중…';
+    capture().then(saveNow).catch(function(){ toast('이미지를 만들지 못했어요. 화면을 캡처해 주세요.'); }).then(function(){ b.disabled = false; b.textContent = lbl; });
+  });
+  function shareText(){ return '[26/27년 경영검토회] ' + S.name + ' 님의 2026 상식 레이스 결과: ' + S.score + '점 「' + gradeOf(S.score)[2] + '」' + (S.rank ? ' · ' + S.rank[1] + '명 중 ' + S.rank[0] + '위' : '') + '! 도전 → ' + CONFIG.SHARE_URL; }
+  $('btn-kakao').addEventListener('click', function(){
+    var p = lastPng;
+    if (navigator.share) {
+      var data = { title: '2026 상식 레이스', text: shareText() };
+      var file = null; try { if (p) file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) data.files = [file]; else data.url = CONFIG.SHARE_URL;
+      navigator.share(data).then(function(){ toast('공유했어요.'); }, function(e){ if (e && e.name === 'AbortError') return; if (data.files) { delete data.files; data.url = CONFIG.SHARE_URL; navigator.share(data).catch(function(){}); } });
+      return;
+    }
+    var t = shareText();
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast('공유 문구를 복사했어요. 카카오톡 대화창에 붙여넣어 주세요.'); }, function(){ toast('공유 링크: ' + CONFIG.SHARE_URL); });
+  });
+
+  // ===== 행사장 순위판 =====
+  function fetchBoard(){ return fetch(CONFIG.SHEET_URL + '?type=quiz&t=' + Date.now()).then(function(r){ return r.json(); }); }
+  var DISC = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="#fff" stroke-width="8"/><circle cx="50" cy="50" r="16" fill="#fff"/><g fill="#fff"><circle cx="50" cy="22" r="4"/><circle cx="78" cy="50" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/></g></svg>';
+  var boardTimer = null;
+  function renderBoard(){
+    show('s-board'); $('app').classList.add('board-mode');
+    if (!CONFIG.SHEET_URL) { $('b-msg').textContent = '순위판은 응답 저장(Google 시트) 연결 후 표시됩니다.'; return; }
+    fetchBoard().then(function(d){
+      var list = (d.top || []).slice(0, 10);
+      var pod = $('b-pod'); pod.innerHTML = '';
+      [1, 0, 2].forEach(function(i){
+        var x = list[i], c = el('div', 'pd p' + (i + 1) + (x ? '' : ' empty'));
+        c.innerHTML = DISC; c.appendChild(el('div', 'rk', (i + 1) + '위'));
+        c.appendChild(el('div', 'nm', x ? x.nickname : '도전자 대기 중')); c.appendChild(el('div', 'tm', x ? x.score + '점' : '-'));
+        if (x) c.appendChild(el('div', 'rk', mmss(x.time)));
+        pod.appendChild(c);
+      });
+      var top = $('b-top'); top.innerHTML = '';
+      for (var i = 3; i < 10; i++) { var x = list[i], r = el('div', 'brow'); r.appendChild(el('b', null, String(i + 1))); r.appendChild(el('span', null, x ? x.nickname : '')); r.appendChild(el('span', null, x ? x.score + '점 · ' + mmss(x.time) : '')); if (!x) r.style.opacity = '.45'; top.appendChild(r); }
+      var st = $('b-stats'); st.innerHTML = '';
+      [['참여 인원', String(d.count || 0), '명', ''], ['평균 점수', d.count ? String(d.avg) : '-', d.count ? '점' : '', ''], ['최고 점수', list[0] ? String(list[0].score) : '-', list[0] ? '점' : '', 'hi']].forEach(function(x){
+        var r = el('div', 'stat ' + x[3]); r.appendChild(el('span', null, x[0])); var b = el('b', null, x[1]); if (x[2]) b.appendChild(el('small', null, x[2])); r.appendChild(b); st.appendChild(r);
+      });
+      $('b-msg').textContent = '총 ' + (d.count || 0) + '명 완주 · 10초마다 자동 갱신';
+      $('b-time').textContent = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) + ' 기준 실시간';
+    }).catch(function(){ $('b-msg').textContent = '순위를 불러오지 못했습니다. 잠시 후 다시 시도합니다.'; });
+    clearTimeout(boardTimer); boardTimer = setTimeout(renderBoard, 10000);
+  }
+
+  // ===== 1인 1회: 이 기기에서 이미 시작했으면 결과로 =====
+  // 관리자가 시트에서 내 기록(행 또는 '상식퀴즈' 탭)을 지우면 → 이 기기의 잠금도 자동 해제
+  function serverHas(sid){
+    return Promise.race([
+      fetch(CONFIG.SHEET_URL + '?type=quiz&sid=' + encodeURIComponent(sid) + '&t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){ return d.exists === false ? false : true; }),
+      new Promise(function(res){ setTimeout(function(){ res(true); }, 5000); })
+    ]).catch(function(){ return true; });
+  }
+  function boot(){
+    if (location.hash === '#board') { renderBoard(); return; }
+    var saved = load();
+    if (!saved || saved.v !== 1) return;
+    if (saved.done && saved.sent && CONFIG.SHEET_URL) {
+      $('btn-start').textContent = '참여 기록 확인 중…'; locked = true;
+      serverHas(saved.sid).then(function(has){
+        $('btn-start').textContent = '레이스 시작';
+        if (!has) { try { localStorage.removeItem(CONFIG.KEY); } catch (e) {} locked = false; $('btn-start').disabled = !clean($('nick').value); return; }
+        S = saved; renderResult();
+      });
+      return;
+    }
+    S = saved; locked = true;
+    if (!S.done) finish(true); else { renderResult(); if (!S.sent) submit(); }
+  }
+  window.addEventListener('hashchange', function(){ if (location.hash === '#board') renderBoard(); });
+  boot();
+  window.__QZ = { state: function(){ return S; }, qById: qById, calc: calc };
+})();
+</script>
+</body>
+</html>

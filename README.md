@@ -12,3 +12,5 @@
 - 2027 포춘쿠키: https://imsean629.github.io/sangsin-leader-2027/fortune/
 - 속마음 타이머: https://imsean629.github.io/sangsin-leader-2027/count/ (순위판: #board)
 - AI 운전면허 시험 + 2부 AI 관점 설문: https://imsean629.github.io/sangsin-leader-2027/ai/ (집계: #board, 관점: #view)
+
+- 제작 키트(소스): _src/README.md — 새 스레드에서 같은 형태로 만들 때 출발점

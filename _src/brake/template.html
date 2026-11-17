@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>브레이크 반응속도 챌린지 — 26/27년 경영검토회</title>
+<meta name="description" content="빨간불이 켜지는 순간, 브레이크! 상신브레이크 반응속도 챌린지">
+<meta property="og:type" content="website">
+<meta property="og:title" content="브레이크 반응속도 챌린지">
+<meta property="og:description" content="26/27년 경영검토회 · 빨간불이 켜지는 순간 브레이크! 나의 반응속도는?">
+<meta property="og:url" content="https://imsean629.github.io/sangsin-leader-2027/brake/">
+<meta property="og:image" content="https://imsean629.github.io/sangsin-leader-2027/brake/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@700&display=swap">
+<style>
+:root{--red:#E60013;--blue:#004098;--navy:#0B1B36;--ink:#16191E;--sub:#4A515C;--line:#E2E5EA;--go:#18C964;--amber:#FFC24B}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:#070F20;color:#FFFFFF;font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+button,input{font-family:inherit;color:inherit}
+.app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative;display:flex;flex-direction:column;background:radial-gradient(120% 60% at 50% 0%,#1B3466 0%,#0B1B36 55%,#070F20 100%)}
+.bar{height:6px;display:flex}.bar i{display:block;height:6px}.bar i:first-child{flex:7;background:var(--red)}.bar i:last-child{flex:3;background:var(--blue)}
+.screen{display:none;flex:1;flex-direction:column;padding:20px 22px 26px}
+.screen.on{display:flex}
+.eyebrow{font-size:13px;font-weight:700;color:var(--amber);letter-spacing:1px}
+.mono{font-family:'JetBrains Mono',monospace}
+.primary{width:100%;min-height:60px;border:0;border-radius:16px;background:var(--red);color:#FFFFFF;font-size:19px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #8E000B}
+.primary[disabled]{background:#4A515C;box-shadow:none;cursor:default}
+.ghost{width:100%;min-height:52px;border:2px solid rgba(255,255,255,.45);border-radius:14px;background:transparent;color:#FFFFFF;font-size:16px;font-weight:700;cursor:pointer}
+.foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;color:#9FB0C8}
+.foot img{height:14px;width:auto}
+
+/* 시작 */
+h1.title{margin:12px 0 0;font-size:38px;line-height:1.18;font-weight:900;letter-spacing:-1.2px}
+h1.title em{font-style:normal;color:#FF4D57}
+.lead{margin:12px 0 0;font-size:16.5px;line-height:1.6;color:#DCE3EE}
+.lights-demo{margin:22px auto 4px;display:flex;gap:14px;padding:14px 20px;border-radius:40px;background:#111;border:3px solid #2A3240}
+.lights-demo i{width:42px;height:42px;border-radius:50%;background:#2A2F38}
+.lights-demo i.g{background:var(--go);box-shadow:0 0 16px var(--go)}
+.lights-demo i.r{background:var(--red);box-shadow:0 0 16px var(--red);animation:blink 1.6s steps(1) infinite}
+@keyframes blink{50%{background:#2A2F38;box-shadow:none}}
+.rules{margin-top:18px;display:grid;gap:9px}
+.rules div{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:#DCE3EE}
+.rules b{flex:0 0 24px;height:24px;border-radius:12px;background:#FFFFFF;color:var(--navy);font-size:13px;display:flex;align-items:center;justify-content:center}
+.field{margin-top:18px}
+.field label{display:block;font-size:13px;font-weight:900;margin-bottom:6px;color:#DCE3EE}
+.field input{width:100%;min-height:54px;border:2px solid rgba(255,255,255,.35);border-radius:14px;padding:0 14px;font-size:18px;font-weight:700;background:rgba(255,255,255,.06);color:#FFFFFF}
+.field input::placeholder{color:#7E8BA0}
+.field input:focus{outline:none;border-color:var(--amber)}
+.privacy{margin-top:12px;font-size:12.5px;line-height:1.55;color:#9FB0C8}
+.start-btn{margin-top:18px}
+
+/* 게임 */
+#s-game{padding:14px 16px 18px;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.hud{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:#9FB0C8}
+.hud b{color:#FFFFFF;font-size:16px}
+.pips{display:flex;gap:6px}.pips i{width:28px;height:6px;border-radius:3px;background:rgba(255,255,255,.18)}.pips i.done{background:var(--amber)}.pips i.now{background:#FFFFFF}
+.stage{position:relative;flex:1;margin-top:12px;border-radius:22px;overflow:hidden;background:linear-gradient(#0E2147 0%,#16305E 45%,#2B2F38 46%,#1E2129 100%);display:flex;flex-direction:column;align-items:center;cursor:pointer;min-height:520px}
+.stage.stop{background:linear-gradient(#3A0A10 0%,#5A0E16 45%,#2B2F38 46%,#1E2129 100%)}
+.signal{margin-top:26px;display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:28px;background:#0B0C0F;border:4px solid #2A3240;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.signal i{width:74px;height:74px;border-radius:50%;background:#16181D;box-shadow:inset 0 0 0 3px #22262E}
+.signal i.g.on{background:#2BE07A;box-shadow:0 0 34px #2BE07A}
+.signal i.r.on{background:#FF2A3A;box-shadow:0 0 50px #FF2A3A,0 0 0 4px rgba(255,255,255,.25)}
+.msg{margin-top:18px;text-align:center;font-size:24px;font-weight:900;min-height:64px;line-height:1.3;padding:0 12px}
+.msg small{display:block;font-size:14px;font-weight:500;color:#C9D2E0;margin-top:4px}
+.road{position:absolute;left:0;right:0;bottom:0;height:54%;overflow:hidden;pointer-events:none}
+.road::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:10px;margin-left:-5px;background:repeating-linear-gradient(to bottom,#FFC24B 0 34px,transparent 34px 72px);animation:drive .45s linear infinite}
+.stage.idle .road::before,.stage.stop .road::before,.stage.done .road::before{animation-play-state:paused}
+@keyframes drive{from{background-position:0 0}to{background-position:0 72px}}
+.road::after{content:"";position:absolute;left:8%;right:8%;bottom:0;height:100%;border-left:4px solid rgba(255,255,255,.35);border-right:4px solid rgba(255,255,255,.35);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%)}
+.speed{position:absolute;left:16px;bottom:118px;font-size:12px;color:#9FB0C8;pointer-events:none}
+.speed b{display:block;font-size:30px;color:#FFFFFF;line-height:1}
+.pedal{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:76%;max-width:300px;height:92px;border-radius:22px;border:0;background:linear-gradient(#3A3F4A,#20242C);box-shadow:inset 0 -6px 0 rgba(0,0,0,.4),0 6px 0 #0B0C0F;color:#FFFFFF;font-size:22px;font-weight:900;letter-spacing:2px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer}
+.pedal i{display:block;width:120px;height:10px;border-radius:5px;background:repeating-linear-gradient(90deg,#5A606B 0 10px,transparent 10px 16px)}
+.stage.stop .pedal{background:linear-gradient(#FF2B3A,#C00010);box-shadow:inset 0 -6px 0 rgba(0,0,0,.25),0 6px 0 #6E0009}
+.pedal:active{transform:translateX(-50%) translateY(4px)}
+.flash{position:absolute;inset:0;pointer-events:none;background:#FFFFFF;opacity:0}
+.flash.go{animation:fl .25s ease-out}
+@keyframes fl{0%{opacity:.35}100%{opacity:0}}
+
+/* 결과 */
+.rhead{text-align:center}
+.rhead h2{margin:6px 0 0;font-size:22px;font-weight:900;line-height:1.35}
+.rhead h2 b{color:var(--amber)}
+.card-wrap{margin:16px auto 0;width:100%;max-width:360px}
+.lic{position:relative;border-radius:18px;padding:9px;background:linear-gradient(135deg,#FF4D57,#E60013 40%,#8E000B 70%,#FF6B61);box-shadow:0 16px 36px rgba(0,0,0,.5)}
+.lic-in{border-radius:11px;overflow:hidden;background:#FFFFFF;color:var(--ink)}
+.lic-top{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--navy);color:#FFFFFF}
+.lic-top b{font-size:15px;font-weight:900;letter-spacing:.5px}
+.lic-top span{font-size:11px;color:#C9D2E0}
+.lic-hero{display:flex;align-items:center;gap:14px;padding:14px 14px 8px}
+.gauge{position:relative;flex:0 0 118px;height:118px}
+.gauge svg{width:118px;height:118px;display:block}
+.gauge div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.gauge div b{font-size:23px;font-weight:900;letter-spacing:-1.5px}
+.gauge div span{font-size:11px;color:#4A515C;margin-top:4px;font-weight:700}
+.who{flex:1;min-width:0}
+.who small{display:block;font-size:11px;font-weight:700;color:#6B7280}
+.who .nick{font-size:22px;font-weight:900;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who .team{font-size:13px;color:#4A515C;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grade{display:inline-block;margin-top:8px;padding:5px 10px;border-radius:8px;background:var(--red);color:#FFFFFF;font-size:14px;font-weight:900}
+.lic-rows{margin:4px 14px 0;border-top:1.5px solid #E2E5EA}
+.lic-rows div{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dashed #D5D9E0;font-size:13.5px}
+.lic-rows div span{color:#4A515C;font-weight:700}
+.lic-rows div b{font-size:15px;font-weight:900}
+.dist{margin:10px 14px 0;padding:10px 12px;border-radius:10px;background:#F4F6F9}
+.dist h5{margin:0;font-size:11.5px;font-weight:900;color:#0B1B36}
+.dbar{margin-top:7px;height:16px;border-radius:8px;background:#E2E5EA;display:flex;overflow:hidden}
+.dbar i{display:block;height:16px}
+.dbar .a{background:#FF4D57}.dbar .b{background:#004098}
+.dleg{margin-top:5px;display:flex;justify-content:space-between;font-size:11px;color:#4A515C}
+.dist p{margin:6px 0 0;font-size:10.5px;color:#6B7280;line-height:1.4}
+.quote{margin:10px 14px 0;font-size:14px;line-height:1.5;font-weight:700;color:#0B1B36}
+.quote em{font-style:normal;color:var(--red)}
+.lic-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 14px 12px;font-size:10.5px;color:#6B7280}
+.lic-foot img{height:12px;width:auto}
+.actions{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-save{min-height:56px;border:0;border-radius:14px;background:linear-gradient(180deg,#FCE79A,#E8C35A 60%,#C99A2E);color:#2A1F05;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 4px 0 #8A6316}
+.btn-kakao{min-height:56px;border:0;border-radius:14px;background:#FEE500;color:#191919;font-size:16px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 0 #C9B400}
+.toast{margin-top:10px;text-align:center;font-size:12.5px;color:#AEBBD0;min-height:16px}
+.panel{margin-top:20px;border-radius:16px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);padding:16px}
+.panel h4{margin:0;font-size:16px;font-weight:900;display:flex;align-items:center;gap:8px}
+.panel h4 small{margin-left:auto;font-size:12px;color:var(--amber)}
+.panel p{margin:8px 0 0;font-size:14.5px;line-height:1.6;color:#DCE3EE}
+.laps{margin-top:10px;display:grid;gap:8px}
+.lap{display:grid;grid-template-columns:54px 1fr 70px;gap:8px;align-items:center;font-size:13px}
+.lap .lb{height:10px;border-radius:5px;background:rgba(255,255,255,.12);overflow:hidden}.lap .lb i{display:block;height:10px;border-radius:5px;background:var(--amber)}
+.lap span:last-child{text-align:right;font-weight:700}
+.rank-list{margin-top:10px;display:grid;gap:6px}
+.rank-list div{display:grid;grid-template-columns:28px 1fr 72px;gap:8px;align-items:center;font-size:14px;padding:7px 10px;border-radius:10px;background:rgba(0,0,0,.2)}
+.rank-list div.me{background:rgba(255,194,75,.18);border:1px solid var(--amber)}
+.rank-list b{color:var(--amber)}
+.rank-list span:last-child{text-align:right;font-weight:700}
+
+/* 순위판 (#board) — 상신브레이크 CI */
+#s-board{padding:0;background:#F4F6F9;color:#16191E;min-height:100vh;min-height:100dvh}
+#s-board.on{display:flex}
+.bd{position:relative;flex:1;display:flex;flex-direction:column;min-height:100vh;overflow:hidden}
+.bd-top{position:relative;background:#004098;color:#FFFFFF;padding:2.2vh 3.2vw;display:flex;align-items:center;gap:2vw;overflow:hidden}
+.bd-top::after{content:"";position:absolute;right:-6vw;top:0;bottom:0;width:38vw;background:#E60013;transform:skewX(-24deg)}
+.bd-top img{position:relative;z-index:1;height:3.4vh;width:auto}
+.bd-top .ev{position:relative;z-index:1;margin-left:auto;text-align:right;font-size:1.9vh;font-weight:700;line-height:1.35}
+.bd-top .ev b{display:block;font-size:2.6vh;font-weight:900}
+.bd-stripe{height:.9vh;display:flex}.bd-stripe i{display:block}.bd-stripe i:first-child{flex:7;background:#E60013}.bd-stripe i:last-child{flex:3;background:#0B1B36}
+.bd-title{padding:3vh 3.2vw 1.6vh;display:flex;align-items:flex-end;gap:1.4vw}
+.bd-title small{display:block;font-size:1.9vh;font-weight:900;color:#E60013;letter-spacing:.3em}
+.bd-title h1{margin:.4vh 0 0;font-size:5.6vh;font-weight:900;letter-spacing:-.04em;line-height:1.05;color:#0B1B36}
+.bd-title h1 em{font-style:normal;color:#E60013}
+.bd-title .live{margin-left:auto;display:flex;align-items:center;gap:.6vw;font-size:1.9vh;font-weight:700;color:#4A515C}
+.bd-title .live i{width:1.2vh;height:1.2vh;border-radius:50%;background:#E60013;animation:bdp 1.4s infinite}
+@keyframes bdp{50%{opacity:.25}}
+.bd-main{flex:1;display:grid;grid-template-columns:1.55fr 1fr;gap:2vw;padding:0 3.2vw 2.4vh}
+.bd-card{background:#FFFFFF;border-radius:1.4vh;box-shadow:0 .4vh 1.6vh rgba(11,27,54,.08);padding:2.4vh 1.8vw;display:flex;flex-direction:column;min-height:0}
+.bd-card h3{margin:0 0 1.6vh;font-size:2.3vh;font-weight:900;color:#0B1B36;display:flex;align-items:center;gap:.6vw}
+.bd-card h3::before{content:"";width:.5vw;min-width:5px;height:2.3vh;background:#E60013}
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:1vw;align-items:end;margin-bottom:1.6vh}
+.pd{border-radius:1.2vh;padding:1.6vh .8vw;text-align:center;color:#FFFFFF;position:relative;overflow:hidden}
+.pd .rk{font-size:2vh;font-weight:900;opacity:.9}
+.pd .nm{margin-top:.6vh;font-size:3vh;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pd .tm{margin-top:.4vh;font-family:'JetBrains Mono',monospace;font-size:3.6vh;font-weight:700}
+.pd.p1{background:#E60013;min-height:20vh;display:flex;flex-direction:column;justify-content:center}
+.pd.p1 .nm{font-size:3.8vh}.pd.p1 .tm{font-size:4.6vh}
+.pd.p2,.pd.p3{background:#004098;min-height:15vh;display:flex;flex-direction:column;justify-content:center}
+.pd.p3{background:#0B1B36}
+.pd.empty{background:#E9EDF3;color:#9AA3B1}
+.pd svg{position:absolute;right:-2.6vh;bottom:-2.6vh;width:10vh;height:10vh;opacity:.18}
+.rows{flex:1;display:grid;grid-auto-rows:minmax(0,1fr);gap:.6vh;min-height:0}
+.brow{display:grid;grid-template-columns:5vh 1fr auto;gap:1vw;align-items:center;padding:0 1vw;border-radius:.8vh;font-size:2.4vh;font-weight:700;background:#F4F6F9;min-height:4.4vh}
+.brow b{font-size:2.4vh;font-weight:900;color:#004098}
+.brow span:last-child{font-family:'JetBrains Mono',monospace;font-weight:700;color:#0B1B36}
+.side{display:flex;flex-direction:column;gap:2vw}
+.side .bd-card{flex:1}
+.stats{flex:1;align-content:space-evenly}
+.stats{display:grid;gap:1.2vh}
+.stat{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #E2E5EA;padding:1vh 0}
+.stat span{font-size:2.1vh;font-weight:700;color:#4A515C}
+.stat b{font-family:'JetBrains Mono',monospace;font-size:4.2vh;font-weight:700;color:#0B1B36}
+.stat b small{font-family:'Noto Sans KR',sans-serif;font-size:2vh;margin-left:.3vw;color:#4A515C}
+.stat.hi b{color:#E60013}
+.join{background:#0B1B36;color:#FFFFFF;border-radius:1.4vh;padding:2.4vh 1.8vw;display:flex;align-items:center;gap:1.6vw;position:relative;overflow:hidden}
+.join::before{content:"";position:absolute;left:0;top:0;bottom:0;width:.8vh;background:#E60013}
+.join img{width:17vh;height:17vh;background:#FFFFFF;padding:.8vh;border-radius:1vh;flex:0 0 auto}
+.join b{display:block;font-size:3.2vh;font-weight:900;line-height:1.3}
+.join span{display:block;margin-top:.8vh;font-size:1.9vh;color:#C9D2E0;line-height:1.5}
+.bd-foot{display:flex;align-items:center;justify-content:space-between;padding:1.4vh 3.2vw;border-top:1px solid #E2E5EA;background:#FFFFFF;font-size:1.7vh;color:#4A515C}
+.bd-foot img{height:2.2vh;width:auto}
+.app.board-mode{max-width:none!important;background:#F4F6F9}
+.app.board-mode > .bar{display:none}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="bar" aria-hidden="true"><i></i><i></i></div>
+
+  <!-- 시작 -->
+  <section class="screen on" id="s-start">
+    <div class="eyebrow">26/27년 경영검토회 · 쉬어가는 코너 2</div>
+    <h1 class="title">빨간불이 켜지는 순간,<br><em>브레이크!</em></h1>
+    <p class="lead">상신브레이크 임직원의 반응속도는 몇 초일까요? 3번 밟아 최고 기록에 도전하세요.</p>
+    <div class="lights-demo" aria-hidden="true"><i class="g"></i><i></i><i class="r"></i></div>
+    <div class="rules">
+      <div><b>1</b><span>초록불이 켜지면 주행 중. 기다리세요.</span></div>
+      <div><b>2</b><span>빨간불이 켜지는 순간 <strong>브레이크 페달</strong>(화면 아무 곳)을 누르세요.</span></div>
+      <div><b>3</b><span>빨간불 전에 누르면 <strong>급발진 실격</strong>! 그 라운드를 다시 합니다.</span></div>
+    </div>
+    <div class="field"><label for="nick">이름</label><input id="nick" type="text" maxlength="10" autocomplete="name" placeholder="예: 김상신"></div>
+    <div class="privacy">이름과 기록은 행사장 순위판과 행사 통계를 위해 저장되며, 행사 종료 후 관리자가 정리합니다.</div>
+    <button class="primary start-btn" id="btn-start" type="button" disabled>시동 걸기</button>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGOW__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 게임 -->
+  <section class="screen" id="s-game" aria-live="assertive">
+    <div class="hud"><span>ROUND <b id="g-round">1</b> / 3</span><div class="pips" id="g-pips"><i></i><i></i><i></i></div><span>실격 <b id="g-foul">0</b></span></div>
+    <div class="stage idle" id="g-stage" role="button" tabindex="0" aria-label="브레이크 페달 (화면 아무 곳이나 누르세요)">
+      <div class="signal" aria-hidden="true"><i class="r" id="g-r"></i><i class="g" id="g-g"></i></div>
+      <div class="msg" id="g-msg">화면을 눌러 출발<small>초록불 동안은 기다리세요</small></div>
+      <div class="road" aria-hidden="true"></div>
+      <div class="speed mono" aria-hidden="true"><b>100</b>km/h</div>
+      <div class="pedal" aria-hidden="true"><i></i>BRAKE<i></i></div>
+      <div class="flash" id="g-flash"></div>
+    </div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="screen" id="s-result">
+    <div class="rhead"><div class="eyebrow">CHALLENGE COMPLETE</div><h2 id="r-head"></h2></div>
+    <div class="card-wrap"><div class="lic" id="lic"></div></div>
+    <div class="actions">
+      <button class="btn-save" id="btn-save" type="button">이미지 저장</button>
+      <button class="btn-kakao" id="btn-kakao" type="button"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-.9 3.6c-.1.3.3.6.6.4l4.2-2.8c.4 0 .8.1 1.2.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z" fill="#191919"/></svg>카카오톡 공유</button>
+      <button class="ghost" id="btn-again" type="button" style="grid-column:1 / -1">한 번 더 도전</button>
+    </div>
+    <div class="toast" id="r-toast"></div>
+    <div class="panel"><h4>라운드 기록</h4><div class="laps" id="r-laps"></div><p id="r-tip"></p></div>
+    <div class="panel" id="r-rank-panel" hidden><h4>실시간 순위 <small id="r-rank-me"></small></h4><div class="rank-list" id="r-rank"></div></div>
+    <div class="panel"><h4>경영 브레이크 노트</h4><p id="r-note"></p></div>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGOW__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 행사장 순위판 (#board) -->
+  <section class="screen" id="s-board">
+    <div class="bd">
+      <div class="bd-top"><img src="__LOGOW__" alt="SANGSIN BRAKE"><div class="ev"><b>26/27년 경영검토회</b>쉬어가는 코너 · 브레이크 챌린지</div></div>
+      <div class="bd-stripe" aria-hidden="true"><i></i><i></i></div>
+      <div class="bd-title"><div><small>BRAKE CHALLENGE</small><h1>브레이크 반응속도 <em>순위판</em></h1></div><div class="live"><i></i><span id="b-time">실시간</span></div></div>
+      <div class="bd-main">
+        <div class="bd-card"><h3>개인 TOP 10 · 최고 기록</h3><div class="podium" id="b-pod"></div><div class="rows" id="b-top"></div></div>
+        <div class="side">
+          <div class="bd-card"><h3>참여 현황</h3><div class="stats" id="b-team"></div></div>
+          <div class="join"><img src="__QR__" alt="참여 QR"><div><b>지금 QR로 도전!</b><span>신호가 바뀌면 브레이크를 밟으세요.<br>3번 중 최고 기록으로 순위에 오릅니다.</span></div></div>
+        </div>
+      </div>
+      <div class="bd-foot"><span id="b-msg">10초마다 자동 갱신</span><span>26/27년 경영검토회 · SANGSIN BRAKE</span></div>
+    </div>
+  </section>
+</main>
+
+<script>/*__H2C__*/</script>
+<script>
+(function(){
+  // ===== 운영 설정 ======================================================
+  var CONFIG = { SHEET_URL: "https://script.google.com/macros/s/AKfycbyKUOWiAiVvusrHAca13lW98N5fdfOaQ7xPv9i8O7rbmpiq3UJLeRtMizwF6-Kfy5tx/exec", KAKAO_JS_KEY: "", SHARE_URL: "https://imsean629.github.io/sangsin-leader-2027/brake/", ROUNDS: 3, MIN_HUMAN_MS: 100 };
+
+  var V = 100 / 3.6;            // 시속 100km = 27.78 m/s
+  var BRAKE_M = 49;             // 제동거리 가정: 마른 노면, 마찰계수 0.8 → v²/(2μg) ≈ 49m
+  var GRADES = [
+    { max: 200, name: 'F1 드라이버', note: '판단이 정말 빠르시네요. 단, 경영에서는 <em>신호를 확인한 뒤의</em> 속도가 진짜 속도입니다.' },
+    { max: 250, name: '베테랑 드라이버', note: '빠르면서도 정확합니다. 2027년에도 <em>위험 신호를 먼저 본 사람이 먼저 멈출 수 있습니다.</em>' },
+    { max: 300, name: '안전 운전자', note: '안정적인 반응입니다. 조직의 브레이크는 한 사람의 반사신경보다 <em>모두가 신호를 함께 보는 구조</em>에서 나옵니다.' },
+    { max: 400, name: '여유로운 드라이버', note: '조금 여유가 있으시네요. 시속 100km에서 0.1초는 2.8m. 경영에서도 <em>늦은 결정의 거리</em>는 생각보다 깁니다.' },
+    { max: 1e9, name: '출근길 졸음 주의', note: '커피 한 잔 하고 다시 도전! 혼자 늦을 때 <em>옆 사람이 먼저 신호를 외쳐 주는 팀</em>이 강한 팀입니다.' }
+  ];
+
+  var $ = function(id){ return document.getElementById(id); };
+  var nickname = '', team = '', sid = '', laps = [], fouls = 0, round = 0, state = 'idle', t0 = 0, timer = null, lastPng = null, capGen = 0;
+  function show(id){ ['s-start','s-game','s-result','s-board'].forEach(function(s){ $(s).classList.toggle('on', s === id); }); window.scrollTo(0, 0); }
+  function newId(){ return 'b' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  function clean(v, n){ return v.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, n); }
+  function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  function sec(ms){ return (ms / 1000).toFixed(3); }
+  function gradeOf(ms){ for (var i = 0; i < GRADES.length; i++) if (ms < GRADES[i].max) return GRADES[i]; }
+
+  // ===== 시작 ===========================================================
+  $('nick').addEventListener('input', function(){ $('btn-start').disabled = !clean(this.value, 10); });
+  $('btn-start').addEventListener('click', function(){
+    nickname = clean($('nick').value, 10); team = ''; if (!nickname) return;
+    sid = newId(); laps = []; fouls = 0; round = 0; lastPng = null; capGen++;
+    show('s-game'); setIdle('화면을 눌러 출발', '초록불 동안은 기다리세요');
+  });
+
+  // ===== 게임 ===========================================================
+  function pips(){ var ps = $('g-pips').children; for (var i = 0; i < ps.length; i++) ps[i].className = i < laps.length ? 'done' : (i === laps.length ? 'now' : ''); $('g-round').textContent = Math.min(laps.length + 1, CONFIG.ROUNDS); $('g-foul').textContent = fouls; }
+  function lights(g, r){ $('g-g').classList.toggle('on', g); $('g-r').classList.toggle('on', r); }
+  function setMsg(a, b){ $('g-msg').innerHTML = ''; $('g-msg').appendChild(document.createTextNode(a)); if (b) $('g-msg').appendChild(el('small', null, b)); }
+  function setIdle(a, b){ state = 'idle'; $('g-stage').className = 'stage idle'; lights(false, false); setMsg(a, b); pips(); }
+  function go(){
+    state = 'wait'; $('g-stage').className = 'stage'; lights(true, false); setMsg('주행 중…', '빨간불을 기다리세요');
+    var delay = 1500 + Math.random() * 3000;
+    timer = setTimeout(function(){
+      state = 'stop'; $('g-stage').className = 'stage stop'; lights(false, true); setMsg('정지!', '');
+      t0 = performance.now();
+      if (navigator.vibrate) try { navigator.vibrate(60); } catch (e) {}
+    }, delay);
+  }
+  function press(e){
+    if (e) e.preventDefault();
+    var now = performance.now();
+    if (state === 'idle') { go(); return; }
+    if (state === 'wait') {
+      clearTimeout(timer); fouls++; $('g-foul').textContent = fouls; state = 'busy';
+      $('g-stage').className = 'stage idle'; lights(false, false); setMsg('급발진! 실격', '빨간불이 켜진 뒤에 밟으세요 · 다시 출발');
+      setTimeout(function(){ setIdle('화면을 눌러 다시 출발', '이번 라운드를 다시 합니다'); }, 1300);
+      return;
+    }
+    if (state === 'stop') {
+      var ms = Math.round(now - t0);
+      if (ms < CONFIG.MIN_HUMAN_MS) { fouls++; $('g-foul').textContent = fouls; state = 'busy'; lights(false, false); setMsg('예측 출발! 실격', '사람의 반응은 0.1초보다 빠를 수 없어요'); setTimeout(function(){ setIdle('화면을 눌러 다시 출발', ''); }, 1300); return; }
+      laps.push(ms); state = 'busy';
+      $('g-flash').classList.remove('go'); void $('g-flash').offsetWidth; $('g-flash').classList.add('go');
+      $('g-stage').className = 'stage done';
+      setMsg(sec(ms) + '초', '반응하는 동안 ' + (V * ms / 1000).toFixed(1) + 'm 이동');
+      pips();
+      setTimeout(function(){ if (laps.length >= CONFIG.ROUNDS) finish(); else setIdle('화면을 눌러 다음 라운드', 'ROUND ' + (laps.length + 1)); }, 1400);
+    }
+  }
+  $('g-stage').addEventListener('pointerdown', press);
+  $('g-stage').addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter') press(e); });
+
+  // ===== 결과 ===========================================================
+  function result(){
+    var best = Math.min.apply(null, laps), avg = Math.round(laps.reduce(function(a, b){ return a + b; }, 0) / laps.length);
+    return { best: best, avg: avg, grade: gradeOf(best), react: V * best / 1000 };
+  }
+  function buildCard(r){
+    var lic = $('lic'); lic.innerHTML = '';
+    var inn = el('div', 'lic-in');
+    var top = el('div', 'lic-top'); top.appendChild(el('b', null, 'BRAKE CHALLENGE 기록증')); top.appendChild(el('span', null, 'No.' + sid.slice(-6).toUpperCase())); inn.appendChild(top);
+    var hero = el('div', 'lic-hero');
+    var g = el('div', 'gauge');
+    var pct = Math.max(0.05, Math.min(1, (600 - r.best) / 450));
+    g.innerHTML = '<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="50" fill="none" stroke="#E2E5EA" stroke-width="12" stroke-dasharray="235 400" transform="rotate(135 60 60)" stroke-linecap="round"/><circle cx="60" cy="60" r="50" fill="none" stroke="#E60013" stroke-width="12" stroke-dasharray="' + (235 * pct).toFixed(1) + ' 400" transform="rotate(135 60 60)" stroke-linecap="round"/></svg>';
+    var gv = el('div'); gv.appendChild(el('b', 'mono', sec(r.best))); gv.appendChild(el('span', null, '최고 기록(초)')); g.appendChild(gv); hero.appendChild(g);
+    var who = el('div', 'who'); who.appendChild(el('small', null, '드라이버 성명')); var nk = el('div', 'nick', nickname); nk.id = 'r-nick'; who.appendChild(nk);
+    if (team) who.appendChild(el('div', 'team', team));
+    var gr = el('span', 'grade', r.grade.name); gr.id = 'r-grade'; who.appendChild(gr); hero.appendChild(who); inn.appendChild(hero);
+    var rows = el('div', 'lic-rows');
+    [['평균 반응', sec(r.avg) + '초'], ['라운드 기록', laps.map(sec).join(' / ')], ['급발진 실격', fouls + '회']].forEach(function(x){ var d = el('div'); d.appendChild(el('span', null, x[0])); d.appendChild(el('b', 'mono', x[1])); rows.appendChild(d); });
+    inn.appendChild(rows);
+    var dist = el('div', 'dist'); dist.appendChild(el('h5', null, '시속 100km에서 완전히 멈추기까지 · 약 ' + Math.round(r.react + BRAKE_M) + 'm'));
+    var bar = el('div', 'dbar'); var tot = r.react + BRAKE_M; var a = el('i', 'a'); a.style.width = (r.react / tot * 100) + '%'; var b = el('i', 'b'); b.style.width = (BRAKE_M / tot * 100) + '%'; bar.appendChild(a); bar.appendChild(b); dist.appendChild(bar);
+    var leg = el('div', 'dleg'); leg.appendChild(el('span', null, '반응하는 동안 ' + r.react.toFixed(1) + 'm')); leg.appendChild(el('span', null, '제동 ' + BRAKE_M + 'm')); dist.appendChild(leg);
+    dist.appendChild(el('p', null, '※ 재미로 보는 계산: 마른 노면·마찰계수 0.8 가정, 실제 제동거리는 차량·노면에 따라 다릅니다.'));
+    inn.appendChild(dist);
+    var q = el('div', 'quote'); q.innerHTML = r.grade.note; inn.appendChild(q);
+    var ft = el('div', 'lic-foot'); ft.appendChild(el('span', null, '26/27년 경영검토회')); var lg = new Image(); lg.src = '__LOGO__'; lg.alt = 'SANGSIN BRAKE'; ft.appendChild(lg); inn.appendChild(ft);
+    lic.appendChild(inn);
+  }
+  function finish(){
+    var r = result();
+    $('app').setAttribute('data-best', r.best);
+    $('r-head').innerHTML = ''; $('r-head').appendChild(document.createTextNode(nickname + ' 님은 ')); $('r-head').appendChild(el('b', null, r.grade.name));
+    buildCard(r);
+    var lp = $('r-laps'); lp.innerHTML = ''; var mx = Math.max.apply(null, laps);
+    laps.forEach(function(ms, i){ var d = el('div', 'lap'); d.appendChild(el('span', null, 'R' + (i + 1))); var b = el('div', 'lb'); var f = el('i'); f.style.width = (ms / mx * 100) + '%'; if (ms === r.best) f.style.background = '#FF4D57'; b.appendChild(f); d.appendChild(b); d.appendChild(el('span', 'mono', sec(ms) + '초')); lp.appendChild(d); });
+    $('r-tip').textContent = '0.1초 차이 = 시속 100km에서 약 2.8m. 회의에서 결정이 하루 늦어지면, 우리 회사는 몇 m를 더 달리고 있을까요?';
+    $('r-note').innerHTML = '';
+    $('r-note').appendChild(document.createTextNode('좋은 브레이크는 빨리 멈추는 것만이 아니라, 필요할 때 정확히 멈추는 것입니다. 2027년, 우리 팀이 '));
+    $('r-note').appendChild(el('b', null, '먼저 멈춰야 할 일')); $('r-note').appendChild(document.createTextNode('은 무엇인가요?'));
+    lastPng = null; capGen++;
+    show('s-result');
+    setTimeout(function(){ capture().catch(function(){}); }, 700);
+    save(r).then(loadRank);
+  }
+
+  // ===== 저장 / 순위 ====================================================
+  function save(r){
+    if (!CONFIG.SHEET_URL) return Promise.resolve(false);
+    var row = { kind: 'brake', sid: sid, nickname: nickname, team: team, best: r.best, avg: r.avg, r1: laps[0], r2: laps[1], r3: laps[2], fouls: fouls, grade: r.grade.name, ts: new Date().toISOString() };
+    return fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(row) })
+      .then(function(){ return true; }, function(){ return false; });
+  }
+  function fetchBoard(){ return fetch(CONFIG.SHEET_URL + '?type=brake&t=' + Date.now()).then(function(r){ return r.json(); }); }
+  function loadRank(){
+    if (!CONFIG.SHEET_URL) return;
+    fetchBoard().then(function(d){
+      var list = $('r-rank'); list.innerHTML = ''; var best = +$('app').getAttribute('data-best');
+      (d.top || []).slice(0, 5).forEach(function(x, i){ var row = el('div', x.sid === sid ? 'me' : null); row.appendChild(el('b', null, String(i + 1))); row.appendChild(el('span', null, x.nickname)); row.appendChild(el('span', 'mono', sec(x.best))); list.appendChild(row); });
+      if (d.count) { var faster = (d.bests || []).filter(function(v){ return v < best; }).length; $('r-rank-me').textContent = '내 순위 ' + (faster + 1) + ' / ' + d.count + '명'; }
+      $('r-rank-panel').hidden = false;
+    }).catch(function(){});
+  }
+
+  // ===== 이미지 저장 / 공유 (리더십 테스트와 동일 방식) ==================
+  function capture(){
+    if (lastPng) return Promise.resolve(lastPng);
+    var g = capGen, node = $('lic'); if (!window.html2canvas) return Promise.reject(new Error('no-h2c'));
+    return window.html2canvas(node, { scale: 3, backgroundColor: null, logging: false }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(function(b){ var p = { blob: b, url: URL.createObjectURL(b) }; if (g === capGen) lastPng = p; res(p); }, 'image/png'); });
+    });
+  }
+  function fileName(){ return '브레이크챌린지_' + sec(+$('app').getAttribute('data-best')) + '초_' + nickname.replace(/[\\/:*?"<>|\s]+/g, '_') + '.png'; }
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function toast(t){ $('r-toast').textContent = t; }
+  function saveNow(p){
+    var file = null; try { file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+    if (isIOS && file && navigator.canShare && navigator.canShare({ files: [file] })) return navigator.share({ files: [file], title: '브레이크 챌린지 기록증' }).then(function(){ toast('기록증을 저장했어요.'); }, function(){});
+    var a = document.createElement('a'); a.href = p.url; a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
+    toast('기록증을 저장했어요. 사진첩 또는 다운로드 폴더를 확인하세요.');
+  }
+  $('btn-save').addEventListener('click', function(){
+    if (lastPng) { saveNow(lastPng); return; }
+    var b = this, lbl = b.textContent; b.disabled = true; b.textContent = '이미지 만드는 중…';
+    capture().then(saveNow).catch(function(){ toast('이미지를 만들지 못했어요. 화면을 캡처해 주세요.'); }).then(function(){ b.disabled = false; b.textContent = lbl; });
+  });
+  function shareText(){ var best = +$('app').getAttribute('data-best'); return '[26/27년 경영검토회] ' + nickname + ' 님의 브레이크 반응속도 ' + sec(best) + '초 (' + gradeOf(best).name + ')! 나보다 빠를 수 있을까? → ' + CONFIG.SHARE_URL; }
+  $('btn-kakao').addEventListener('click', function(){
+    var p = lastPng;
+    if (navigator.share) {
+      var data = { title: '브레이크 반응속도 챌린지', text: shareText() };
+      var file = null; try { if (p) file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) data.files = [file]; else data.url = CONFIG.SHARE_URL;
+      navigator.share(data).then(function(){ toast('공유했어요.'); }, function(e){ if (e && e.name === 'AbortError') return; if (data.files) { delete data.files; data.url = CONFIG.SHARE_URL; navigator.share(data).catch(function(){}); } });
+      return;
+    }
+    var t = shareText();
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast('공유 문구를 복사했어요. 카카오톡 대화창에 붙여넣어 주세요.'); }, function(){ toast('공유 링크: ' + CONFIG.SHARE_URL); });
+  });
+  $('btn-again').addEventListener('click', function(){ show('s-start'); $('btn-start').disabled = !clean($('nick').value, 10); });
+
+  // ===== 행사장 순위판 (#board) =========================================
+  var boardTimer = null;
+  var DISC = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="#fff" stroke-width="8"/><circle cx="50" cy="50" r="16" fill="#fff"/><g fill="#fff"><circle cx="50" cy="22" r="4"/><circle cx="78" cy="50" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/></g></svg>';
+  function renderBoard(){
+    show('s-board'); $('app').style.maxWidth = 'none'; $('app').classList.add('board-mode');
+    if (!CONFIG.SHEET_URL) { $('b-msg').textContent = '순위판은 응답 저장(Google 시트) 연결 후 표시됩니다.'; return; }
+    fetchBoard().then(function(d){
+      var list = (d.top || []).slice(0, 10);
+      var pod = $('b-pod'); pod.innerHTML = '';
+      [1, 0, 2].forEach(function(i){
+        var x = list[i], c = el('div', 'pd p' + (i + 1) + (x ? '' : ' empty'));
+        c.innerHTML = DISC; c.appendChild(el('div', 'rk', (i + 1) + '위'));
+        c.appendChild(el('div', 'nm', x ? x.nickname : '도전자 대기 중')); c.appendChild(el('div', 'tm', x ? sec(x.best) + '초' : '-'));
+        pod.appendChild(c);
+      });
+      var top = $('b-top'); top.innerHTML = '';
+      for (var i = 3; i < 10; i++) { var x = list[i], r = el('div', 'brow'); r.appendChild(el('b', null, String(i + 1))); r.appendChild(el('span', null, x ? x.nickname : '')); r.appendChild(el('span', null, x ? sec(x.best) + '초' : '')); if (!x) r.style.opacity = '.45'; top.appendChild(r); }
+      var tm = $('b-team'); tm.innerHTML = ''; var bs = d.bests || [];
+      var avgAll = bs.length ? Math.round(bs.reduce(function(a, b){ return a + b; }, 0) / bs.length) : 0;
+      [['도전 인원', String(d.count || 0), '명', ''], ['전체 평균', bs.length ? sec(avgAll) : '-', bs.length ? '초' : '', ''], ['최고 기록', bs.length ? sec(bs[0]) : '-', bs.length ? '초' : '', 'hi']].forEach(function(x){
+        var r = el('div', 'stat ' + x[3]); r.appendChild(el('span', null, x[0])); var b = el('b', null, x[1]); if (x[2]) b.appendChild(el('small', null, x[2])); r.appendChild(b); tm.appendChild(r);
+      });
+      $('b-msg').textContent = '총 ' + (d.count || 0) + '명 도전 · 10초마다 자동 갱신';
+      $('b-time').textContent = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) + ' 기준 실시간';
+    }).catch(function(){ $('b-msg').textContent = '순위를 불러오지 못했습니다. 잠시 후 다시 시도합니다.'; });
+    clearTimeout(boardTimer); boardTimer = setTimeout(renderBoard, 10000);
+  }
+  function route(){ if (location.hash === '#board') renderBoard(); }
+  window.addEventListener('hashchange', route); route();
+
+  window.__BR = { result: result, laps: function(){ return laps; }, capture: capture, state: function(){ return state; } };
+})();
+</script>
+</body>
+</html>

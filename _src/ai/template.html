@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 운전면허 시험 — 26/27년 경영검토회</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 운전면허 시험 · 나의 AI 활용 등급은?">
+<meta property="og:description" content="26/27년 경영검토회 · 20문항 3분, 활용도와 관점으로 받는 나의 AI 드라이버 카드!">
+<meta property="og:url" content="https://imsean629.github.io/sangsin-leader-2027/ai/">
+<meta property="og:image" content="https://imsean629.github.io/sangsin-leader-2027/ai/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@700&display=swap">
+<style>
+:root{--red:#E60013;--blue:#004098;--navy:#0B1B36;--ink:#16191E;--line:#E2E5EA;--bg:#F4F6F9;--go:#1A9E55;--gold:#E8C35A;--cyan:#2BB8E6}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:#E7EBF1;color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+button,input{font-family:inherit;color:inherit}
+[hidden]{display:none!important}
+.app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;background:var(--bg);display:flex;flex-direction:column}
+.bar{height:6px;display:flex}.bar i{display:block}.bar i:first-child{flex:7;background:var(--red)}.bar i:last-child{flex:3;background:var(--blue)}
+.screen{display:none;flex:1;flex-direction:column;padding:20px 20px 26px}
+.screen.on{display:flex}
+.primary{width:100%;min-height:58px;border:0;border-radius:14px;background:var(--blue);color:#FFFFFF;font-size:18px;font-weight:900;cursor:pointer}
+.primary[disabled]{background:#C3C8D0;cursor:default}
+.ghost{width:100%;min-height:50px;border:2px solid var(--navy);border-radius:14px;background:#FFFFFF;font-size:16px;font-weight:700;cursor:pointer}
+.foot{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#6B7280}
+.foot img{height:14px}
+.card{background:#FFFFFF;border-radius:18px;box-shadow:0 8px 24px rgba(11,27,54,.10);padding:18px}
+
+/* 시작 */
+.hero{margin:-20px -20px 0;padding:24px 22px 64px;background:linear-gradient(135deg,#0B1B36 0%,#0E2D5C 60%,#004098 100%);color:#FFFFFF;position:relative;overflow:hidden}
+.hero > *{position:relative;z-index:1}
+.hero small{font-size:12.5px;font-weight:700;color:#C9D2E0}
+.hero h1{margin:10px 0 0;font-size:36px;font-weight:900;line-height:1.15;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:var(--cyan)}
+.hero p{margin:10px 0 0;font-size:15px;line-height:1.6;color:#DCE3EE;max-width:250px}
+.hero .lic{position:absolute;right:-20px;top:34px;width:150px;height:96px;border-radius:12px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.22);transform:rotate(12deg);z-index:0}
+.hero .lic::before{content:"AI";position:absolute;left:14px;top:12px;font-size:26px;font-weight:900;color:rgba(43,184,230,.7)}
+.hero .lic::after{content:"";position:absolute;left:14px;right:14px;bottom:16px;height:8px;border-radius:4px;background:rgba(255,255,255,.2);box-shadow:0 -16px 0 rgba(255,255,255,.14)}
+.lift{margin-top:-44px;position:relative;z-index:2}
+.axes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.axes div{border-radius:12px;background:var(--bg);padding:10px 12px;font-size:13px;font-weight:700}
+.axes b{display:block;font-size:15px;font-weight:900;color:var(--blue)}
+.lv{margin-top:12px}
+.lv h3{margin:0 0 6px;font-size:13px;font-weight:900;color:var(--blue)}
+.lv div{display:flex;justify-content:space-between;font-size:13.5px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.lv div:last-child{border-bottom:0}
+.lv span{color:#6B7280;font-weight:700}
+.field{margin-top:14px}
+.field label{display:block;font-size:13px;font-weight:900;margin-bottom:6px}
+.field label span{font-weight:700;color:#6B7280}
+.field input{width:100%;min-height:54px;border:2px solid #D5DAE2;border-radius:14px;padding:0 14px;font-size:18px;font-weight:700;background:#FAFBFC}
+.field input:focus{outline:none;border-color:var(--blue);background:#FFFFFF}
+.privacy{margin-top:8px;font-size:12px;color:#6B7280;line-height:1.55}
+
+/* 문제 */
+.qtop{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:900}
+.qtop .ax{color:var(--blue)}
+.track{margin-top:8px;height:8px;border-radius:4px;background:#DCE1E8;overflow:hidden}
+.track i{display:block;height:8px;background:var(--blue);transition:width .25s}
+.qcard{margin-top:16px;border-radius:18px;background:#FFFFFF;box-shadow:0 6px 18px rgba(11,27,54,.08);padding:20px 18px}
+.qtext{font-size:20px;font-weight:900;line-height:1.45}
+.qhint{margin-top:6px;font-size:13px;color:#6B7280;font-weight:700}
+.opts{margin-top:14px;display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;width:100%;min-height:56px;padding:12px 14px;border:2px solid #D5DAE2;border-radius:14px;background:#FFFFFF;font-size:16px;line-height:1.4;font-weight:700;cursor:pointer}
+.opt b{flex:0 0 26px;height:26px;border-radius:13px;border:2px solid #C3C8D0;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;color:transparent}
+.opt.sel{border-color:var(--blue);background:#EEF4FF}
+.opt.sel b{background:var(--blue);border-color:var(--blue);color:#FFFFFF}
+.opts.multi .opt b{border-radius:7px}
+.qnav{margin-top:16px;display:grid;grid-template-columns:1fr 2fr;gap:10px}
+.qnav .ghost{min-height:56px}
+
+/* 결과 */
+.rhead{text-align:center}
+.rhead small{font-size:13px;font-weight:900;color:var(--blue)}
+.rhead h2{margin:6px 0 0;font-size:22px;font-weight:900;line-height:1.35}
+.cert-wrap{margin:14px auto 0;width:100%;max-width:360px}
+.lcard{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#FFFFFF 0%,#EEF4FF 100%);box-shadow:0 14px 30px rgba(11,27,54,.25);border:1px solid #D5DEEB}
+.l-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--navy);color:#FFFFFF}
+.l-top small{font-size:10px;font-weight:700;letter-spacing:2px;color:#C9D2E0}
+.l-top b{display:block;font-size:17px;font-weight:900;margin-top:2px}
+.l-top img{height:12px}
+.l-body{padding:14px 16px 12px;position:relative}
+.l-body::after{content:"AI";position:absolute;right:10px;top:4px;font-size:90px;font-weight:900;color:rgba(0,64,152,.06);pointer-events:none}
+.l-row{display:flex;gap:12px;align-items:center}
+.l-photo{flex:0 0 74px;height:92px;border-radius:10px;background:linear-gradient(180deg,#DCE6F5,#B9CBE6);display:flex;align-items:center;justify-content:center;font-size:40px}
+.l-info{flex:1;font-size:12px;color:#4A515C;line-height:1.7}
+.l-info b{font-size:15px;color:var(--ink)}
+.l-grade{margin-top:2px;display:inline-block;background:var(--red);color:#FFFFFF;border-radius:8px;padding:4px 10px;font-size:16px;font-weight:900}
+.l-score{margin-left:auto;text-align:center;flex:0 0 auto}
+.l-score b{display:block;font-family:'JetBrains Mono',monospace;font-size:38px;line-height:1;color:var(--navy)}
+.l-score small{font-size:11px;color:#6B7280;font-weight:700}
+.l-mid{margin-top:10px;display:flex;gap:8px;align-items:center}
+.radar{width:140px;height:140px;flex:0 0 140px}
+.l-axes{flex:1;display:grid;gap:5px}
+.l-axes div{font-size:12px;font-weight:700;color:#4A515C}
+.l-axes div span{display:flex;justify-content:space-between}
+.l-axes i{display:block;margin-top:2px;height:6px;border-radius:3px;background:#DCE1E8;overflow:hidden}
+.l-axes i em{display:block;height:6px;background:var(--blue)}
+.l-msg{margin-top:10px;font-size:13px;font-weight:700;color:var(--navy);line-height:1.5}
+.l-foot{margin-top:8px;display:flex;justify-content:space-between;font-size:10px;color:#6B7280}
+.actions{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-save{min-height:54px;border:0;border-radius:14px;background:var(--navy);color:#FFFFFF;font-size:16px;font-weight:900;cursor:pointer}
+.btn-kakao{min-height:54px;border:0;border-radius:14px;background:#FEE500;color:#191919;font-size:16px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.toast{margin-top:10px;text-align:center;font-size:12.5px;color:#6B7280;min-height:16px}
+.tip{margin-top:16px}
+.tip h4{margin:0;font-size:16px;font-weight:900}
+.tip h4 span{color:var(--blue)}
+.tip p{margin:8px 0 0;font-size:14.5px;line-height:1.65;color:#2E333A}
+
+/* 통합 흐름 / 카드 */
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.parts div{border-radius:12px;background:var(--navy);color:#FFFFFF;padding:10px 12px;font-size:12px;color:#C9D2E0;font-weight:700}
+.parts small{display:block;font-size:10.5px;letter-spacing:1px;color:var(--cyan);font-weight:900}
+.parts b{display:block;margin:2px 0;font-size:14.5px;color:#FFFFFF;font-weight:900}
+#s-mid{background:linear-gradient(135deg,#0B1B36,#004098);color:#FFFFFF;align-items:center;justify-content:center;text-align:center}
+.mid small{font-size:13px;font-weight:900;color:var(--cyan);letter-spacing:1px}
+.mid h2{margin:12px 0 0;font-size:38px;font-weight:900;line-height:1.25}
+.mid p{margin:12px 0 0;font-size:15px;color:#C9D2E0}
+.dc-hero{display:flex;gap:12px;align-items:center}
+.dc-ico{flex:0 0 68px;height:68px;border-radius:18px;background:linear-gradient(135deg,#EEF4FF,#D5E3F7);display:flex;align-items:center;justify-content:center;font-size:38px}
+.dc-type small{font-size:11px;font-weight:900;color:var(--blue);letter-spacing:1px}
+.dc-type b{display:block;font-size:22px;font-weight:900;line-height:1.25;margin-top:2px}
+.dc-type span{display:block;font-size:12px;color:#4A515C;margin-top:2px}
+.dc-desc{margin-top:10px;font-size:13px;line-height:1.55;color:#2E333A}
+.dc-row{margin-top:10px;display:grid;grid-template-columns:1fr 1.25fr;gap:8px}
+.dc-box{border-radius:12px;background:#FFFFFF;border:1px solid #D5DEEB;padding:9px 10px}
+.dc-box small{display:block;font-size:10.5px;font-weight:700;color:#6B7280}
+.dc-box b{display:block;margin-top:3px;font-size:15px;font-weight:900}
+.dc-box b em{font-style:normal;font-family:'JetBrains Mono',monospace;color:var(--navy)}
+.dc-grid{margin-top:10px;display:grid;grid-template-columns:auto repeat(3,1fr);gap:3px;font-size:9.5px;font-weight:700;color:#6B7280;text-align:center}
+.dc-grid i{font-style:normal;display:flex;align-items:center;justify-content:center;min-height:22px;border-radius:5px;background:#E9EDF3;color:#9AA3B1;font-size:9.5px;line-height:1.2;padding:2px}
+.dc-grid i.me{background:var(--red);color:#FFFFFF;font-weight:900}
+.dc-grid span{display:flex;align-items:center;justify-content:center}
+.dc-role{margin-top:10px;border-radius:10px;background:var(--navy);color:#FFFFFF;padding:8px 10px;font-size:12px;font-weight:700}
+.dc-role b{color:var(--cyan)}
+/* 2부 */
+.p2{margin-top:16px;border-radius:18px;background:linear-gradient(135deg,#0B1B36,#0E2D5C);color:#FFFFFF;padding:18px}
+.p2 small{font-size:12px;font-weight:900;color:var(--cyan);letter-spacing:1px}
+.p2 h4{margin:6px 0 0;font-size:19px;font-weight:900;line-height:1.4}
+.p2 p{margin:6px 0 12px;font-size:13.5px;color:#C9D2E0;line-height:1.55}
+.p2 .primary{background:var(--cyan);color:var(--navy)}
+.link-btn{margin-top:10px;width:100%;min-height:48px;border:0;background:transparent;color:var(--blue);font-size:15px;font-weight:900;text-decoration:underline;cursor:pointer}
+textarea.in{width:100%;min-height:96px;border:2px solid #D5DAE2;border-radius:14px;padding:12px 14px;font-size:16px;line-height:1.5;resize:none;font-family:inherit;background:#FAFBFC}
+textarea.in:focus{outline:none;border-color:var(--blue);background:#FFFFFF}
+.vr-list{display:grid;gap:10px;margin-top:14px}
+.vr{border-radius:14px;background:#FFFFFF;box-shadow:0 4px 14px rgba(11,27,54,.06);padding:14px}
+.vr small{font-size:12px;font-weight:700;color:#6B7280}
+.vr b{display:block;margin-top:4px;font-size:16px;font-weight:900}
+.vr .same{margin-top:6px;font-size:12.5px;font-weight:700;color:var(--blue)}
+.spec{margin-top:10px;position:relative;height:12px;border-radius:6px;background:linear-gradient(90deg,#E60013,#E9EDF3 50%,#004098)}
+.spec i{position:absolute;top:-5px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:#FFFFFF;border:4px solid var(--navy)}
+.spec-lab{display:flex;justify-content:space-between;font-size:11px;color:#6B7280;font-weight:700;margin-top:6px}
+/*__BOARDCSS__*/
+/* 집계판 전용 */
+.ag-big{display:flex;align-items:baseline;gap:1vw}
+.ag-big b{font-family:'JetBrains Mono',monospace;font-size:11vh;line-height:1;color:var(--navy)}
+.ag-big span{font-size:2.6vh;font-weight:900;color:#4A515C}
+.ag-sub{margin-top:.6vh;font-size:2vh;color:#4A515C;font-weight:700}
+.ag-bars{display:grid;gap:1vh;margin-top:1vh}
+.ag-bar{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) 4.2vw;gap:.8vw;align-items:center;font-size:1.95vh;font-weight:700;line-height:1.25}
+.ag-bar i{display:block;height:2.6vh;border-radius:1.3vh;background:#E9EDF3;overflow:hidden}
+.ag-bar i em{display:block;height:100%;border-radius:1.3vh;background:var(--blue);transition:width .8s}
+.ag-bar.hot i em{background:var(--red)}
+.ag-bar b{font-family:'JetBrains Mono',monospace;text-align:right}
+.ag-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6vw;flex:1;min-height:0}
+.ag-col{display:flex;flex-direction:column;gap:1.4vh;min-height:0}
+#s-vb .bd-card{padding:1.8vh 1.4vw}
+#s-vb .bd-card h3{margin-bottom:.6vh;font-size:2.1vh}
+#s-vb .bd-title{padding:2vh 3.2vw 1.2vh}
+#s-vb .bd-title h1{font-size:4.8vh}
+#s-vb .bd-main{padding-bottom:1.6vh}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="bar" aria-hidden="true"><i></i><i></i></div>
+
+  <!-- 시작 -->
+  <section class="screen on" id="s-start">
+    <div class="hero">
+      <div class="lic" aria-hidden="true"></div>
+      <small>26/27년 경영검토회 · 쉬어가는 코너</small>
+      <h1><em>AI</em> 운전면허<br>시험</h1>
+      <p>20문항 3분. 나의 AI 활용도와 AI를 보는 눈으로 나만의 드라이버 카드를 받아 가세요.</p>
+    </div>
+    <div class="card lift">
+      <div class="parts"><div><small>PART 1</small><b>AI 활용도</b>11문항 · 면허 등급</div><div><small>PART 2</small><b>AI에 대한 나의 생각</b>9문항 · 관점 판정</div></div>
+      <div class="axes" style="margin-top:8px"><div><b>활용 빈도</b>얼마나 자주</div><div><b>업무 범위</b>어떤 일까지</div><div><b>프롬프트 기술</b>얼마나 잘 시키나</div><div><b>검증·보안</b>얼마나 안전하게</div></div>
+      <div class="lv" id="lv"><h3>면허 등급 (100점 만점)</h3></div>
+      <div class="field"><label for="nick">이름 <span>(선택 · 비워 두면 익명)</span></label><input id="nick" type="text" maxlength="10" autocomplete="off" placeholder="예: 김상신"></div>
+      <div class="privacy">정답은 없어요. 평소 모습과 생각 그대로 골라 주세요. 응답은 우리 회사 AI 현황 통계로만 쓰이고, PART 2는 이름 없이 집계됩니다.</div>
+      <button class="primary" id="btn-start" type="button" style="margin-top:14px">시험 시작</button>
+    </div>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 문제 -->
+  <section class="screen" id="s-q">
+    <div class="qtop"><span class="ax" id="q-ax"></span><span id="q-count"></span></div>
+    <div class="track"><i id="q-fill"></i></div>
+    <div class="qcard"><div class="qtext" id="q-text"></div><div class="qhint" id="q-hint"></div></div>
+    <div class="opts" id="q-opts"></div>
+    <div class="qnav"><button class="ghost" id="btn-prev" type="button">이전</button><button class="primary" id="btn-next" type="button" disabled>다음</button></div>
+  </section>
+
+  <!-- 결과 -->
+  <section class="screen" id="s-result">
+    <div class="rhead"><small>나의 AI 드라이버 카드</small><h2 id="r-head"></h2></div>
+    <div class="cert-wrap"><div class="lcard" id="lcard"></div></div>
+    <div class="actions">
+      <button class="btn-save" id="btn-save" type="button">카드 이미지 저장</button>
+      <button class="btn-kakao" id="btn-kakao" type="button"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-.9 3.6c-.1.3.3.6.6.4l4.2-2.8c.4 0 .8.1 1.2.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z" fill="#191919"/></svg>카카오톡 공유</button>
+    </div>
+    <div class="toast" id="r-toast"></div>
+    <div class="card tip"><h4>다음 등급으로 가는 팁 · <span id="tip-ax"></span></h4><p id="tip-text"></p></div>
+    <div class="card tip"><h4>나와 같은 생각, 몇 %일까?</h4><div class="vr-list" id="vr-list"></div><div class="toast" id="vr-note"></div></div>
+    <button class="ghost" id="btn-again" type="button" style="margin-top:14px">다시 하기</button>
+    <div class="foot"><span>26/27년 경영검토회</span><img src="__LOGO__" alt="SANGSIN BRAKE"></div>
+  </section>
+
+  <!-- 파트 전환 -->
+  <section class="screen" id="s-mid"><div class="mid"><small>PART 1 완료 · 이제 마지막 PART 2</small><h2>AI에 대한<br>나의 생각</h2><p>정답은 없어요. 이 파트는 이름 없이 집계됩니다.</p></div></section>
+
+  <!-- 2부 설문 -->
+  <section class="screen" id="s-v">
+    <div class="qtop"><span class="ax" id="v-ax">PART 2 · AI에 대한 나의 생각 (익명)</span><span id="v-count"></span></div>
+    <div class="track"><i id="v-fill"></i></div>
+    <div class="qcard"><div class="qtext" id="v-text"></div><div class="qhint" id="v-hint"></div></div>
+    <div class="opts" id="v-opts"></div>
+    <textarea class="in" id="v-comment" maxlength="120" placeholder="예: 사람을 줄이는 도구가 아니라 사람을 키우는 도구로 썼으면 합니다." hidden></textarea>
+    <div class="qnav"><button class="ghost" id="v-prev" type="button">이전</button><button class="primary" id="v-next" type="button" disabled>다음</button></div>
+  </section>
+
+
+  <!-- 행사장 관점 집계판 (#view) -->
+  <section class="screen" id="s-vb">
+    <div class="bd">
+      <div class="bd-top"><img src="__LOGOW__" alt="SANGSIN BRAKE"><div class="ev"><b>26/27년 경영검토회</b>AI에 대한 우리의 생각</div></div>
+      <div class="bd-stripe" aria-hidden="true"><i></i><i></i></div>
+      <div class="bd-title"><div><small>SANGSIN AI OUTLOOK</small><h1>AI, 우리는 <em>어떻게</em> 보고 있나</h1></div><div class="live"><i></i><span id="vb-time">실시간</span></div></div>
+      <div class="bd-main" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="ag-col">
+          <div class="bd-card" style="flex:1"><h3>AI의 미래, 걱정 vs 기대</h3><div class="ag-bars" id="vb-outlook"></div><div class="ag-sub" id="vb-idx" style="margin-top:1.6vh"></div></div>
+          <div class="bd-card" style="flex:1"><h3>5년 뒤 AI가 바꿔 놓을 범위</h3><div class="ag-bars" id="vb-horizon"></div></div>
+        </div>
+        <div class="ag-col">
+          <div class="bd-card" style="flex:1.2"><h3>AI 도입의 가장 중요한 목적</h3><div class="ag-bars" id="vb-purpose"></div></div>
+          <div class="bd-card" style="flex:1"><h3>2027년 적정 도입 수준</h3><div class="ag-bars" id="vb-scope"></div></div>
+        </div>
+        <div class="ag-col">
+          <div class="bd-card" style="flex:1"><h3>가장 기대하는 것 TOP 3</h3><div class="ag-bars" id="vb-hopes"></div></div>
+          <div class="bd-card" style="flex:1"><h3>가장 걱정되는 것 TOP 3</h3><div class="ag-bars" id="vb-worries"></div></div>
+          <div class="bd-card" style="flex:.9"><h3>우리 회사 AI 드라이버 유형 TOP 3</h3><div class="ag-bars" id="vb-type"></div></div>
+        </div>
+      </div>
+      <div class="bd-foot"><span id="vb-msg">10초마다 자동 갱신</span><span>익명 집계 · 26/27년 경영검토회 · SANGSIN BRAKE</span></div>
+    </div>
+  </section>
+
+  <!-- 행사장 집계판 (#board) -->
+  <section class="screen" id="s-board">
+    <div class="bd">
+      <div class="bd-top"><img src="__LOGOW__" alt="SANGSIN BRAKE"><div class="ev"><b>26/27년 경영검토회</b>쉬어가는 코너 · AI 운전면허 시험</div></div>
+      <div class="bd-stripe" aria-hidden="true"><i></i><i></i></div>
+      <div class="bd-title"><div><small>SANGSIN AI INDEX</small><h1>우리 회사 <em>AI 활용 지수</em></h1></div><div class="live"><i></i><span id="b-time">실시간</span></div></div>
+      <div class="bd-main" style="grid-template-columns:1fr 1fr 0.8fr">
+        <div class="bd-card"><h3>평균 AI 활용 점수</h3><div class="ag-big"><b id="ag-avg">-</b><span>/ 100점</span></div><div class="ag-sub" id="ag-n">응시자 0명</div><h3 style="margin-top:2.4vh">영역별 평균</h3><div class="ag-bars" id="ag-axes"></div></div>
+        <div class="ag-col">
+          <div class="bd-card" style="flex:1"><h3>면허 등급 분포</h3><div class="ag-bars" id="ag-lv"></div></div>
+          <div class="bd-card" style="flex:1"><h3>AI로 가장 많이 하는 일 TOP 5</h3><div class="ag-bars" id="ag-use"></div></div>
+        </div>
+        <div class="side">
+          <div class="bd-card"><h3>많이 쓰는 AI</h3><div class="ag-bars" id="ag-tool"></div></div>
+          <div class="join"><img src="__QR__" alt="참여 QR"><div><b>지금 QR로 응시!</b><span>11문항 · 2분 · 익명 가능</span></div></div>
+        </div>
+      </div>
+      <div class="bd-foot"><span id="b-msg">10초마다 자동 갱신</span><span>26/27년 경영검토회 · SANGSIN BRAKE</span></div>
+    </div>
+  </section>
+</main>
+
+<script>/*__H2C__*/</script>
+<script>
+(function(){
+  var CONFIG = { SHEET_URL: "", SHARE_URL: "https://imsean629.github.io/sangsin-leader-2027/ai/" };
+  var VERD = /*__VERD__*/null, T9 = /*__T9__*/null, CUTS = /*__CUTS__*/null, VIEW = /*__VIEW__*/null, ROLES = /*__ROLES__*/null, AXES = /*__AXES__*/null, QS = /*__QS__*/null, MULTI = /*__MULTI__*/null, TOOLS = /*__TOOLS__*/null, LIC = /*__LIC__*/null, TIPS = /*__TIPS__*/null;
+  var AK = ['freq', 'range', 'skill', 'resp'], N = QS.length + 1, TOTAL = N + VIEW.length + 2; // 1부 11 + 2부(직책·7문항·한마디) 9
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t, c, x){ var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  function clean(v){ return v.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 10); }
+  function show(id){ ['s-start', 's-q', 's-mid', 's-result', 's-board', 's-v', 's-vb'].forEach(function(s){ $(s).classList.toggle('on', s === id); }); window.scrollTo(0, 0); }
+  function licOf(s){ for (var i = 0; i < LIC.length; i++) if (s >= LIC[i][0] && s <= LIC[i][1]) return LIC[i]; return LIC[0]; }
+  LIC.forEach(function(l){ var d = el('div'); d.appendChild(el('span', null, l[0] + '~' + l[1] + '점')); d.appendChild(el('b', null, l[2])); $('lv').appendChild(d); });
+
+  var name = '', sid = '', cur = 0, ans = [], lastPng = null, capGen = 0, R = null;
+  $('btn-start').addEventListener('click', function(){
+    name = clean($('nick').value) || '익명'; sid = 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    cur = 0; ans = []; vsid = ''; vans = {}; $('v-comment').value = ''; renderQ(); show('s-q');
+  });
+  function isMulti(i){ return i === 2 || i === QS.length; }
+  function renderQ(){
+    var tool = cur === QS.length, q = tool ? null : QS[cur];
+    $('q-ax').textContent = tool ? '참고 문항 (점수 없음)' : AXES[q[0]];
+    $('q-count').textContent = (cur + 1) + ' / ' + TOTAL; $('q-fill').style.width = ((cur + 1) / TOTAL * 100) + '%';
+    $('q-text').textContent = tool ? '업무에 주로 쓰는 AI를 모두 골라 주세요.' : q[1];
+    $('q-hint').textContent = isMulti(cur) ? '여러 개 선택 가능' : '';
+    var box = $('q-opts'); box.innerHTML = ''; box.className = 'opts' + (isMulti(cur) ? ' multi' : '');
+    var opts = tool ? TOOLS : q[2], a = ans[cur];
+    opts.forEach(function(t, i){
+      var b = el('button', 'opt'); b.type = 'button';
+      var on = isMulti(cur) ? (a || []).indexOf(i) >= 0 : a === i; if (on) b.classList.add('sel');
+      b.appendChild(el('b', null, '✓')); b.appendChild(el('span', null, t));
+      b.addEventListener('click', function(){ pick(i); });
+      box.appendChild(b);
+    });
+    $('btn-prev').style.visibility = cur === 0 ? 'hidden' : 'visible';
+    $('btn-next').textContent = '다음';
+    updNext();
+  }
+  function updNext(){ var a = ans[cur]; $('btn-next').disabled = isMulti(cur) ? !(a && a.length) : a === undefined; }
+  function pick(i){
+    if (isMulti(cur)) {
+      var a = (ans[cur] || []).slice(), k = a.indexOf(i);
+      var none = cur === QS.length ? TOOLS.length - 1 : QS[2][2].length - 1; // '아직 없음'은 단독 선택
+      if (i === none) a = k >= 0 ? [] : [i];
+      else { a = a.filter(function(x){ return x !== none; }); if (k >= 0) a.splice(a.indexOf(i), 1); else a.push(i); }
+      ans[cur] = a; renderQ();
+    } else { ans[cur] = i; renderQ(); setTimeout(function(){ next(); }, 220); }
+  }
+  function next(){ if ($('btn-next').disabled) return; if (cur < N - 1) { cur++; renderQ(); window.scrollTo(0, 0); } else goPart2(); }
+  function goPart2(){ if (vsid) { renderV(); show('s-v'); return; } show('s-mid'); setTimeout(startView, 1700); }
+  $('btn-next').addEventListener('click', next);
+  $('btn-prev').addEventListener('click', function(){ if (cur > 0) { cur--; renderQ(); } });
+
+  function scoreQ(i){ if (i === 2) { var n = (ans[2] || []).filter(function(x){ return x !== QS[2][2].length - 1; }).length; return n >= 5 ? 3 : n >= 3 ? 2 : n >= 1 ? 1 : 0; } return ans[i]; } // 3번: 0개/1~2개/3~4개/5개 이상
+  function calc(){
+    var ax = {}, mx = {}; AK.forEach(function(k){ ax[k] = 0; mx[k] = 0; });
+    QS.forEach(function(q, i){ ax[q[0]] += scoreQ(i); mx[q[0]] += 3; });
+    var tot = 0, max = 0; AK.forEach(function(k){ tot += ax[k]; max += mx[k]; });
+    var pct = {}; AK.forEach(function(k){ pct[k] = Math.round(ax[k] / mx[k] * 100); });
+    return { score: Math.round(tot / max * 100), pct: pct };
+  }
+  function radarSVG(p){
+    var cx = 70, cy = 72, Rr = 50, pts = [], grid = '', axes = '', labs = '', n = 4, lab = ['빈도', '범위', '기술', '검증'];
+    function pt(i, r){ var a = -Math.PI / 2 + i * 2 * Math.PI / n; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }
+    [0.25, 0.5, 0.75, 1].forEach(function(k){ grid += '<polygon points="' + AK.map(function(_, i){ return pt(i, Rr * k).join(','); }).join(' ') + '" fill="none" stroke="#D5DEEB"/>'; });
+    AK.forEach(function(k, i){ var e = pt(i, Rr); axes += '<line x1="' + cx + '" y1="' + cy + '" x2="' + e[0] + '" y2="' + e[1] + '" stroke="#D5DEEB"/>'; pts.push(pt(i, Rr * Math.max(.05, p[k] / 100)).join(',')); var l = pt(i, Rr + 12); labs += '<text x="' + l[0] + '" y="' + (l[1] + 4) + '" text-anchor="middle" font-size="10" font-weight="700" fill="#4A515C">' + lab[i] + '</text>'; });
+    return '<svg class="radar" viewBox="0 0 140 144" xmlns="http://www.w3.org/2000/svg">' + grid + axes + '<polygon points="' + pts.join(' ') + '" fill="rgba(0,64,152,.22)" stroke="#004098" stroke-width="2"/>' + labs + '</svg>';
+  }
+  function typeOf(score, outlook){
+    var u = score < CUTS[0] ? 0 : score < CUTS[1] ? 1 : 2, o = outlook <= 1 ? 0 : outlook === 2 ? 1 : 2;
+    return { u: u, o: o, t: T9[u][o] };
+  }
+  function finishAll(){
+    R = calc(); var L = licOf(R.score), TY = typeOf(R.score, vans.outlook), V = VERD[vans.outlook];
+    var weak = AK.slice().sort(function(a, b){ return R.pct[a] - R.pct[b]; })[0];
+    $('app').setAttribute('data-score', R.score); R.type = TY.t[0]; R.verdict = V[0];
+    $('r-head').innerHTML = ''; $('r-head').appendChild(document.createTextNode(name + ' 님은 ')); var hb = el('b', null, TY.t[0]); hb.style.color = 'var(--red)'; $('r-head').appendChild(hb);
+    var c = $('lcard'); c.innerHTML = '';
+    var top = el('div', 'l-top'); var tt = el('div'); tt.appendChild(el('small', null, 'AI DRIVER CARD')); tt.appendChild(el('b', null, 'AI 드라이버 카드')); top.appendChild(tt);
+    var lg = new Image(); lg.src = '__LOGOW__'; lg.alt = 'SANGSIN BRAKE'; top.appendChild(lg); c.appendChild(top);
+    var body = el('div', 'l-body');
+    var hero = el('div', 'dc-hero'); hero.appendChild(el('div', 'dc-ico', TY.t[1]));
+    var ty = el('div', 'dc-type'); ty.appendChild(el('small', null, name === '익명' ? 'MY AI TYPE' : name + ' 님의 AI 유형')); ty.appendChild(el('b', null, TY.t[0])); ty.appendChild(el('span', null, ['활용도 낮음', '활용도 중간', '활용도 높음'][TY.u] + ' × ' + ['우려형', '중립형', '기대형'][TY.o]));
+    hero.appendChild(ty); body.appendChild(hero);
+    body.appendChild(el('div', 'dc-desc', TY.t[2]));
+    var row = el('div', 'dc-row');
+    var b1 = el('div', 'dc-box'); b1.appendChild(el('small', null, 'PART 1 · 면허 등급')); var bb = el('b'); bb.appendChild(document.createTextNode(L[2] + ' ')); bb.appendChild(el('em', null, R.score + '점')); b1.appendChild(bb); row.appendChild(b1);
+    var b2 = el('div', 'dc-box'); b2.appendChild(el('small', null, 'PART 2 · 관점 판정')); b2.appendChild(el('b', null, V[0]));
+    var sp = el('div', 'spec'), dot = el('i'); dot.style.left = (vans.outlook / 4 * 100) + '%'; sp.appendChild(dot); b2.appendChild(sp);
+    var sl = el('div', 'spec-lab'); sl.appendChild(el('span', null, '디스토피아')); sl.appendChild(el('span', null, '유토피아')); b2.appendChild(sl); row.appendChild(b2);
+    body.appendChild(row);
+    var g = el('div', 'dc-grid'); g.appendChild(el('span', null, ''));
+    ['우려', '중립', '기대'].forEach(function(x){ g.appendChild(el('span', null, x)); });
+    [2, 1, 0].forEach(function(u){ g.appendChild(el('span', null, ['활용↓', '활용·', '활용↑'][u])); [0, 1, 2].forEach(function(o){ g.appendChild(el('i', u === TY.u && o === TY.o ? 'me' : '', T9[u][o][0])); }); });
+    body.appendChild(g);
+    var role = el('div', 'dc-role'); role.appendChild(el('b', null, '2027 추천 역할 · ')); role.appendChild(document.createTextNode(TY.t[3])); body.appendChild(role);
+    var ft = el('div', 'l-foot'); ft.appendChild(el('span', null, '26/27년 경영검토회')); ft.appendChild(el('span', null, 'SANGSIN AI INDEX')); body.appendChild(ft);
+    c.appendChild(body);
+    $('tip-ax').textContent = AXES[weak]; $('tip-text').textContent = TIPS[weak];
+    // 비교 패널(관점)
+    var list = $('vr-list'); list.innerHTML = '';
+    VIEW.forEach(function(q){
+      var d = el('div', 'vr'); d.setAttribute('data-k', q[0]); d.appendChild(el('small', null, q[1]));
+      var l = label(q[0], vans[q[0]]); d.appendChild(el('b', null, Array.isArray(l) ? l.join(', ') : l)); d.appendChild(el('div', 'same', '')); list.appendChild(d);
+    });
+    $('vr-note').textContent = CONFIG.SHEET_URL ? '다른 참여자 응답과 비교하는 중…' : '';
+    show('s-result'); lastPng = null; capGen++;
+    setTimeout(function(){ capture().catch(function(){}); }, 700);
+    if (!CONFIG.SHEET_URL) return;
+    var post = function(o){ return fetch(CONFIG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(o) }); };
+    var row1 = { kind: 'ai', sid: sid, nickname: name, score: R.score, level: L[2], a_freq: R.pct.freq, a_range: R.pct.range, a_skill: R.pct.skill, a_resp: R.pct.resp,
+      answers: QS.map(function(_, i){ return i === 2 ? scoreQ(2) : ans[i]; }).join(','),
+      uses: (ans[2] || []).filter(function(i){ return i !== QS[2][2].length - 1; }).map(function(i){ return QS[2][2][i]; }).join('|'), tools: (ans[QS.length] || []).map(function(i){ return TOOLS[i]; }).join('|'), ts: new Date().toISOString() };
+    var row2 = { kind: 'aiview', sid: vsid, type: TY.t[0], usage: ['낮음', '중간', '높음'][TY.u], comment: $('v-comment').value.replace(/[<>]/g, '').trim().slice(0, 120), ts: new Date().toISOString() };
+    VQ.forEach(function(q){ if (q[3] >= 0) { var l = label(q[0], vans[q[0]]); row2[q[0]] = Array.isArray(l) ? l.join('|') : l; } });
+    post(row1).catch(function(){});
+    post(row2).then(function(){ setTimeout(function(){ compareV(row2); }, 2500); }).catch(function(){ $('vr-note').textContent = '전송하지 못했어요. 네트워크(모바일 데이터)를 확인해 주세요.'; });
+  }
+  $('btn-again').addEventListener('click', function(){ show('s-start'); });
+
+  // ===== 2부: AI에 대한 나의 생각 =====
+  var VQ = [['role', '응답하시는 분의 직책은? (집계용)', ROLES.concat(['밝히지 않음']), 0]].concat(VIEW).concat([['comment', 'AI에 대해 한마디 남겨 주세요. (선택)', [], -1]]);
+  var vcur = 0, vans = {}, vsid = '';
+  function startView(){ vsid = 'v' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); vcur = 0; renderV(); show('s-v'); }
+  function renderV(){
+    var q = VQ[vcur], key = q[0], max = q[3], box = $('v-opts');
+    $('v-count').textContent = (N + vcur + 1) + ' / ' + TOTAL; $('v-fill').style.width = ((N + vcur + 1) / TOTAL * 100) + '%';
+    $('v-text').textContent = q[1]; $('v-hint').textContent = max > 1 ? '최대 ' + max + '개 선택' : max < 0 ? '비워 두셔도 됩니다 · 120자 이내' : '';
+    box.innerHTML = ''; box.className = 'opts' + (max > 1 ? ' multi' : ''); $('v-comment').hidden = max >= 0;
+    q[2].forEach(function(o, i){
+      var b = el('button', 'opt'); b.type = 'button'; var a = vans[key];
+      if (max > 1 ? (a || []).indexOf(i) >= 0 : a === i) b.classList.add('sel');
+      b.appendChild(el('b', null, '✓')); b.appendChild(el('span', null, o));
+      b.addEventListener('click', function(){
+        if (max > 1) { var a2 = (vans[key] || []).slice(), k = a2.indexOf(i); if (k >= 0) a2.splice(k, 1); else { if (a2.length >= max) a2.shift(); a2.push(i); } vans[key] = a2; renderV(); }
+        else { vans[key] = i; renderV(); setTimeout(vnext, 220); }
+      });
+      box.appendChild(b);
+    });
+    $('v-next').textContent = vcur === VQ.length - 1 ? '내 카드 받기' : '다음';
+    $('v-next').disabled = max < 0 ? false : max > 1 ? !((vans[key] || []).length) : vans[key] === undefined;
+  }
+  function vnext(){ if ($('v-next').disabled) return; if (vcur < VQ.length - 1) { vcur++; renderV(); window.scrollTo(0, 0); } else finishAll(); }
+  $('v-next').addEventListener('click', vnext); $('v-prev').addEventListener('click', function(){ if (vcur > 0) { vcur--; renderV(); } else { cur = N - 1; renderQ(); show('s-q'); } });
+  function label(key, v){ var q = VQ.filter(function(x){ return x[0] === key; })[0]; return Array.isArray(v) ? v.map(function(i){ return q[2][i]; }) : q[2][v]; }
+  function compareV(row){
+    fetchView().then(function(d){
+      var n = d.count || 0;
+      Array.prototype.forEach.call(document.querySelectorAll('#vr-list .vr'), function(card){
+        var k = card.getAttribute('data-k'), mine = String(row[k] || '').split('|'), c = d[k] || {};
+        var txt = mine.length > 1 ? mine.map(function(m){ return '‘' + m + '’ ' + (n ? Math.round((c[m] || 0) / n * 100) : 0) + '%'; }).join(' · ') + '가 같은 선택'
+                                  : '나와 같은 선택 ' + (n ? Math.round((c[mine[0]] || 0) / n * 100) : 0) + '%';
+        card.querySelector('.same').textContent = txt;
+      });
+      $('vr-note').textContent = '지금까지 ' + n + '명의 응답과 비교한 결과예요. 행사장 화면에서 전체 결과를 확인하세요.';
+    }).catch(function(){ $('vr-note').textContent = ''; });
+  }
+  function fetchView(){ return fetch(CONFIG.SHEET_URL + '?type=aiview&t=' + Date.now()).then(function(r){ return r.json(); }); }
+  var vbTimer = null;
+  function renderViewBoard(){
+    show('s-vb'); $('app').classList.add('board-mode');
+    if (!CONFIG.SHEET_URL) { $('vb-msg').textContent = '집계판은 응답 저장(Google 시트) 연결 후 표시됩니다.'; return; }
+    fetchView().then(function(d){
+      var n = d.count || 0;
+      function q(k){ return VQ.filter(function(x){ return x[0] === k; })[0]; }
+      function full(k, hot){ bars('vb-' + k, q(k)[2].map(function(o){ return [o, (d[k] || {})[o] || 0]; }), n, false); }
+      function top(k, m){ var it = q(k)[2].map(function(o){ return [o, (d[k] || {})[o] || 0]; }).sort(function(a, b){ return b[1] - a[1]; }).slice(0, m); bars('vb-' + k, it, n, true); }
+      full('outlook'); full('horizon'); top('purpose', 5); full('scope'); top('hopes', 3); top('worries', 3);
+      var ty = Object.keys(d.type || {}).map(function(k){ return [k, d.type[k]]; }).sort(function(a, b){ return b[1] - a[1]; }).slice(0, 3); if (!ty.length) ty = [['아직 응답이 없어요', 0]]; bars('vb-type', ty, n, true);
+      var o = d.outlook || {}, idx = 0; q('outlook')[2].forEach(function(lab, i){ idx += (o[lab] || 0) * (i - 2); });
+      $('vb-idx').textContent = n ? 'AI 기대 지수 ' + (idx / n >= 0 ? '+' : '') + (idx / n).toFixed(2) + ' (−2 매우 걱정 ~ +2 매우 기대)' : '';
+      var r = d.role || {}; $('vb-msg').textContent = '총 ' + n + '명 응답' + (n ? ' (' + ROLES.map(function(x){ return x + ' ' + (r[x] || 0); }).join(' · ') + ')' : '') + ' · 10초마다 자동 갱신';
+      $('vb-time').textContent = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) + ' 기준 실시간';
+    }).catch(function(){ $('vb-msg').textContent = '집계를 불러오지 못했습니다. 잠시 후 다시 시도합니다.'; });
+    clearTimeout(vbTimer); vbTimer = setTimeout(renderViewBoard, 10000);
+  }
+
+  // ===== 이미지 저장 / 공유 =====
+  function capture(){
+    if (lastPng) return Promise.resolve(lastPng);
+    var g = capGen; if (!window.html2canvas) return Promise.reject(new Error('no-h2c'));
+    return window.html2canvas($('lcard'), { scale: 3, backgroundColor: '#FFFFFF', logging: false }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(function(b){ var p = { blob: b, url: URL.createObjectURL(b) }; if (g === capGen) lastPng = p; res(p); }, 'image/png'); });
+    });
+  }
+  function fileName(){ return 'AI드라이버카드_' + R.type.replace(/\s+/g, '') + '_' + name.replace(/[\\/:*?"<>|\s]+/g, '_') + '.png'; }
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function toast(t){ $('r-toast').textContent = t; }
+  function saveNow(p){
+    var file = null; try { file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+    if (isIOS && file && navigator.canShare && navigator.canShare({ files: [file] })) return navigator.share({ files: [file], title: 'AI 드라이버 카드' }).then(function(){ toast('면허증을 저장했어요.'); }, function(){});
+    var a = document.createElement('a'); a.href = p.url; a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
+    toast('면허증을 저장했어요. 사진첩 또는 다운로드 폴더를 확인하세요.');
+  }
+  $('btn-save').addEventListener('click', function(){
+    if (lastPng) { saveNow(lastPng); return; }
+    var b = this, lbl = b.textContent; b.disabled = true; b.textContent = '이미지 만드는 중…';
+    capture().then(saveNow).catch(function(){ toast('이미지를 만들지 못했어요. 화면을 캡처해 주세요.'); }).then(function(){ b.disabled = false; b.textContent = lbl; });
+  });
+  function shareText(){ return '[26/27년 경영검토회] ' + name + ' 님의 AI 드라이버 카드: 「' + R.type + '」 · ' + licOf(R.score)[2] + ' ' + R.score + '점 · 관점 「' + R.verdict + '」! 나는 어떤 유형일까? → ' + CONFIG.SHARE_URL; }
+  $('btn-kakao').addEventListener('click', function(){
+    var p = lastPng;
+    if (navigator.share) {
+      var data = { title: 'AI 운전면허 시험', text: shareText() };
+      var file = null; try { if (p) file = new File([p.blob], fileName(), { type: 'image/png' }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) data.files = [file]; else data.url = CONFIG.SHARE_URL;
+      navigator.share(data).then(function(){ toast('공유했어요.'); }, function(e){ if (e && e.name === 'AbortError') return; if (data.files) { delete data.files; data.url = CONFIG.SHARE_URL; navigator.share(data).catch(function(){}); } });
+      return;
+    }
+    var t = shareText();
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){ toast('공유 문구를 복사했어요. 카카오톡 대화창에 붙여넣어 주세요.'); }, function(){ toast('공유 링크: ' + CONFIG.SHARE_URL); });
+  });
+
+  // ===== 행사장 집계판 =====
+  var boardTimer = null;
+  function bars(id, items, total, hotFirst, unit){
+    var box = $(id); box.innerHTML = '';
+    var mx = Math.max.apply(null, items.map(function(x){ return x[1]; }).concat([1]));
+    items.forEach(function(x, i){
+      var r = el('div', 'ag-bar' + (hotFirst && i === 0 && x[1] > 0 ? ' hot' : '')); r.appendChild(el('span', null, x[0]));
+      var b = el('i'), e = el('em'); e.style.width = (unit === '점' ? x[1] : x[1] / mx * 100) + '%'; b.appendChild(e); r.appendChild(b);
+      r.appendChild(el('b', null, unit === '점' ? x[1] + '' : (total ? Math.round(x[1] / total * 100) : 0) + '%')); box.appendChild(r);
+    });
+  }
+  function renderBoard(){
+    show('s-board'); $('app').classList.add('board-mode');
+    if (!CONFIG.SHEET_URL) { $('b-msg').textContent = '집계판은 응답 저장(Google 시트) 연결 후 표시됩니다.'; return; }
+    fetch(CONFIG.SHEET_URL + '?type=ai&t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
+      var n = d.count || 0;
+      $('ag-avg').textContent = n ? String(d.avg) : '-'; $('ag-n').textContent = '응시자 ' + n + '명';
+      bars('ag-axes', AK.map(function(k){ return [AXES[k], n ? (d.axes || {})[k] || 0 : 0]; }), n, false, '점');
+      bars('ag-lv', LIC.map(function(l){ return [l[2], (d.levels || {})[l[2]] || 0]; }), n, false);
+      var uses = Object.keys(d.uses || {}).map(function(k){ return [k, d.uses[k]]; }).sort(function(a, b){ return b[1] - a[1]; }).slice(0, 5);
+      if (!uses.length) uses = [['아직 응답이 없어요', 0]]; bars('ag-use', uses, n, true);
+      var tools = Object.keys(d.tools || {}).map(function(k){ return [k, d.tools[k]]; }).sort(function(a, b){ return b[1] - a[1]; }).slice(0, 6);
+      if (!tools.length) tools = [['아직 응답이 없어요', 0]]; bars('ag-tool', tools, n, true);
+      $('b-msg').textContent = '총 ' + n + '명 응시 · 10초마다 자동 갱신';
+      $('b-time').textContent = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) + ' 기준 실시간';
+    }).catch(function(){ $('b-msg').textContent = '집계를 불러오지 못했습니다. 잠시 후 다시 시도합니다.'; });
+    clearTimeout(boardTimer); boardTimer = setTimeout(renderBoard, 10000);
+  }
+  function route(){ if (location.hash === '#board') renderBoard(); else if (location.hash === '#view') renderViewBoard(); }
+  window.addEventListener('hashchange', route); route();
+  window.__AI = { ans: function(){ return ans; }, calc: calc, res: function(){ return R; }, vans: function(){ return vans; } };
+})();
+</script>
+</body>
+</html>
